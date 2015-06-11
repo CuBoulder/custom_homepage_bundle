@@ -1,0 +1,4 @@
+name = Homepage
+description = Custom module for the Homepage
+core = 7.x
+package = CU Homepage

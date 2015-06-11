@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CU Degree Programs feature.
+ */
+
+include_once 'cu_degree_programs.features.inc';

@@ -5,3 +5,44 @@
  */
 
 include_once 'homepage_blog_post.features.inc';
+
+/**
+ * Implements hook_user_login
+ *
+ * Create a Person node for each Blogger.
+ */
+function homepage_blog_post_user_login(&$edit, $account) {
+  global $user;
+  // If the user has the role blogger.
+  if (in_array('blogger',$user->roles)) {
+    $uid = $user->uid;
+
+    // Check to see if this user has created a person node.
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'person')
+    ->propertyCondition('uid', $uid);
+
+    $result = $query->execute();
+
+    // If they do not have ownership of a person node, create a new one for them.
+    if (empty($result['node'])) {
+      $values = array(
+        'type' => 'person',
+        'uid' => $user->uid,
+        'status' => 0,
+        'comment' => 0,
+        'promote' => 0,
+      );
+      $entity = entity_create('node', $values);
+
+      $wrapper = entity_metadata_wrapper('node', $entity);
+
+      // Set the title to '[username] Blogger Profile'.
+      $wrapper->field_person_first_name->set($user->name);
+      $wrapper->field_person_last_name->set('Blogger Profile');
+
+      $wrapper->save();
+    }
+  }
+}

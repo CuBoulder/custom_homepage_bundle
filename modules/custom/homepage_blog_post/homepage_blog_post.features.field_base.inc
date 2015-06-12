@@ -81,7 +81,7 @@ function homepage_blog_post_field_default_field_bases() {
   // Exported field_base: 'field_blog_post_image'
   $field_bases['field_blog_post_image'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_blog_post_image',

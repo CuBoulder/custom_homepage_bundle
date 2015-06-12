@@ -1,0 +1,99 @@
+<?php
+/**
+ * Implements hook_install_tasks().
+ */
+function homepage_blog_post_install_tasks() {
+  return array(
+    'homepage_blog_post_secure_permissions_roles' => array(),
+    'homepage_blog_post_secure_permissions' => array(),
+  );
+}
+
+/**
+ * Implements hook_secure_permissions_roles().
+ *
+ * Defines the blogger role.
+ *
+ */
+function homepage_blog_post_secure_permissions_roles() {
+  $roles = array(
+    'blogger',
+  );
+  return $roles;
+}
+
+
+/**
+ * Implements hook_secure_permissions().
+ */
+function homepage_blog_post_secure_permissions($role) {
+  $permissions = array(
+    'blogger' => array(
+      'access administration pages',
+      'access content overview',
+      'access contextual links',
+      'access overlay',
+      'access own webform results',
+      'access toolbar',
+      'access user profiles',
+      'administer media',
+      'administer nodes',
+      'check out documents',
+      'create blog_post content',
+      'create url aliases',
+      'delete own blog_post content',
+      'delete revisions',
+      'edit media',
+      'edit own blog_post content',
+      'edit own person content',
+      'preview focal point',
+      'revert revisions',
+      'use text format wysiwyg',
+      'view any articles bean',
+      'view any article_grid bean',
+      'view any article_slider bean',
+      'view any cu_events_calendar_block bean',
+      'view any events_calendar_grid bean',
+      'view any facebook_activity bean',
+      'view any facebook_like_button bean',
+      'view any hero_unit bean',
+      'view any slider bean',
+      'view any twitter_block bean',
+      'view own unpublished content',
+      'view revisions',
+      'view the administration theme',
+    ),
+    'content_editor' => array(
+      'create blog_post content',
+      'delete any blog_post content',
+      'delete own blog_post content',
+      'edit any blog_post content',
+      'edit own blog_post content',
+    ),
+    'site_owner' => array(
+      'create blog_post content',
+      'delete any blog_post content',
+      'delete own blog_post content',
+      'edit any blog_post content',
+      'edit own blog_post content',
+    ),
+    'administrator' => array(
+      'create blog_post content',
+      'delete any blog_post content',
+      'delete own blog_post content',
+      'edit any blog_post content',
+      'edit own blog_post content',
+    ),
+    'developer' => array(
+      'create blog_post content',
+      'delete any blog_post content',
+      'delete own blog_post content',
+      'edit any blog_post content',
+      'edit own blog_post content',
+    ),
+  );
+  // Return the permissions.
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}

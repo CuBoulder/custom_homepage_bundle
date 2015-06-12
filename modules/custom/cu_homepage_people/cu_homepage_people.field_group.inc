@@ -23,9 +23,9 @@ function cu_homepage_people_field_group_info() {
     'label' => 'Blogger Information',
     'weight' => '25',
     'children' => array(
-      0 => 'field_person_hometown',
+      0 => 'field_person_audience_ref',
       1 => 'field_person_degree_program_ref',
-      2 => 'field_person_audience_ref',
+      2 => 'field_person_hometown',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

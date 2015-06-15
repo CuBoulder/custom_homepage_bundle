@@ -65,7 +65,7 @@ function cu_degree_programs_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 55,
+      'weight' => 19,
     ),
   );
 
@@ -108,9 +108,9 @@ function cu_degree_programs_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'rel_remove' => 'default',
-      'title' => 'required',
+      'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => 'Advising',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -120,7 +120,7 @@ function cu_degree_programs_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 53,
+      'weight' => 17,
     ),
   );
 
@@ -161,7 +161,7 @@ function cu_degree_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 43,
+      'weight' => 6,
     ),
   );
 
@@ -202,7 +202,7 @@ function cu_degree_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 42,
+      'weight' => 5,
     ),
   );
 
@@ -245,9 +245,9 @@ function cu_degree_programs_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'rel_remove' => 'default',
-      'title' => 'required',
+      'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => 'Degree Requirements',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -257,7 +257,7 @@ function cu_degree_programs_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 52,
+      'weight' => 16,
     ),
   );
 
@@ -285,7 +285,7 @@ function cu_degree_programs_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_degree_prog_degrees_offer',
-    'label' => 'Degrees offered',
+    'label' => 'Degrees Offered',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -298,7 +298,7 @@ function cu_degree_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 44,
+      'weight' => 7,
     ),
   );
 
@@ -341,9 +341,9 @@ function cu_degree_programs_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'rel_remove' => 'default',
-      'title' => 'required',
+      'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => 'Department Website',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -353,7 +353,7 @@ function cu_degree_programs_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 49,
+      'weight' => 13,
     ),
   );
 
@@ -396,9 +396,9 @@ function cu_degree_programs_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'rel_remove' => 'default',
-      'title' => 'required',
+      'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => 'Graduate Admission',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -408,7 +408,7 @@ function cu_degree_programs_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 51,
+      'weight' => 15,
     ),
   );
 
@@ -451,7 +451,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 46,
+      'weight' => 9,
     ),
   );
 
@@ -557,7 +557,7 @@ function cu_degree_programs_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 41,
+      'weight' => 4,
     ),
   );
 
@@ -600,7 +600,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 48,
+      'weight' => 11,
     ),
   );
 
@@ -643,7 +643,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 47,
+      'weight' => 10,
     ),
   );
 
@@ -686,9 +686,9 @@ function cu_degree_programs_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'rel_remove' => 'default',
-      'title' => 'required',
+      'title' => 'value',
       'title_maxlength' => 128,
-      'title_value' => '',
+      'title_value' => 'Undergraduate Admission',
       'url' => 0,
       'user_register_form' => FALSE,
       'validate_url' => 1,
@@ -698,7 +698,7 @@ function cu_degree_programs_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 50,
+      'weight' => 14,
     ),
   );
 
@@ -741,7 +741,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 45,
+      'weight' => 8,
     ),
   );
 
@@ -783,7 +783,7 @@ function cu_degree_programs_field_default_field_instances() {
       'module' => 'video_embed_field',
       'settings' => array(),
       'type' => 'video_embed_field_video',
-      'weight' => 54,
+      'weight' => 18,
     ),
   );
 
@@ -794,7 +794,7 @@ function cu_degree_programs_field_default_field_instances() {
   t('Career Interest');
   t('Category');
   t('Degree Requirements');
-  t('Degrees offered');
+  t('Degrees Offered');
   t('Department Website');
   t('Graduate Admission');
   t('Graduate Studies');

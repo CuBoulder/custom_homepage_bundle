@@ -285,7 +285,7 @@ function cu_degree_programs_field_default_field_instances() {
     'entity_type' => 'node',
     'fences_wrapper' => 'div',
     'field_name' => 'field_degree_prog_degrees_offer',
-    'label' => 'Degrees offered',
+    'label' => 'Degrees Offered',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -794,7 +794,7 @@ function cu_degree_programs_field_default_field_instances() {
   t('Career Interest');
   t('Category');
   t('Degree Requirements');
-  t('Degrees offered');
+  t('Degrees Offered');
   t('Department Website');
   t('Graduate Admission');
   t('Graduate Studies');

@@ -5,5 +5,8 @@
  */
 function homepage_install() {
   db_query("UPDATE {system} SET weight = 99 WHERE name = 'homepage'");
-  module_enable(array('cu_degree_programs'));
+  module_enable(array(
+    'cu_homepage_people',
+    'cu_degree_programs',
+  ));
 }

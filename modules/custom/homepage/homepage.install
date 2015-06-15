@@ -8,5 +8,6 @@ function homepage_install() {
   module_enable(array(
     'cu_homepage_people',
     'cu_degree_programs',
+    'homepage_blog_post',
   ));
 }

@@ -27,7 +27,7 @@ regions[content_sidebar_right] = 'Content Sidebar Right'
 regions[content_sidebar_left] = 'Content Sidebar Left'
 
 
-stylesheets[screen][] = css/cuhomeage-global.css
+stylesheets[screen][] = css/cuhomepage-global.css
 
 settings[layout_style] = 'layout-wide'
 settings[banner_color] = 'black'

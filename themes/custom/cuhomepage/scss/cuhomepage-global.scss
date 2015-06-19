@@ -4,6 +4,14 @@
 body {
   background: #000;
 }
+#header-wrapper {
+  padding: 10px 0 20px;
+}
+@media (min-width: 960px) {
+  #header-wrapper {
+    padding: 20px 0;
+  }
+}
 #secondary-menu-wrapper {
   background: #000;
 }
@@ -56,7 +64,7 @@ nav#main-menu a {
 }
 
 #content-wrapper {
-  border-top: 1px solid $border_color;
+  //border-top: 1px solid $border_color;
 }
 
 .sidebars .menu-block-wrapper ul.menu a {
@@ -88,4 +96,28 @@ nav#main-menu a {
     max-width: 1160px;
     margin: 0 auto;
   }
+}
+
+#breadcrumb-wrapper {
+  //border-top: 1px solid $border_color;
+  background: #e7e7e7;
+  overflow: hidden;
+  padding: 5px 0;
+  font-size: 90%;
+  color:#666;
+  .breadcrumbs {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+  }
+  .breadcrumb {
+    margin-bottom: 0;
+    padding:0 20px;
+  }
+  a {
+    color:#666;
+  }
+}
+.block {
+  //margin-bottom: 40px;
 }

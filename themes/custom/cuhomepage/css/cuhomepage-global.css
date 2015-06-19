@@ -33,7 +33,14 @@ nav#main-menu a.active-trail { background: #e7e7e7; color: #333; }
 
 @media screen and (min-width: 740px) { .block-section-content-wrapper { max-width: none; margin: 0 auto; } }
 @media screen and (min-width: 960px) { .block-section-content-wrapper { max-width: 1160px; margin: 0 auto; } }
-#breadcrumb-wrapper { background: #e7e7e7; overflow: hidden; padding: 5px 0; font-size: 90%; color: #666; }
+#breadcrumb-wrapper { background: #e7e7e7; overflow: hidden; font-size: 90%; color: #666; }
 #breadcrumb-wrapper .breadcrumbs { margin-left: auto; margin-right: auto; max-width: 1200px; }
-#breadcrumb-wrapper .breadcrumb { margin-bottom: 0; padding: 0 20px; }
+#breadcrumb-wrapper .breadcrumb { margin-bottom: 0; padding: 5px 20px; }
 #breadcrumb-wrapper a { color: #666; }
+
+#intro-wide-wrapper { background-color: #fff; }
+#intro-wide-wrapper .cu-slider-caption { font-weight: 900; font-size: 36px; padding-right: 200px; }
+#intro-wide-wrapper .cu-slider-caption i.fa { display: none; }
+#intro-wide-wrapper .cu-slider-teaser { font-size: 120%; line-height: 120%; padding-right: 200px; }
+
+.cu-slider-slide-content { max-width: 1160px; }

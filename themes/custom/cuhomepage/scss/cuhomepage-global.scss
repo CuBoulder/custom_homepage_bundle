@@ -99,10 +99,9 @@ nav#main-menu a {
 }
 
 #breadcrumb-wrapper {
-  //border-top: 1px solid $border_color;
+  //border-top: 1px solid #e7e7e7;
   background: #e7e7e7;
   overflow: hidden;
-  padding: 5px 0;
   font-size: 90%;
   color:#666;
   .breadcrumbs {
@@ -112,7 +111,7 @@ nav#main-menu a {
   }
   .breadcrumb {
     margin-bottom: 0;
-    padding:0 20px;
+    padding:5px 20px;
   }
   a {
     color:#666;
@@ -120,4 +119,24 @@ nav#main-menu a {
 }
 .block {
   //margin-bottom: 40px;
+}
+
+#intro-wide-wrapper {
+  background-color: #fff;
+  .cu-slider-caption {
+    font-weight: 900;
+    font-size: 36px;
+    padding-right:200px;
+    i.fa {
+      display: none;
+    }
+  }
+  .cu-slider-teaser {
+    font-size: 120%;
+    line-height: 120%;
+    padding-right:200px;
+  }
+}
+.cu-slider-slide-content {
+  max-width: 1160px;
 }

@@ -61,4 +61,4 @@ features[variable][] = node_preview_degree_program
 features[variable][] = node_submitted_degree_program
 features[variable][] = pathauto_node_degree_program_pattern
 mtime = 1434383548
-project path = sites/all/modules/custom/cu_homepage_degree_prog
+project path = sites/all/modules/custom/cu_degree_programs

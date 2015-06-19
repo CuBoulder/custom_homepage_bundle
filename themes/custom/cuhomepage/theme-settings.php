@@ -4,7 +4,7 @@ function cuhomepage_form_system_theme_settings_alter(&$form, &$form_state) {
   $theme = $form_state['build_info']['args'][0];
 	$form['cuhomepage_theme_settings'] = array(
 		'#type' => 'fieldset', 
-		'#title' => t('Modern Theme Settings'), 
+		'#title' => t('CU Homepage Theme Settings'), 
 		'#collapsible' => TRUE, 
 		'#collapsed' => TRUE,
 	);

@@ -21,7 +21,7 @@ function cu_degree_programs_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Links',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'field_degree_prog_advising_url',
       1 => 'field_degree_prog_deg_reqs_url',

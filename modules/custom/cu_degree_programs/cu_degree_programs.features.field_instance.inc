@@ -33,9 +33,8 @@ function cu_degree_programs_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
     ),
@@ -124,7 +123,7 @@ function cu_degree_programs_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 19,
+      'weight' => 16,
     ),
   );
 
@@ -232,7 +231,7 @@ function cu_degree_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -278,7 +277,48 @@ function cu_degree_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 5,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-degree_program-field_degree_prog_college_school'
+  $field_instances['node-degree_program-field_degree_prog_college_school'] = array(
+    'bundle' => 'degree_program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_degree_prog_college_school',
+    'label' => 'College or School',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
     ),
   );
 
@@ -388,7 +428,7 @@ function cu_degree_programs_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -562,7 +602,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -593,9 +633,13 @@ function cu_degree_programs_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'preview',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
     ),
@@ -678,7 +722,7 @@ function cu_degree_programs_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -728,7 +772,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -778,7 +822,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -890,7 +934,7 @@ function cu_degree_programs_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -942,7 +986,7 @@ function cu_degree_programs_field_default_field_instances() {
       'module' => 'video_embed_field',
       'settings' => array(),
       'type' => 'video_embed_field_video',
-      'weight' => 18,
+      'weight' => 15,
     ),
   );
 
@@ -953,6 +997,7 @@ function cu_degree_programs_field_default_field_instances() {
   t('Body');
   t('Career Interest');
   t('Category');
+  t('College or School');
   t('Degree Requirements');
   t('Degrees Offered');
   t('Department Website');

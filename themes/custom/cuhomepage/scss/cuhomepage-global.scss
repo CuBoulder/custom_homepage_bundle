@@ -1,0 +1,123 @@
+@import "../../cuzen/sass/modules/_colors.scss";
+
+
+body {
+  background: #000;
+}
+#header-wrapper {
+  padding: 10px 0 20px;
+}
+@media (min-width: 960px) {
+  #header-wrapper {
+    padding: 20px 0;
+  }
+}
+#secondary-menu-wrapper {
+  background: #000;
+}
+#main-menu-wrapper {
+  background:#fff;
+}
+#slider-wrapper {
+  background: #f7f7f7;
+}
+#content-wrapper,
+#after-content-wrapper {
+  background: #fff;
+  padding:40px 0 20px;
+}
+#after-content2-wrapper {
+  background: #f7f7f7;
+  padding:40px 0 20px;
+}
+#footer-wrapper {
+  padding:40px 0 20px;
+  background: #222;
+  
+}
+#footer-section {
+  background: #000;
+  color:#fff;
+  a {
+    color:$cugold; 
+    &:hover {
+      color:#fff;
+    }
+  }
+}
+nav#secondary-menu a {
+  color:#fff;
+  &:hover {
+    color:$cugold;
+  }
+}
+nav#main-menu a {
+  color:#666;
+  &:hover {
+    background: #000;
+    color:#fff;
+  }
+  &.active-trail {
+    background: #e7e7e7;
+    color:#333;
+  }
+}
+
+#content-wrapper {
+  //border-top: 1px solid $border_color;
+}
+
+.sidebars .menu-block-wrapper ul.menu a {
+  display: block;
+  color:#666;
+  padding:10px 0;
+  border-top:1px solid $border_color;
+  border-bottom: 1px solid $border_color;
+  margin-bottom: -1px;
+  &.active {
+    background-color: $border_color;
+    color:#222;
+    font-weight: 600;
+    padding:10px;
+  }
+}
+
+.block-section {
+  padding: 20px;
+}
+@media screen and (min-width:740px) {
+  .block-section-content-wrapper {
+    max-width: none;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width:960px) {
+  .block-section-content-wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+}
+
+#breadcrumb-wrapper {
+  //border-top: 1px solid $border_color;
+  background: #e7e7e7;
+  overflow: hidden;
+  padding: 5px 0;
+  font-size: 90%;
+  color:#666;
+  .breadcrumbs {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+  }
+  .breadcrumb {
+    margin-bottom: 0;
+    padding:0 20px;
+  }
+  a {
+    color:#666;
+  }
+}
+.block {
+  //margin-bottom: 40px;
+}

@@ -118,7 +118,6 @@ nav#main-menu a {
   }
 }
 .block {
-  //margin-bottom: 40px;
 }
 
 #intro-wide-wrapper {
@@ -126,7 +125,6 @@ nav#main-menu a {
   .cu-slider-caption {
     font-weight: 900;
     font-size: 36px;
-    padding-right:200px;
     i.fa {
       display: none;
     }
@@ -134,9 +132,21 @@ nav#main-menu a {
   .cu-slider-teaser {
     font-size: 120%;
     line-height: 120%;
-    padding-right:200px;
+  }
+  .cu-content-slider-style1 .cu-slider-slide-content-inner {
+    padding:20px;
   }
 }
 .cu-slider-slide-content {
   max-width: 1160px;
+}
+
+#homepage-footer-content {
+  text-align: center;
+  padding:0 20px;
+  img {
+    width:100%;
+    height: auto;
+    max-width: 320px;
+  }
 }

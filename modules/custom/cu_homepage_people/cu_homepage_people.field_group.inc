@@ -29,13 +29,14 @@ function cu_homepage_people_field_group_info() {
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Blogger Information',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-blogger field-group-htab',
-        'required_fields' => 1,
+        'required_fields' => 0,
         'id' => '',
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $export['group_blogger|node|person|form'] = $field_group;

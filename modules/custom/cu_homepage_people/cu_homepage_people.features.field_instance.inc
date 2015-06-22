@@ -17,6 +17,12 @@ function cu_homepage_people_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -67,6 +73,12 @@ function cu_homepage_people_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -123,6 +135,13 @@ function cu_homepage_people_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',

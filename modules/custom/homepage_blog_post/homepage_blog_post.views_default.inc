@@ -33,6 +33,7 @@ function homepage_blog_post_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['uses_fields'] = TRUE;
   $handler->display->display_options['row_plugin'] = 'node';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -205,6 +206,61 @@ function homepage_blog_post_views_default_views() {
   $handler->display->display_options['arguments']['created_year_month']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['created_year_month']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['created_year_month']['specify_validation'] = TRUE;
+
+  /* Display: Block - Tag Aggregation by Person */
+  $handler = $view->new_display('block', 'Block - Tag Aggregation by Person', 'block_3');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Tags (field_blog_post_tags_ref) */
+  $handler->display->display_options['relationships']['field_blog_post_tags_ref_tid']['id'] = 'field_blog_post_tags_ref_tid';
+  $handler->display->display_options['relationships']['field_blog_post_tags_ref_tid']['table'] = 'field_data_field_blog_post_tags_ref';
+  $handler->display->display_options['relationships']['field_blog_post_tags_ref_tid']['field'] = 'field_blog_post_tags_ref_tid';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Tags */
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['id'] = 'field_blog_post_tags_ref';
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['table'] = 'field_data_field_blog_post_tags_ref';
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['field'] = 'field_blog_post_tags_ref';
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['label'] = '';
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_blog_post_tags_ref']['field_api_classes'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Blogger (field_blog_post_blogger_ref) */
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['id'] = 'field_blog_post_blogger_ref_target_id';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['table'] = 'field_data_field_blog_post_blogger_ref';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['field'] = 'field_blog_post_blogger_ref_target_id';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate_options']['types'] = array(
+    'person' => 'person',
+  );
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_blog_post_tags_ref_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '1';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['name']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['name']['validate_options']['vocabularies'] = array(
+    'tags' => 'tags',
+  );
+  $handler->display->display_options['arguments']['name']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
   $export['blog_posts'] = $view;
 
   return $export;

@@ -177,6 +177,8 @@ function homepage_blog_post_views_default_views() {
 
   /* Display: Block - Date aggregation */
   $handler = $view->new_display('block', 'Block - Date aggregation', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Archives';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -209,6 +211,8 @@ function homepage_blog_post_views_default_views() {
 
   /* Display: Block - Tag Aggregation by Person */
   $handler = $view->new_display('block', 'Block - Tag Aggregation by Person', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Tags';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';

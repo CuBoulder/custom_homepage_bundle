@@ -18,11 +18,11 @@ function homepage_blog_post_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_blog_post_blogger_ref',
     'foreign keys' => array(
-      'users' => array(
+      'node' => array(
         'columns' => array(
-          'target_id' => 'uid',
+          'target_id' => 'nid',
         ),
-        'table' => 'users',
+        'table' => 'node',
       ),
     ),
     'indexes' => array(
@@ -43,9 +43,11 @@ function homepage_blog_post_field_default_field_bases() {
         'sort' => array(
           'type' => 'none',
         ),
-        'target_bundles' => array(),
+        'target_bundles' => array(
+          'person' => 'person',
+        ),
       ),
-      'target_type' => 'user',
+      'target_type' => 'node',
     ),
     'translatable' => 0,
     'type' => 'entityreference',

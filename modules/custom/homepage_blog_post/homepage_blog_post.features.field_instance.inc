@@ -25,9 +25,12 @@ function homepage_blog_post_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -40,7 +43,7 @@ function homepage_blog_post_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_blog_post_blogger_ref',
     'label' => 'Blogger',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -53,7 +56,7 @@ function homepage_blog_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 43,
+      'weight' => 6,
     ),
   );
 
@@ -105,7 +108,7 @@ function homepage_blog_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 41,
+      'weight' => 4,
     ),
   );
 
@@ -217,7 +220,7 @@ function homepage_blog_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 42,
+      'weight' => 5,
     ),
   );
 
@@ -264,7 +267,7 @@ function homepage_blog_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 44,
+      'weight' => 7,
     ),
   );
 

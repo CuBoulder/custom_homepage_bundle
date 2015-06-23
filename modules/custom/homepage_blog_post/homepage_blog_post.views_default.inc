@@ -51,17 +51,14 @@ function homepage_blog_post_views_default_views() {
   $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['table'] = 'field_data_field_blog_post_blogger_ref';
   $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['field'] = 'field_blog_post_blogger_ref_target_id';
   $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['default_argument_type'] = 'user';
-  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['default_argument_options']['user'] = FALSE;
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate']['type'] = 'user';
-  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate_options']['type'] = 'either';
-  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate_options']['restrict_roles'] = TRUE;
-  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate_options']['roles'] = array(
-    14 => '14',
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate']['type'] = 'node';
+  $handler->display->display_options['arguments']['field_blog_post_blogger_ref_target_id']['validate_options']['types'] = array(
+    'person' => 'person',
   );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';

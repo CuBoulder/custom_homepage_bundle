@@ -32,5 +32,5 @@ features[variable][] = node_options_blog_post
 features[variable][] = node_preview_blog_post
 features[variable][] = node_submitted_blog_post
 features[views_view][] = blog_posts
-mtime = 1435078115
+mtime = 1435079019
 project path = sites/all/modules/custom

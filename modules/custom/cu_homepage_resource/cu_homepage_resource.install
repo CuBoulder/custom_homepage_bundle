@@ -1,0 +1,49 @@
+<?php
+/**
+ * Implements hook_install_tasks().
+ */
+function cu_homepage_resource_install_tasks() {
+  return array(
+    'cu_homepage_resource_secure_permissions' => array(),
+  );
+}
+
+/**
+ * Implements hook_secure_permissions().
+ */
+function cu_homepage_resource_secure_permissions($role) {
+  $permissions = array(
+    'content_editor' => array(
+      'create resource content',
+      'delete any resource content',
+      'delete own resource content',
+      'edit any resource content',
+      'edit own resource content',
+    ),
+    'site_owner' => array(
+      'create resource content',
+      'delete any resource content',
+      'delete own resource content',
+      'edit any resource content',
+      'edit own resource content',
+    ),
+    'administrator' => array(
+      'create resource content',
+      'delete any resource content',
+      'delete own resource content',
+      'edit any resource content',
+      'edit own resource content',
+    ),
+    'developer' => array(
+      'create resource content',
+      'delete any resource content',
+      'delete own resource content',
+      'edit any resource content',
+      'edit own resource content',
+    ),
+  );
+  // Return the permissions.
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}

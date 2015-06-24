@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CU Homepage Policy feature.
+ */
+
+include_once 'cu_homepage_policy.features.inc';

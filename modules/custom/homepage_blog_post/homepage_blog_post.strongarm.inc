@@ -15,20 +15,57 @@ function homepage_blog_post_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__blog_post';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'blogger' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'grid' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'sidebar' => array(
+        'custom_settings' => FALSE,
+      ),
+      'table' => array(
+        'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '3',
         ),
         'title' => array(
-          'weight' => '-5',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '2',
         ),
       ),
       'display' => array(),

@@ -17,6 +17,12 @@ function homepage_blog_post_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -24,7 +30,7 @@ function homepage_blog_post_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -37,7 +43,7 @@ function homepage_blog_post_field_default_field_instances() {
     'fences_wrapper' => 'div',
     'field_name' => 'field_blog_post_blogger_ref',
     'label' => 'Blogger',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -50,7 +56,7 @@ function homepage_blog_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 43,
+      'weight' => 6,
     ),
   );
 
@@ -61,17 +67,26 @@ function homepage_blog_post_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'default' => array(
+      'blogger' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
         'weight' => 0,
       ),
     ),
@@ -93,7 +108,7 @@ function homepage_blog_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 41,
+      'weight' => 4,
     ),
   );
 
@@ -103,20 +118,26 @@ function homepage_blog_post_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 1,
-      ),
-      'teaser' => array(
+      'blogger' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'large_square_thumbnail',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
     ),
@@ -199,7 +220,7 @@ function homepage_blog_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 42,
+      'weight' => 5,
     ),
   );
 
@@ -210,8 +231,14 @@ function homepage_blog_post_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'default' => array(
+      'blogger' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'inline',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
@@ -240,7 +267,7 @@ function homepage_blog_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 44,
+      'weight' => 7,
     ),
   );
 

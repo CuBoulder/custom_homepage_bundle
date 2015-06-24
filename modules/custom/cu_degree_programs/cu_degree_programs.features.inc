@@ -17,6 +17,13 @@ function cu_degree_programs_ctools_plugin_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function cu_degree_programs_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function cu_degree_programs_node_info() {
@@ -24,7 +31,7 @@ function cu_degree_programs_node_info() {
     'degree_program' => array(
       'name' => t('Degree Program'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('<em>Degree Program</em> is used for undergraduate and graduate courses of study.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

@@ -25,6 +25,14 @@ function cu_degree_programs_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'college_school' => array(
+      'name' => 'College/School',
+      'machine_name' => 'college_school',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'degrees_offered' => array(
       'name' => 'Degrees Offered',
       'machine_name' => 'degrees_offered',

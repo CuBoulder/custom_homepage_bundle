@@ -47,12 +47,13 @@ function cuhomepage_preprocess_node(&$variables) {
  * Implements hook_preprocess_region().
  */
 function cuhomepage_preprocess_region(&$variables, $hook) {
+  global $base_url;
   switch ($variables['region']) {
     case 'branding':
       $variables['logo'] = theme_get_setting('logo');
       $variables['front_page'] = url('<front>');
       $variables['site_name'] = 'University of Colorado <strong>Boulder</strong>';
-      unset($variables['site_slogan']);
+      $variables['site_slogan'] = '';
       $variables['print_logo'] = '<img src="' . $base_url . '/' . drupal_get_path('theme','cuzen') . '/images/print-logo.png" alt="University of Colorado Boulder" />';
       break;
   }

@@ -30,7 +30,7 @@ function homepage_blog_post_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -56,7 +56,7 @@ function homepage_blog_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 6,
+      'weight' => 43,
     ),
   );
 
@@ -108,7 +108,7 @@ function homepage_blog_post_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 41,
     ),
   );
 
@@ -220,7 +220,7 @@ function homepage_blog_post_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
+      'weight' => 42,
     ),
   );
 
@@ -267,7 +267,7 @@ function homepage_blog_post_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 7,
+      'weight' => 44,
     ),
   );
 

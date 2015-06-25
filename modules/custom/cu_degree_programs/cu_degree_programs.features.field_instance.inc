@@ -17,6 +17,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -64,6 +70,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'image',
@@ -134,6 +146,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -196,6 +214,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -242,6 +266,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -288,6 +318,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -329,6 +365,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -391,6 +433,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
@@ -439,6 +487,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -501,6 +555,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -563,6 +623,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -612,6 +678,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'image',
@@ -733,6 +805,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -783,6 +861,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -833,6 +917,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -895,6 +985,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -945,6 +1041,12 @@ function cu_degree_programs_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'video_embed_field',

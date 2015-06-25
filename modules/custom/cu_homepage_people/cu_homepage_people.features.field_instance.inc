@@ -21,7 +21,7 @@ function cu_homepage_people_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 0,
       ),
       'default' => array(
         'label' => 'above',
@@ -77,7 +77,7 @@ function cu_homepage_people_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 0,
       ),
       'default' => array(
         'label' => 'above',

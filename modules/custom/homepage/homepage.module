@@ -31,6 +31,11 @@ function homepage_secure_permissions($role) {
       'edit terms in 22',
       'edit terms in 24',
       'edit terms in 26',
+      'administer blog_post_tags vocabulary terms',
+      'administer career_interests vocabulary terms',
+      'administer categories vocabulary terms',
+      'administer college_school vocabulary terms',
+      'administer degrees_offered vocabulary terms',
     ),
     'site_owner' => array(
       'merge terms',
@@ -50,6 +55,11 @@ function homepage_secure_permissions($role) {
       'edit terms in 22',
       'edit terms in 24',
       'edit terms in 26',
+      'administer blog_post_tags vocabulary terms',
+      'administer career_interests vocabulary terms',
+      'administer categories vocabulary terms',
+      'administer college_school vocabulary terms',
+      'administer degrees_offered vocabulary terms',
     ),
     'administrator' => array(
       'merge terms',
@@ -69,6 +79,11 @@ function homepage_secure_permissions($role) {
       'edit terms in 22',
       'edit terms in 24',
       'edit terms in 26',
+      'administer blog_post_tags vocabulary terms',
+      'administer career_interests vocabulary terms',
+      'administer categories vocabulary terms',
+      'administer college_school vocabulary terms',
+      'administer degrees_offered vocabulary terms',
     ),
     'developer' => array(
       'merge terms',
@@ -88,6 +103,11 @@ function homepage_secure_permissions($role) {
       'edit terms in 22',
       'edit terms in 24',
       'edit terms in 26',
+      'administer blog_post_tags vocabulary terms',
+      'administer career_interests vocabulary terms',
+      'administer categories vocabulary terms',
+      'administer college_school vocabulary terms',
+      'administer degrees_offered vocabulary terms',
     ),
   );
   // Return the permissions.
@@ -95,3 +115,10 @@ function homepage_secure_permissions($role) {
     return $permissions[$role];
   }
 }
+
+
+      'administer blog_post_tags vocabulary terms',
+      'administer career_interests vocabulary terms',
+      'administer categories vocabulary terms',
+      'administer college_school vocabulary terms',
+      'administer degrees_offered vocabulary terms',

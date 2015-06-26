@@ -709,7 +709,7 @@ function cu_degree_programs_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => 'content',
-          'image_style' => 'preview',
+          'image_style' => 'large_wide_thumbnail',
         ),
         'type' => 'image',
         'weight' => 0,

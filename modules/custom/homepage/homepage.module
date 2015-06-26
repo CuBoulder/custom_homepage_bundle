@@ -1,1 +1,33 @@
 <?php
+/**
+ * Implements hook_enable().
+ */
+function homepage_enable() {
+  return array(
+    'homepage_secure_permissions' => array(),
+  );
+}
+
+/**
+ * Implements hook_secure_permissions().
+ */
+function homepage_secure_permissions($role) {
+  $permissions = array(
+    'content_editor' => array(
+      'merge terms',
+    ),
+    'site_owner' => array(
+      'merge terms',
+    ),
+    'administrator' => array(
+      'merge terms',
+    ),
+    'developer' => array(
+      'merge terms',
+    ),
+  );
+  // Return the permissions.
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}

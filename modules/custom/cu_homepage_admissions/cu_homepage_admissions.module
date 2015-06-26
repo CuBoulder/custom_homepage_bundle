@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the CU Homepage Admissions feature.
+ */
+
+include_once 'cu_homepage_admissions.features.inc';

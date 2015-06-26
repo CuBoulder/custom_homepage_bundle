@@ -115,10 +115,3 @@ function homepage_secure_permissions($role) {
     return $permissions[$role];
   }
 }
-
-
-      'administer blog_post_tags vocabulary terms',
-      'administer career_interests vocabulary terms',
-      'administer categories vocabulary terms',
-      'administer college_school vocabulary terms',
-      'administer degrees_offered vocabulary terms',

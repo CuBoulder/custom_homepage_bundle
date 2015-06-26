@@ -310,7 +310,8 @@ $zen-gutter-width:  40px;
       display: block;
       padding: 20px;
       border-bottom: 1px solid $border_color;
-      &:hover {
+      &:hover,
+      &.active {
         background: $border_color;
         color:#333;
       }

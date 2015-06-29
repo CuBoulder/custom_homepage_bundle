@@ -170,6 +170,10 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -189,13 +193,12 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['id'] = 'field_degree_prog_career_int_tid';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['table'] = 'field_data_field_degree_prog_career_int';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['field'] = 'field_degree_prog_career_int_tid';
-  $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['group'] = 2;
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['operator_id'] = 'field_degree_prog_career_int_tid_op';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['label'] = 'Career Interest';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['operator'] = 'field_degree_prog_career_int_tid_op';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['identifier'] = 'field_degree_prog_career_int_tid';
-  $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -211,7 +214,7 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['id'] = 'field_degree_prog_category_tid';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['table'] = 'field_data_field_degree_prog_category';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['field'] = 'field_degree_prog_category_tid';
-  $handler->display->display_options['filters']['field_degree_prog_category_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_degree_prog_category_tid']['group'] = 2;
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['expose']['operator_id'] = 'field_degree_prog_category_tid_op';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['expose']['label'] = 'Category';
@@ -224,6 +227,7 @@ function cu_degree_programs_views_default_views() {
     11 => 0,
     5 => 0,
     9 => 0,
+    18 => 0,
   );
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['vocabulary'] = 'categories';

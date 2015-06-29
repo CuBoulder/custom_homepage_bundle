@@ -25,7 +25,13 @@ $zen-max-width: 1200px;
 #footer-bottom {
   @include zen-grid-container;
 }
-
+#footer,
+#footer-top,
+#footer-bottom {
+  h2.block-title {
+    font-weight: 700;
+  }
+}
 
 
 body {

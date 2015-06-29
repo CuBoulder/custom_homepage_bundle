@@ -25,7 +25,13 @@ $zen-max-width: 1200px;
 #footer-bottom {
   @include zen-grid-container;
 }
-
+#footer,
+#footer-top,
+#footer-bottom {
+  h2.block-title {
+    font-weight: 700;
+  }
+}
 
 
 body {
@@ -310,7 +316,8 @@ $zen-gutter-width:  40px;
       display: block;
       padding: 20px;
       border-bottom: 1px solid $border_color;
-      &:hover {
+      &:hover,
+      &.active {
         background: $border_color;
         color:#333;
       }

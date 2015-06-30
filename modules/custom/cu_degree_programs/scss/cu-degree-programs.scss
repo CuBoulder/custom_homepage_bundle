@@ -10,6 +10,11 @@ $zen-column-count:  3;
     border: 1px solid #007BC8;
     margin-right: 5px;
   }
+  a:hover {
+    border:1px solid #000;
+    background: #000;
+    color:#fff;
+  }
 }
 
 @media screen and (min-width: 720px)  {

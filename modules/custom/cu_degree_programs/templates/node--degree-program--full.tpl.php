@@ -22,6 +22,7 @@
     </ul>
   </section>
   <section class="degree-program-photo-gallery clearfix">
+    <h3>Photos</h3>
     <?php print render($content['field_degree_prog_additional_img']); ?>
   </section>
 </article>

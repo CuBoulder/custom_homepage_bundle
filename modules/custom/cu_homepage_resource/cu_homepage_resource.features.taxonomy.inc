@@ -13,7 +13,7 @@ function cu_homepage_resource_taxonomy_default_vocabularies() {
       'name' => 'Resource Category',
       'machine_name' => 'resource_category',
       'description' => '',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

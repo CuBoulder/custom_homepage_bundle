@@ -25,7 +25,13 @@ $zen-max-width: 1200px;
 #footer-bottom {
   @include zen-grid-container;
 }
-
+#footer,
+#footer-top,
+#footer-bottom {
+  h2.block-title {
+    font-weight: 700;
+  }
+}
 
 
 body {
@@ -250,7 +256,7 @@ $zen-gutter-width:  40px;
       width:100%;
       height: auto;
     }
-    h2 {
+    h2,h3 {
       font-size: 110%;
       font-weight: 600;
     }
@@ -285,6 +291,45 @@ $zen-gutter-width:  40px;
         @include zen-grid-flow-item(1, 3, false, false); 
       }
       &:nth-child(3n+1) {
+        @include zen-clear();
+      }
+    }
+  }
+}
+.view-degree-programs label {
+  display: block;
+  text-align: center;
+  font-size: 150%;
+  padding:20px;
+  background: #f7f7f7;
+}
+#edit-field-degree-prog-career-int-tid-wrapper,
+#edit-field-degree-prog-category-tid-wrapper {
+  float: none;
+  padding: 0;
+}
+.view-degree-programs .bef-select-as-links > .form-item {
+  overflow: hidden;
+  .form-item {
+    text-align: center;
+    a {
+      display: block;
+      padding: 20px;
+      border-bottom: 1px solid $border_color;
+      &:hover,
+      &.active {
+        background: $border_color;
+        color:#333;
+      }
+    }
+  }
+}
+@media screen and (min-width:760px) {
+  .view-degree-programs .bef-select-as-links > .form-item {
+    .form-item {
+      width:50%;
+      float:left;
+      &:nth-child(2n+1) {
         @include zen-clear();
       }
     }

@@ -6,9 +6,22 @@
 <article class="degree-program-content-wrapper clearfix">
   <section class="degree-program-content">
     <?php print render($content['body']); ?>
-    <?php print render($content['field_degree_prog_under_opp']); ?>
-    <?php print render($content['field_degree_prog_grad_studies']); ?>
-    <?php print render($content['field_degree_prog_online_opp']); ?>
+    <?php if (!empty($content['field_degree_prog_under_opp'])): ?>
+      <h2>Undergraduate Opportunities</h2>
+      <?php print render($content['field_degree_prog_under_opp']); ?>
+    <?php endif; ?>
+    <?php if (!empty($content['field_degree_prog_grad_studies'])): ?>
+      <h2>Graduate Studies</h2>
+      <?php print render($content['field_degree_prog_grad_studies']); ?>
+    <?php endif; ?>
+    <?php if (!empty($content['field_degree_prog_research_opp'])): ?>
+      <h2>Research Opportunities</h2>
+      <?php print render($content['field_degree_prog_research_opp']); ?>
+    <?php endif; ?>
+    <?php if (!empty($content['field_degree_prog_online_opp'])): ?>
+      <h2>Online Opportunities</h2>
+      <?php print render($content['field_degree_prog_online_opp']); ?>
+    <?php endif; ?>
   </section>
   
   <section class="degree-program-sidebar">
@@ -33,7 +46,7 @@
   </section>
   <?php if (!empty($content['field_degree_prog_additional_img'])): ?>
   <section class="degree-program-photo-gallery clearfix">
-    <h3>Photos</h3>
+    <h2>Photos</h2>
     <?php print render($content['field_degree_prog_additional_img']); ?>
   </section>
   <?php endif; ?>

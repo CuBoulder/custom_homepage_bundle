@@ -117,7 +117,8 @@ nav#main-menu a {
   border-top:1px solid $border_color;
   border-bottom: 1px solid $border_color;
   margin-bottom: -1px;
-  &.active {
+  &.active,
+  &:hover {
     background-color: $border_color;
     color:#222;
     font-weight: 600;

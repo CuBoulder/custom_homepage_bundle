@@ -300,8 +300,11 @@ $zen-gutter-width:  40px;
   display: block;
   text-align: center;
   font-size: 150%;
-  padding:20px;
-  background: #f7f7f7;
+  padding:20px 20px;
+  background: #333;
+  color:#fff;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 #edit-field-degree-prog-career-int-tid-wrapper,
 #edit-field-degree-prog-category-tid-wrapper {
@@ -314,8 +317,8 @@ $zen-gutter-width:  40px;
     text-align: center;
     a {
       display: block;
-      padding: 20px;
-      border-bottom: 1px solid $border_color;
+      padding: 10px 20px;
+      //border-bottom: 1px solid $border_color;
       &:hover,
       &.active {
         background: $border_color;
@@ -327,9 +330,9 @@ $zen-gutter-width:  40px;
 @media screen and (min-width:760px) {
   .view-degree-programs .bef-select-as-links > .form-item {
     .form-item {
-      width:50%;
+      width:33%;
       float:left;
-      &:nth-child(2n+1) {
+      &:nth-child(3n+1) {
         @include zen-clear();
       }
     }

@@ -10,6 +10,70 @@
 function cu_homepage_resource_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'bean-resources-field_resource_bean_audience'
+  $field_instances['bean-resources-field_resource_bean_audience'] = array(
+    'bundle' => 'resources',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'bean',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_resource_bean_audience',
+    'label' => 'Audience',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'bean-resources-field_resource_bean_category'
+  $field_instances['bean-resources-field_resource_bean_category'] = array(
+    'bundle' => 'resources',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'bean',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_resource_bean_category',
+    'label' => 'Category',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-resource-body'
   $field_instances['node-resource-body'] = array(
     'bundle' => 'resource',

@@ -11,3 +11,12 @@ function homepage_install() {
     'homepage_blog_post',
   ));
 }
+/**
+ * Set weight of cu_image_styles to 100 to override other image styles for homepage
+ */
+function homepage_update_7001() {
+  db_update('system')
+    ->fields(array('weight' => 100))
+    ->condition('name', '[cu_image_styles]', '=')
+    ->execute();
+}

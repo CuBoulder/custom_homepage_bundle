@@ -12,7 +12,6 @@
         <h1 class="page__title title <?php if (isset($title_hidden)) { print 'element-invisible'; } ?>" id="page-title"><?php print $title; ?></h1>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
-      <?php print $messages; ?>
       <div class="tabs"><?php print render($tabs); ?></div>
       <?php print render($page['help']); ?>
       <?php if ($action_links): ?>

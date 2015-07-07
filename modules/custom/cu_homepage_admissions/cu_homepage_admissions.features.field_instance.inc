@@ -10,246 +10,80 @@
 function cu_homepage_admissions_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-admission_event-body'
-  $field_instances['node-admission_event-body'] = array(
-    'bundle' => 'admission_event',
+  // Exported field_instance: 'taxonomy_term-admission_recruitment_location-field_adm_counselor'
+  $field_instances['taxonomy_term-admission_recruitment_location-field_adm_counselor'] = array(
+    'bundle' => 'admission_recruitment_location',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blogger' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
+        'label' => 'above',
+        'module' => 'entityreference',
         'settings' => array(
-          'trim_length' => 600,
+          'link' => FALSE,
         ),
-        'type' => 'text_summary_or_trimmed',
+        'type' => 'entityreference_label',
         'weight' => 0,
       ),
     ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
+    'entity_type' => 'taxonomy_term',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_adm_counselor',
+    'label' => 'Counselor',
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'module' => 'text',
+      'active' => 1,
+      'module' => 'entityreference',
       'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
       ),
-      'type' => 'text_textarea_with_summary',
+      'type' => 'entityreference_autocomplete',
       'weight' => 41,
     ),
   );
 
-  // Exported field_instance: 'node-admission_event-field_adm_event_address'
-  $field_instances['node-admission_event-field_adm_event_address'] = array(
-    'bundle' => 'admission_event',
+  // Exported field_instance: 'taxonomy_term-admission_recruitment_location-field_adm_loc_postal_code'
+  $field_instances['taxonomy_term-admission_recruitment_location-field_adm_loc_postal_code'] = array(
+    'bundle' => 'admission_recruitment_location',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
-      'blogger' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'addressfield',
-        'settings' => array(
-          'format_handlers' => array(
-            0 => 'address',
-          ),
-          'use_widget_handlers' => 1,
-        ),
-        'type' => 'addressfield_default',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
+        'module' => 'postal_code',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_adm_event_address',
-    'label' => 'Address',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'addressfield',
-      'settings' => array(
-        'available_countries' => array(),
-        'default_country' => 'site_default',
-        'format_handlers' => array(
-          'address' => 'address',
-          'address-hide-postal-code' => 0,
-          'address-hide-street' => 0,
-          'address-hide-country' => 0,
-          'organisation' => 0,
-          'name-full' => 0,
-          'name-oneline' => 0,
-          'address-optional' => 0,
-        ),
-      ),
-      'type' => 'addressfield_standard',
-      'weight' => 43,
-    ),
-  );
-
-  // Exported field_instance: 'node-admission_event-field_adm_event_date'
-  $field_instances['node-admission_event-field_adm_event_date'] = array(
-    'bundle' => 'admission_event',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'blogger' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
+        'type' => 'postal_code_simple_text',
         'weight' => 1,
       ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
     ),
-    'entity_type' => 'node',
+    'entity_type' => 'taxonomy_term',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_adm_event_date',
-    'label' => 'Date',
+    'field_name' => 'field_adm_loc_postal_code',
+    'label' => 'Postal Code',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
-      'default_value2' => 'strtotime',
-      'default_value_code' => '',
-      'default_value_code2' => '+1 hour',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'date',
-      'settings' => array(
-        'increment' => 15,
-        'input_format' => 'M j Y - g:i:sa',
-        'input_format_custom' => '',
-        'label_position' => 'above',
-        'text_parts' => array(),
-        'year_range' => '-3:+3',
-      ),
-      'type' => 'date_select',
+      'active' => 0,
+      'module' => 'postal_code',
+      'settings' => array(),
+      'type' => 'postal_code_us_postal_code_form',
       'weight' => 42,
-    ),
-  );
-
-  // Exported field_instance: 'node-admission_event-field_adm_event_geolocation'
-  $field_instances['node-admission_event-field_adm_event_geolocation'] = array(
-    'bundle' => 'admission_event',
-    'default_value' => array(),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'blogger' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'geofield',
-        'settings' => array(
-          'data' => 'full',
-        ),
-        'type' => 'geofield_wkt',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'fences_wrapper' => 'div',
-    'field_name' => 'field_adm_event_geolocation',
-    'label' => 'Geolocation',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'geocoder',
-      'settings' => array(
-        'delta_handling' => 'default',
-        'geocoder_field' => 'field_adm_event_address',
-        'geocoder_handler' => 'google',
-        'handler_settings' => array(
-          'google' => array(
-            'all_results' => 0,
-            'geometry_type' => 'point',
-            'reject_results' => array(
-              'APPROXIMATE' => 0,
-              'GEOMETRIC_CENTER' => 0,
-              'RANGE_INTERPOLATED' => 0,
-              'ROOFTOP' => 0,
-            ),
-          ),
-        ),
-      ),
-      'type' => 'geocoder',
-      'weight' => 44,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Address');
-  t('Body');
-  t('Date');
-  t('Geolocation');
+  t('Counselor');
+  t('Postal Code');
 
   return $field_instances;
 }

@@ -5,6 +5,23 @@
 function homepage_enable() {
   return array(
     'homepage_secure_permissions' => array(),
+    'homepage_secure_permissions_roles' => array(),
+  );
+}
+
+
+/**
+ * Implements hook_secure_permissions_roles().
+ *
+ * Create a secure_permissions_data module directory and place this function
+ * in secure_permissions_data.module.
+ *
+ * @return
+ *   An array defining all the roles for the site.
+ */
+function homepage_secure_permissions_roles() {
+  return array(
+    'blogger',
   );
 }
 
@@ -26,6 +43,7 @@ function homepage_secure_permissions($role) {
       'administer resource_sub_category vocabulary terms',
       'assign blogger role',
       'create any resources bean',
+      'create blog_post content',
       'create degree_program content',
       'create policy content',
       'create resource content',
@@ -111,6 +129,7 @@ function homepage_secure_permissions($role) {
       'administer resource_category vocabulary terms',
       'administer resource_sub_category vocabulary terms',
       'create any resources bean',
+      'create blog_post content',
       'create degree_program content',
       'create policy content',
       'create resource content',
@@ -250,6 +269,7 @@ function homepage_secure_permissions($role) {
       'administer resource_sub_category vocabulary terms',
       'assign blogger role',
       'create any resources bean',
+      'create blog_post content',
       'create degree_program content',
       'create policy content',
       'create resource content',

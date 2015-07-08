@@ -40,6 +40,10 @@ function cu_homepage_resource_views_default_views() {
   $handler->display->display_options['style_options']['collapsible'] = 1;
   $handler->display->display_options['style_options']['row-start-open'] = 'none';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Sub category (field_resource_sub_category) */
+  $handler->display->display_options['relationships']['field_resource_sub_category_tid']['id'] = 'field_resource_sub_category_tid';
+  $handler->display->display_options['relationships']['field_resource_sub_category_tid']['table'] = 'field_data_field_resource_sub_category';
+  $handler->display->display_options['relationships']['field_resource_sub_category_tid']['field'] = 'field_resource_sub_category_tid';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -75,10 +79,11 @@ function cu_homepage_resource_views_default_views() {
   $handler->display->display_options['fields']['field_resource_sub_category']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_resource_sub_category']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_resource_sub_category']['field_api_classes'] = TRUE;
-  /* Sort criterion: Content: Sub category (field_resource_sub_category) */
-  $handler->display->display_options['sorts']['field_resource_sub_category_tid']['id'] = 'field_resource_sub_category_tid';
-  $handler->display->display_options['sorts']['field_resource_sub_category_tid']['table'] = 'field_data_field_resource_sub_category';
-  $handler->display->display_options['sorts']['field_resource_sub_category_tid']['field'] = 'field_resource_sub_category_tid';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_resource_sub_category_tid';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -102,8 +107,10 @@ function cu_homepage_resource_views_default_views() {
   $handler->display->display_options['arguments']['tid']['validate_options']['vocabularies'] = array(
     'audience' => 'audience',
   );
+  $handler->display->display_options['arguments']['tid']['validate_options']['type'] = 'tids';
   $handler->display->display_options['arguments']['tid']['validate']['fail'] = 'ignore';
   $handler->display->display_options['arguments']['tid']['break_phrase'] = TRUE;
+  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = TRUE;
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid_1']['id'] = 'tid_1';
   $handler->display->display_options['arguments']['tid_1']['table'] = 'taxonomy_index';
@@ -133,6 +140,7 @@ function cu_homepage_resource_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'resource' => 'resource',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');

@@ -1,43 +1,14 @@
 <?php
 /**
  * @file
- * cu_homepage_people.field_group.inc
+ * cu_homepage_admissions.field_group.inc
  */
 
 /**
  * Implements hook_field_group_info().
  */
-function cu_homepage_people_field_group_info() {
+function cu_homepage_admissions_field_group_info() {
   $export = array();
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_blogger|node|person|form';
-  $field_group->group_name = 'group_blogger';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'person';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_homepage';
-  $field_group->data = array(
-    'label' => 'Blogger Information',
-    'weight' => '30',
-    'children' => array(
-      0 => 'field_person_audience_ref',
-      1 => 'field_person_degree_program_ref',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Blogger Information',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_blogger|node|person|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

@@ -204,23 +204,23 @@ nav#main-menu a {
 .field-name-field-article-grid-more-link {
   text-align: right;
 }
+#branding {
+  padding: 0 20px;
+}
 #branding img.custom-logo {
   //max-width:50%;
-  margin-left:20px;
   height: auto;
   width: 100%;
 }
 @media screen and (min-width:740px) {
   #branding img.custom-logo {
     //max-width:50%;
-    margin-left:20px;
     margin-top: 10px;
   }
 }
 @media screen and (min-width:960px) {
   #branding img.custom-logo {
     max-width:100%;
-    margin-left:0px;
     margin-top: 0;
   }
 }

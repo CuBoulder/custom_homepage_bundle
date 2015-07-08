@@ -10,41 +10,62 @@
 function cu_homepage_admissions_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'taxonomy_term-admission_recruitment_location-field_adm_counselor'
-  $field_instances['taxonomy_term-admission_recruitment_location-field_adm_counselor'] = array(
-    'bundle' => 'admission_recruitment_location',
+  // Exported field_instance: 'node-person-field_adm_recruitment_locations'
+  $field_instances['node-person-field_adm_recruitment_locations'] = array(
+    'bundle' => 'person',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the locations that this person is responsible for.',
     'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 28,
+      ),
+      'grid' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'table' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
-    'entity_type' => 'taxonomy_term',
+    'entity_type' => 'node',
     'fences_wrapper' => 'div',
-    'field_name' => 'field_adm_counselor',
-    'label' => 'Counselor',
+    'field_name' => 'field_adm_recruitment_locations',
+    'label' => 'Admission Recruitment Locations',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
+      'active' => 0,
+      'module' => 'taxonomy',
       'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
+        'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 41,
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 29,
     ),
   );
 
@@ -82,8 +103,9 @@ function cu_homepage_admissions_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Counselor');
+  t('Admission Recruitment Locations');
   t('Postal Code');
+  t('Select the locations that this person is responsible for.');
 
   return $field_instances;
 }

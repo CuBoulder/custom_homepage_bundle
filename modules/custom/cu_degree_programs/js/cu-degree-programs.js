@@ -17,6 +17,7 @@
   function prepareProgramSelect() {
   // Hide select links on load
     $('.view-id-degree_programs .views-widget').addClass('element-invisible');
+    $('.view-id-degree_programs .views-submit-button, .view-id-degree_programs .views-reset-button').addClass('element-invisible');
     // alter label text
     $('.view-id-degree_programs label').each(function(){
       var labelText = $(this).text();

@@ -175,6 +175,16 @@ function cu_homepage_admissions_views_default_views() {
   );
   $handler->display->display_options['filters']['shs_term_node_tid_depth']['vocabulary'] = 'admission_recruitment_location';
   $handler->display->display_options['filters']['shs_term_node_tid_depth']['depth'] = '0';
+  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
   $export['admission_recruitment_locations'] = $view;
 
   return $export;

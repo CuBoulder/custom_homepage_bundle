@@ -134,20 +134,36 @@ nav#main-menu a {
 }
 
 .sidebars,
+#block-menu-block-site-navigation-menus-1,
 #block-menu-block-site-navigation-menus-4 {
   .menu-block-wrapper ul.menu a {
     display: block;
     color:#666;
-    padding:10px 0;
+    padding:10px;
     border-top:1px solid $border_color;
     border-bottom: 1px solid $border_color;
     margin-bottom: -1px;
+    &:hover {
+      background-color: $border_color;
+      color:#222;
+    }
     &.active {
       background-color: $border_color;
       color:#222;
       font-weight: 600;
-      padding:10px;
     }
+  }
+  .menu-block-wrapper ul.menu ul.menu a {
+    padding-left:25px;
+    font-size: 85%;
+    padding-top:5px;
+    padding-bottom: 5px;
+  }
+  .menu-block-wrapper ul.menu ul.menu ul.menu a {
+    padding-left: 40px;
+  }
+  .menu-block-wrapper ul.menu ul.menu ul.menu ul.menu a {
+    padding-left: 55px;
   }
 }
 #block-menu-block-site-navigation-menus-1 {
@@ -534,3 +550,10 @@ ul.orgunit-links {
   content: '\f146';
 }
 
+/* Views Exposed */
+
+.views-exposed-widget {
+  select {
+    margin-right: 10px;
+  }
+}

@@ -22,6 +22,10 @@ function cu_homepage_admissions_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
         'direct' => FALSE,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -55,6 +59,7 @@ function cu_homepage_admissions_feeds_importer_default() {
         'update_existing' => '2',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
+        'bundle' => 'admission_recruitment_location',
       ),
     ),
     'content_type' => '',
@@ -78,6 +83,10 @@ function cu_homepage_admissions_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
         'direct' => FALSE,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -116,6 +125,7 @@ function cu_homepage_admissions_feeds_importer_default() {
         'update_existing' => '2',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
+        'bundle' => 'admission_recruitment_location',
       ),
     ),
     'content_type' => '',
@@ -139,6 +149,10 @@ function cu_homepage_admissions_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
         'direct' => FALSE,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -177,6 +191,7 @@ function cu_homepage_admissions_feeds_importer_default() {
         'update_existing' => '2',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
+        'bundle' => 'admission_recruitment_location',
       ),
     ),
     'content_type' => '',
@@ -200,6 +215,10 @@ function cu_homepage_admissions_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
         'direct' => FALSE,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -238,6 +257,7 @@ function cu_homepage_admissions_feeds_importer_default() {
         'update_existing' => '2',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
+        'bundle' => 'admission_recruitment_location',
       ),
     ),
     'content_type' => '',
@@ -261,6 +281,10 @@ function cu_homepage_admissions_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'txt csv tsv xml opml',
         'direct' => FALSE,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -273,7 +297,6 @@ function cu_homepage_admissions_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'content_type' => 'person',
         'expire' => '-1',
         'author' => '30',
         'authorize' => 0,
@@ -281,7 +304,7 @@ function cu_homepage_admissions_feeds_importer_default() {
           0 => array(
             'source' => 'person_nid',
             'target' => 'nid',
-            'unique' => FALSE,
+            'unique' => 1,
           ),
           1 => array(
             'source' => 'all_terms',
@@ -292,6 +315,7 @@ function cu_homepage_admissions_feeds_importer_default() {
         'update_existing' => '2',
         'input_format' => 'plain_text',
         'skip_hash_check' => 0,
+        'bundle' => 'person',
       ),
     ),
     'content_type' => '',

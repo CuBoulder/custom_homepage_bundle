@@ -68,4 +68,4 @@ features[variable][] = node_preview_degree_program
 features[variable][] = node_submitted_degree_program
 features[variable][] = pathauto_node_degree_program_pattern
 features[views_view][] = degree_programs
-mtime = 1436216754
+mtime = 1436462736

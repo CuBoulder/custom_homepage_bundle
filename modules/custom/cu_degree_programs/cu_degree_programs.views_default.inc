@@ -287,9 +287,6 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['id'] = 'field_degree_prog_college_school_tid';
   $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['table'] = 'field_data_field_degree_prog_college_school';
   $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['field'] = 'field_degree_prog_college_school_tid';
-  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['value'] = array(
-    270 => '270',
-  );
   $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['group'] = 2;
   $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['expose']['operator_id'] = 'field_degree_prog_college_school_tid_op';

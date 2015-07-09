@@ -87,12 +87,15 @@ function homepage_secure_permissions($role) {
       'edit terms in 30',
       'merge terms',
       'view any resources bean',
+      'view atoz',
     ),
     'anonymous user' => array(
       'view any resources bean',
+      'view atoz',
     ),
     'authenticated user' => array(
       'view any resources bean',
+      'view atoz',
     ),
     'blogger' => array(
       'create blog_post content',
@@ -117,6 +120,7 @@ function homepage_secure_permissions($role) {
       'view own unpublished content',
       'view revisions',
       'view the administration theme',
+      'view atoz',
     ),
     'content_editor' => array(
       'administer admission_recruitment_location vocabulary terms',
@@ -173,6 +177,7 @@ function homepage_secure_permissions($role) {
       'edit terms in 28',
       'merge terms',
       'view any resources bean',
+      'view atoz',
     ),
     'developer' => array(
       'administer admission_recruitment_location vocabulary terms',
@@ -255,6 +260,7 @@ function homepage_secure_permissions($role) {
       'unlock admission_recruitment_locations_state feeds',
       'unlock person_admission_recruitment_location feeds',
       'view any resources bean',
+      'view atoz',
     ),
     'site_owner' => array(
       'administer admission_recruitment_location vocabulary terms',
@@ -313,6 +319,7 @@ function homepage_secure_permissions($role) {
       'edit terms in 30',
       'merge terms',
       'view any resources bean',
+      'view atoz',
     ),
   );
   if (isset($permissions[$role])) {

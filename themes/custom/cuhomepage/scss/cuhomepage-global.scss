@@ -134,6 +134,7 @@ nav#main-menu a {
 }
 
 .sidebars,
+#block-menu-block-site-navigation-menus-1,
 #block-menu-block-site-navigation-menus-4 {
   .menu-block-wrapper ul.menu a {
     display: block;
@@ -151,6 +152,18 @@ nav#main-menu a {
       color:#222;
       font-weight: 600;
     }
+  }
+  .menu-block-wrapper ul.menu ul.menu a {
+    padding-left:25px;
+    font-size: 85%;
+    padding-top:5px;
+    padding-bottom: 5px;
+  }
+  .menu-block-wrapper ul.menu ul.menu ul.menu a {
+    padding-left: 40px;
+  }
+  .menu-block-wrapper ul.menu ul.menu ul.menu ul.menu a {
+    padding-left: 55px;
   }
 }
 #block-menu-block-site-navigation-menus-1 {

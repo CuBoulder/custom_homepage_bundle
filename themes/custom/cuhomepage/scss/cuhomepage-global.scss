@@ -138,15 +138,18 @@ nav#main-menu a {
   .menu-block-wrapper ul.menu a {
     display: block;
     color:#666;
-    padding:10px 0;
+    padding:10px;
     border-top:1px solid $border_color;
     border-bottom: 1px solid $border_color;
     margin-bottom: -1px;
+    &:hover {
+      background-color: $border_color;
+      color:#222;
+    }
     &.active {
       background-color: $border_color;
       color:#222;
       font-weight: 600;
-      padding:10px;
     }
   }
 }
@@ -534,3 +537,10 @@ ul.orgunit-links {
   content: '\f146';
 }
 
+/* Views Exposed */
+
+.views-exposed-widget {
+  select {
+    margin-right: 10px;
+  }
+}

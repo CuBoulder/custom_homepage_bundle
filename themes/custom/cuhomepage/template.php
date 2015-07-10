@@ -21,8 +21,8 @@ function cuhomepage_preprocess_html(&$vars) {
   $vars['classes_array'][]='banner-' . $banner_color;
   $layout = theme_get_setting('layout_style', 'cuhomepage') ? theme_get_setting('layout_style', 'cuhomepage') : 'layout-wide';
   $vars['classes_array'][]=$layout;
-  $vars['head_title_array']['slogan'] = '';
-  $variables['head_title'] = implode(' | ', $variables['head_title_array']);
+  unset($vars['head_title_array']['slogan']);
+  $vars['head_title'] = implode(' | ', $vars['head_title_array']);
 }
 
 /**

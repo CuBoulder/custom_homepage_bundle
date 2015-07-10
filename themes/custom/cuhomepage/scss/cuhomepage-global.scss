@@ -557,3 +557,50 @@ ul.orgunit-links {
     margin-right: 10px;
   }
 }
+
+/* GSEARCH */
+html.js input.form-autocomplete {
+  background-image: url(../images/throbber-inactive.png);
+  background-image: none;
+}
+#cu-search-homepage-search-form-full {
+  .form-item,
+  .form-actions {
+    display: inline-block;
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .form-item-search-keys {
+    input.form-text {
+      width:100%;
+      min-width: 300px;
+    }
+  }
+}
+#content #block-cu-search-cu-search-ga-related {
+  float: left;
+  clear: both;
+  padding: 20px 0;
+}
+#content #block-cu-search-cu-search-ga-related h2 {
+  padding: 0;
+  float: left;
+  font-size: 1em;
+  font-weight: bold;
+}
+#content #block-cu-search-cu-search-ga-related ul {
+  height: 1.5em;
+  overflow: hidden;
+}
+#content #block-cu-search-cu-search-ga-related ul li {
+  list-style: disc;
+  float: left;
+  margin-left: 25px;
+  margin-top: 2px;
+  font-size: .8em;
+}
+#content #block-cu-search-cu-search-ga-related ul li.first {
+  list-style: none;
+  margin-left: 10px;
+}

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * cu_search.features.inc
+ * cu_search_homepage.features.inc
  */
 
 /**
  * Implements hook_ctools_plugin_api().
  */
-function cu_search_ctools_plugin_api($module = NULL, $api = NULL) {
+function cu_search_homepage_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "boxes" && $api == "box") {
     return array("version" => "1");
   }

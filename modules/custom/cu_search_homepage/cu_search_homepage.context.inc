@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * cu_search.context.inc
+ * cu_search_homepage.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function cu_search_context_default_contexts() {
+function cu_search_homepage_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
@@ -27,9 +27,9 @@ function cu_search_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'cu_search-cu_search_search_full' => array(
-          'module' => 'cu_search',
-          'delta' => 'cu_search_search_full',
+        'cu_search_homepage-cu_search_homepage_search_full' => array(
+          'module' => 'cu_search_homepage',
+          'delta' => 'cu_search_homepage_search_full',
           'region' => 'content',
           'weight' => '-10',
         ),
@@ -55,21 +55,21 @@ function cu_search_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'cu_search-cu_search_search_full' => array(
-          'module' => 'cu_search',
-          'delta' => 'cu_search_search_full',
+        'cu_search_homepage-cu_search_homepage_search_full' => array(
+          'module' => 'cu_search_homepage',
+          'delta' => 'cu_search_homepage_search_full',
           'region' => 'content',
           'weight' => '-6',
         ),
-        'cu_search-cu_search_ga_results' => array(
-          'module' => 'cu_search',
-          'delta' => 'cu_search_ga_results',
+        'cu_search_homepage-cu_search_homepage_ga_results' => array(
+          'module' => 'cu_search_homepage',
+          'delta' => 'cu_search_homepage_ga_results',
           'region' => 'content',
           'weight' => '-4',
         ),
-        'cu_search-cu_search_ga_related' => array(
-          'module' => 'cu_search',
-          'delta' => 'cu_search_ga_related',
+        'cu_search_homepage-cu_search_homepage_ga_related' => array(
+          'module' => 'cu_search_homepage',
+          'delta' => 'cu_search_homepage_ga_related',
           'region' => 'content',
           'weight' => '-3',
         ),

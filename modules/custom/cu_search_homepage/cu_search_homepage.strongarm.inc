@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * cu_search.strongarm.inc
+ * cu_search_homepage.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function cu_search_strongarm() {
+function cu_search_homepage_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();

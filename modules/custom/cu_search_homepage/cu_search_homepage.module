@@ -2,11 +2,11 @@
 
 /**
  * @file
- * cu_search feature. Includes contexts, variables (via strongarm).
+ * cu_search_homepage feature. Includes contexts, variables (via strongarm).
  * a box, permissions, and custom code and functionality.
  */
 
-include_once('cu_search.features.inc');
+include_once('cu_search_homepage.features.inc');
 
 /**
  * Implements hook_init().
@@ -14,7 +14,7 @@ include_once('cu_search.features.inc');
  * Legacy search will go to /gsearch/all/redirect?[...]
  * Following code looks for 'a=' for search query
  */
-function cu_search_init() {
+function cu_search_homepage_init() {
   if (arg(2) == 'redirect' && arg(0) == 'gsearch') {
     $goto = rawurlencode($_GET['a']);
     drupal_goto('gsearch/all/' . $goto);
@@ -24,22 +24,22 @@ function cu_search_init() {
 /**
  * Implements hook_menu().
  */
-function cu_search_menu() {
+function cu_search_homepage_menu() {
   $items['gsuggest'] = array(
     'title' => 'GSA Autocomplete',
-    'page callback' => 'cu_search_autocomplete',
+    'page callback' => 'cu_search_homepage_autocomplete',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
   $items['whitepages/ldapdrill.xml'] = array(
     'title' => 'Whitepages redirect',
-    'page callback' => 'cu_search_whitepages_redirect',
+    'page callback' => 'cu_search_homepage_whitepages_redirect',
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
   );
   $items['whitepages/ldapnew.xml'] = array(
     'title' => 'Whitepages redirect',
-    'page callback' => 'cu_search_whitepages_redirect',
+    'page callback' => 'cu_search_homepage_whitepages_redirect',
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
   );
@@ -49,7 +49,7 @@ function cu_search_menu() {
 /**
  * Page callback for whitepages/ldapdrill.xml
  */
-function cu_search_whitepages_redirect() {
+function cu_search_homepage_whitepages_redirect() {
   if (isset($_GET['cnfull'])) {
     drupal_goto('gsearch/people/' . $_GET['cnfull']);
   }
@@ -66,21 +66,21 @@ function cu_search_whitepages_redirect() {
  *
  * Takes over gsearch from the google appliance module.
  */
-function cu_search_menu_alter(&$items) {
+function cu_search_homepage_menu_alter(&$items) {
   $items['gsearch'] = array(
     'title' => t('Search CU-Boulder'),
-    'page callback' => 'cu_search_search_view',
+    'page callback' => 'cu_search_homepage_search_view',
     'page arguments' => array(1, 2, 3), // Scope (all, fac, people...), Search Keys, Sort
-    'access arguments' => array('view_cu_search_results'),
+    'access arguments' => array('view_cu_search_homepage_results'),
   );
 }
 
 /**
  * Implements hook_permission().
  */
-function cu_search_permission() {
+function cu_search_homepage_permission() {
   return array(
-    'view_cu_search_results' => array(
+    'view_cu_search_homepage_results' => array(
       'title' => 'View search results',
       'description' => 'View search results on search/*',
     ),
@@ -92,7 +92,7 @@ function cu_search_permission() {
  *
  * For now, simply a wrapper around the appliance's search results.
  */
-function cu_search_search_view($scope = 'all', $keys, $sort = NULL) {
+function cu_search_homepage_search_view($scope = 'all', $keys, $sort = NULL) {
   $content = array();
   return $content;
 }
@@ -100,20 +100,20 @@ function cu_search_search_view($scope = 'all', $keys, $sort = NULL) {
 /**
  * Implements hook_block_info().
  */
-function cu_search_block_info() {
-  $blocks['cu_search_search'] = array(
+function cu_search_homepage_block_info() {
+  $blocks['cu_search_homepage_search'] = array(
     'info' => t('Search Sites + People'),
     'cache' => DRUPAL_NO_CACHE,
   );
-  $blocks['cu_search_search_full'] = array(
+  $blocks['cu_search_homepage_search_full'] = array(
     'info' => t('Search Sites + People Full'),
     'cache' => DRUPAL_NO_CACHE,
   );
-  $blocks['cu_search_ga_results'] = array(
+  $blocks['cu_search_homepage_ga_results'] = array(
     'info' => t('Google Appliance Search Results'),
     'cache' => DRUPAL_NO_CACHE,
   );
-  $blocks['cu_search_ga_related'] = array(
+  $blocks['cu_search_homepage_ga_related'] = array(
     'info' => t('Google Appliance Related Searches'),
     'cache' => DRUPAL_NO_CACHE,
   );
@@ -123,23 +123,23 @@ function cu_search_block_info() {
 /**
  * Implements hook_search_block_view().
  */
-function cu_search_block_view($delta) {
+function cu_search_homepage_block_view($delta) {
   $block = array();
   switch ($delta) {
-    case 'cu_search_search':
-      $block['content'] = drupal_get_form('cu_search_search_form_small');
+    case 'cu_search_homepage_search':
+      $block['content'] = drupal_get_form('cu_search_homepage_search_form_small');
       $block['subject'] = t('Search');
       break;
-    case 'cu_search_search_full':
-      $block['content'] = drupal_get_form('cu_search_search_form_full');
+    case 'cu_search_homepage_search_full':
+      $block['content'] = drupal_get_form('cu_search_homepage_search_form_full');
       $block['subject'] = t('Search');
       break;
-    case 'cu_search_ga_results':
-      $block['content'] = cu_search_ga_results_view();
+    case 'cu_search_homepage_ga_results':
+      $block['content'] = cu_search_homepage_ga_results_view();
       $block['subject'] = t('Website Search Results');
       break;
-    case 'cu_search_ga_related':
-      $block['content'] = cu_search_ga_related_view();
+    case 'cu_search_homepage_ga_related':
+      $block['content'] = cu_search_homepage_ga_related_view();
       $block['subject'] = t('Narrow search:');
       break;
   }
@@ -147,25 +147,25 @@ function cu_search_block_view($delta) {
 }
 
 /**
- * Wrapper around _cu_search_search_form() for small form.
+ * Wrapper around _cu_search_homepage_search_form() for small form.
  */
-function cu_search_search_form_small($form, &$form_state) {
-  $form = _cu_search_search_form('small');
+function cu_search_homepage_search_form_small($form, &$form_state) {
+  $form = _cu_search_homepage_search_form('small');
   return $form;
 }
 
 /**
- * Wrapper around _cu_search_search_form for full form.
+ * Wrapper around _cu_search_homepage_search_form for full form.
  */
-function cu_search_search_form_full($form, &$form_state) {
-  $form = _cu_search_search_form('full');
+function cu_search_homepage_search_form_full($form, &$form_state) {
+  $form = _cu_search_homepage_search_form('full');
   return $form;
 }
 
 /**
  * Search form.
  */
-function _cu_search_search_form($display = 'small') {
+function _cu_search_homepage_search_form($display = 'small') {
   $form = array();
 
   // Setup default keys from arg(1).
@@ -201,16 +201,16 @@ function _cu_search_search_form($display = 'small') {
     ),
   );
 
-  $form['#submit'][] = '_cu_search_search_form_submit';
+  $form['#submit'][] = '_cu_search_homepage_search_form_submit';
   return $form;
 }
 
 /**
- * Submit handler for cu_search_search_form (small and full).
+ * Submit handler for cu_search_homepage_search_form (small and full).
  *
  * Simply sets the form redirect to search/KEYS.
  */
-function _cu_search_search_form_submit($form, &$form_state) {
+function _cu_search_homepage_search_form_submit($form, &$form_state) {
   // Kill any dynamic destinations.
   if (isset($_GET['destination'])) {
     unset($_GET['destination']);
@@ -227,7 +227,7 @@ function _cu_search_search_form_submit($form, &$form_state) {
 /**
  * Block callback for ga results.
  */
-function cu_search_ga_results_view() {
+function cu_search_homepage_ga_results_view() {
   $content = array();
   $keys = urldecode(arg(2));
   $sort = urldecode(arg(3));
@@ -238,7 +238,7 @@ function cu_search_ga_results_view() {
 /**
  * Block callback for related searches.
  */
-function cu_search_ga_related_view() {
+function cu_search_homepage_ga_related_view() {
   $content = array();
 
   // grab module settings
@@ -300,7 +300,7 @@ function cu_search_ga_related_view() {
  *
  * This gets called by google_appliance_search_view() to format results' output.
  */
-function cu_search_preprocess_google_appliance_results(&$vars) {
+function cu_search_homepage_preprocess_google_appliance_results(&$vars) {
   // Unset the appliances' default search form. We'll have our own as a block.
   unset($vars['search_form']);
 }
@@ -310,7 +310,7 @@ function cu_search_preprocess_google_appliance_results(&$vars) {
  *
  * Copied directly from googe_appliance module, ony changed path to gsearch/all.
  */
-function cu_search_preprocess_google_appliance_sort_headers(&$vars) {
+function cu_search_homepage_preprocess_google_appliance_sort_headers(&$vars) {
 
   // Possible sort options.
   $vars['sort_options'] = array(
@@ -394,7 +394,7 @@ function cu_search_preprocess_google_appliance_sort_headers(&$vars) {
 /**
  * Autocomplete callback function for CU Search boxes
  */
-function cu_search_autocomplete($string = '') {
+function cu_search_homepage_autocomplete($string = '') {
   $string = urlencode($string);
   $data = drupal_http_request("http://gsa.colorado.edu/suggest?site=default_collection&client=default_frontend&access=p&format=rich&q=$string");
   $json=json_decode($data->data,true);

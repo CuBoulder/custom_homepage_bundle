@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * cu_search.box.inc
+ * cu_search_homepage.box.inc
  */
 
 /**
  * Implements hook_default_box().
  */
-function cu_search_default_box() {
+function cu_search_homepage_default_box() {
   $export = array();
 
   $box = new stdClass();

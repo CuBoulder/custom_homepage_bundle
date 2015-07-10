@@ -88,17 +88,17 @@ function homepage_secure_permissions($role) {
       'merge terms',
       'view any resources bean',
       'view atoz',
-      'view_cu_search_results',
+      'view_cu_search_homepage_results',
     ),
     'anonymous user' => array(
       'view any resources bean',
       'view atoz',
-      'view_cu_search_results',
+      'view_cu_search_homepage_results',
     ),
     'authenticated user' => array(
       'view any resources bean',
       'view atoz',
-      'view_cu_search_results',
+      'view_cu_search_homepage_results',
     ),
     'blogger' => array(
       'create blog_post content',
@@ -124,7 +124,7 @@ function homepage_secure_permissions($role) {
       'view revisions',
       'view the administration theme',
       'view atoz',
-      'view_cu_search_results',
+      'view_cu_search_homepage_results',
     ),
     'content_editor' => array(
       'administer admission_recruitment_location vocabulary terms',
@@ -182,7 +182,7 @@ function homepage_secure_permissions($role) {
       'merge terms',
       'view any resources bean',
       'view atoz',
-      'view_cu_search_results',
+      'view_cu_search_homepage_results',
     ),
     'developer' => array(
       'administer admission_recruitment_location vocabulary terms',
@@ -266,7 +266,7 @@ function homepage_secure_permissions($role) {
       'unlock person_admission_recruitment_location feeds',
       'view any resources bean',
       'view atoz',
-      'view_cu_search_results',
+      'view_cu_search_homepage_results',
     ),
     'site_owner' => array(
       'administer admission_recruitment_location vocabulary terms',
@@ -326,7 +326,7 @@ function homepage_secure_permissions($role) {
       'merge terms',
       'view any resources bean',
       'view atoz',
-      'view_cu_search_results',
+      'view_cu_search_homepage_results',
     ),
   );
   if (isset($permissions[$role])) {

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * cu_search.features.user_permission.inc
+ * cu_search_homepage.features.user_permission.inc
  */
 
 /**
  * Implements hook_user_default_permissions().
  */
-function cu_search_user_default_permissions() {
+function cu_search_homepage_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: 'access_google_appliance_content'.
@@ -39,7 +39,7 @@ function cu_search_user_default_permissions() {
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
-    'module' => 'cu_search',
+    'module' => 'cu_search_homepage',
   );
 
   return $permissions;

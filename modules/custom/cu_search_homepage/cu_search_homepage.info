@@ -1,9 +1,9 @@
-name = cu_search
-description = CU Search
+name = cu_search_homepage
+description = CU Search Homepage
 core = 7.x
 package = CU Homepage
 version = 7.x-1.0
-project = cu_search
+project = cu_search_homepage
 dependencies[] = boxes
 dependencies[] = context
 dependencies[] = ctools

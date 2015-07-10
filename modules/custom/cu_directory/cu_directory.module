@@ -1,0 +1,159 @@
+<?php
+/**
+ * @file
+ *  cu_directory module main file
+ */
+
+/**
+ * Implements hook_block_info()
+ */
+function cu_directory_block_info() {
+  $blocks['cu_directory_people_results'] = array(
+    'title' => t('CU People Search'),
+    'info' => t('cu_directory: people results'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['cu_directory_facstaff_results'] = array(
+    'title' => t('CU Faculty+Staff Search'),
+    'info' => t('cu_directory: facstaff results'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['cu_directory_student_results'] = array(
+    'title' => t('CU Students Search'),
+    'info' => t('cu_directory: student results'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view()
+ */
+function cu_directory_block_view($delta = '') {
+  $block = array();
+  if (variable_get('cu_disable_people_search', FALSE)) {
+    return $block;
+  }
+  switch($delta) {
+    case 'cu_directory_people_results':
+      $qstring = urldecode(arg(2));
+      $res = cu_directory_get_people($qstring, 'all');
+      $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
+      $block = array('subject' => t('CU People Search'), 'content' => $out);
+      break;
+    case 'cu_directory_facstaff_results':
+      $qstring = urldecode(arg(2));
+      $res = cu_directory_get_people($qstring, 'facstaff');
+      $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
+      $block = array('subject' => t('CU People Search'), 'content' => $out);
+      break;
+   case 'cu_directory_student_results':
+      $qstring = urldecode(arg(2));
+      $res = cu_directory_get_people($qstring, 'student');
+      $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
+      $block = array('subject' => t('CU People Search'), 'content' => $out);
+      break;
+  }
+  return $block;
+}
+
+function cu_directory_theme($existing, $type, $theme, $path) {
+
+  $registry = array();
+  $cu_directory_template_dir = drupal_get_path('module', 'cu_directory') . '/theme';
+
+  $registry['cu_directory_sidebar_results'] = array(
+    'variables' => array('results' => NULL),
+    'template' => 'cu-directory-sidebar-results',
+    'path' => $cu_directory_template_dir,
+  );
+
+  $registry['cu_directory_sidebar_result'] = array(
+    'variables' => array('person' => NULL, 'person_idx' => NULL),
+    'template' => 'cu-directory-sidebar-result',
+    'path' => $cu_directory_template_dir,
+  );
+
+  return $registry;
+}
+
+function cu_directory_people_search_compare($a, $b) {
+  return strcmp($a['name'], $b['name']);
+}
+
+/**
+ * Implements template_preprocess_HOOK()
+ */
+function template_preprocess_cu_directory_sidebar_results(&$variables) {
+  // Placeholder for pre-processing
+  $variables['results'] = '';
+  // Render each results with the cu-directory-sidebar-result template
+  $person_idx = 1;
+  if (!empty($variables['people_data']['data'])) {
+    $variables['people_count'] = count($variables['people_data']['data']);
+
+    usort($variables['people_data']['data'], 'cu_directory_people_search_compare');
+  //dsm($variables['people_data']['data']);
+
+    $people_pages = array_chunk($variables['people_data']['data'], 10);
+    $page_counter=0;
+  //foreach($people_pages as $page) {
+    //$page_counter++;
+    //foreach($page as $person) {
+      //$variables['results'] .= theme('cu_directory_sidebar_result', array('person' => $person, 'person_idx' => $person_idx, 'page_counter' => $page_counter));
+    //$person_idx++;
+    //}
+  //}
+    foreach($variables['people_data']['data'] as $person) {
+      $variables['results'] .= theme('cu_directory_sidebar_result', array('person' => $person, 'person_idx' => $person_idx));
+      $person_idx++;
+    }
+  }
+}
+
+function template_preprocess_cu_directory_sidebar_result(&$variables) {
+  $people_date = array();
+  if ($variables['person']['email']) {
+	  $people_data[] = '<a href="mailto:' . render($variables['person']['email']) . '" class="email-short">Email</a><a href="mailto:' . render($variables['person']['email']) . '" class="email-long">' . render($variables['person']['email']) . '</a>';
+	}
+	if ($variables['person']['phone']) {
+		$phone = str_replace(" ", "-" , $variables['person']['phone']);
+		$people_data[] = $phone;
+  }
+  if (!empty($people_data)) {
+    $variables['person']['person_data'] = join(' &bull; ', $people_data);
+  }
+}
+
+/**
+ * Internal function for grabbbing people using the CuDirectory library
+ *
+ * @param $qstring
+ *  The query string to search for
+ *
+ * @return
+ *  Returns an array of results
+ */
+function cu_directory_get_people($qstring, $scope = 'all') {
+  // Create a cache key
+  $cache_key = "cu_directory_ldap_" . $scope . '_' . md5(strtolower($qstring));
+  // Try to pull the ldap result from Drupal's cache
+  $cached_data = cache_get($cache_key, 'cache');
+
+  if ($cached_data && $cached_data->expire >= $_SERVER['REQUEST_TIME']) {
+    $cu_directory_get_people = $cached_data->data;
+  }
+  else {
+    $dir = new CuDirectory();
+    $dir->hardReturnCount(500);
+    $dir->returnCount(500);
+    $dir->userTypeFilter($scope);
+    $cu_directory_get_people = $dir->search($qstring);
+    // Set the ldap return in the cache, expire in 2 days.
+    $expire = $_SERVER['REQUEST_TIME']+ (2*24*60*60);
+    cache_set($cache_key, $cu_directory_get_people, 'cache', $expire);
+  }
+
+  // Return the result
+  return $cu_directory_get_people;
+}

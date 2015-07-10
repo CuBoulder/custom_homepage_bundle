@@ -1,0 +1,7 @@
+name = CU Directory
+description = Interface with the LDAP Directory
+package = Ucomm
+version = 7.x-1.0
+core = 7.x
+files[] = lib/cudirectory.class.php
+stylesheets[all][] = theme/cu_directory.css

@@ -138,6 +138,7 @@ function cu_search_homepage_block_view($delta) {
     case 'cu_search_homepage_ga_results':
       $block['content'] = cu_search_homepage_ga_results_view();
       $block['subject'] = t('Website Search Results');
+      $block['title'] = '<none>';
       break;
     case 'cu_search_homepage_ga_related':
       $block['content'] = cu_search_homepage_ga_related_view();
@@ -161,6 +162,14 @@ function cu_search_homepage_search_form_small($form, &$form_state) {
 function cu_search_homepage_search_form_full($form, &$form_state) {
   $form = _cu_search_homepage_search_form('full');
   return $form;
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter
+ */
+
+function cu_search_homepage_form_google_appliance_block_form_alter(&$form, &$form_state, $form_id) {
+  $form['#submit'][0] = '_cu_search_homepage_search_form_submit';
 }
 
 /**

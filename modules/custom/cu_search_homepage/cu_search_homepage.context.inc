@@ -67,12 +67,6 @@ function cu_search_homepage_context_default_contexts() {
           'region' => 'content',
           'weight' => '-4',
         ),
-        'cu_search_homepage-cu_search_homepage_ga_related' => array(
-          'module' => 'cu_search_homepage',
-          'delta' => 'cu_search_homepage_ga_related',
-          'region' => 'content',
-          'weight' => '-3',
-        ),
       ),
     ),
   );

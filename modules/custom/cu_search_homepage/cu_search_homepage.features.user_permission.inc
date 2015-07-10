@@ -32,8 +32,8 @@ function cu_search_homepage_user_default_permissions() {
     'module' => 'google_appliance',
   );
 
-  // Exported permission: 'view_cu_search_results'.
-  $permissions['view_cu_search_results'] = array(
+  // Exported permission: 'view_cu_search_homepage_results'.
+  $permissions['view_cu_search_homepage_results'] = array(
     'name' => 'view_cu_search_results',
     'roles' => array(
       'anonymous user' => 'anonymous user',

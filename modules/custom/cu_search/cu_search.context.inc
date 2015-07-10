@@ -138,6 +138,12 @@ function cu_search_context_default_contexts() {
           'region' => 'content',
           'weight' => '0',
         ),
+        'boxes-people_search_help' => array(
+          'module' => 'boxes',
+          'delta' => 'people_search_help',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

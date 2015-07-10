@@ -32,6 +32,5 @@ features[variable][] = google_appliance_query_inspection
 features[variable][] = google_appliance_results_per_page
 features[variable][] = google_appliance_search_title
 features[variable][] = google_appliance_timeout
-features_exclude[dependencies][cu_search] = cu_search
-mtime = 1436541748
+mtime = 1436542820
 required = 1

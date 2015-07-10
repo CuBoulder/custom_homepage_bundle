@@ -35,7 +35,10 @@ function cu_search_user_default_permissions() {
   // Exported permission: 'view_cu_search_results'.
   $permissions['view_cu_search_results'] = array(
     'name' => 'view_cu_search_results',
-    'roles' => array(),
+    'roles' => array(
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
     'module' => 'cu_search',
   );
 

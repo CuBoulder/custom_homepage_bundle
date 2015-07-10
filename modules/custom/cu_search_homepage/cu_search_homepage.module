@@ -133,6 +133,7 @@ function cu_search_homepage_block_view($delta) {
     case 'cu_search_homepage_search_full':
       $block['content'] = drupal_get_form('cu_search_homepage_search_form_full');
       $block['subject'] = t('Search');
+      $block['title'] = '<none>';
       break;
     case 'cu_search_homepage_ga_results':
       $block['content'] = cu_search_homepage_ga_results_view();

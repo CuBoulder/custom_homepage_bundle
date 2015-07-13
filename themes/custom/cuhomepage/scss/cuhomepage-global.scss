@@ -605,6 +605,47 @@ html.js input.form-autocomplete {
   margin-left: 10px;
 }
 
+ul.cu-directory-results {
+  padding:0;
+  list-style: none;
+  list-style-image: none;
+  li {
+    padding: 0;
+    list-style: none;
+    list-style-image: none;
+  }
+}
+.sidebar .people-result {
+	font-size: 80%;
+	margin-bottom: 15px;
+}
+
+#content .people-result {
+	border-bottom:1px solid $border_color;
+	padding:1.5em 0;
+}
+#content .people-result:last-child {
+	border: none;
+}
+.people-meta {
+	font-size: 90%;
+}
+#content a.people-more {
+	color:#363636;
+	font-size: 150%;
+	font-weight: normal;
+}
+#content #block-cu-directory-cu-directory-search-sidebar .content ul.cu-directory-results li {
+  padding:1.5em 0;
+}
+#content #block-cu-directory-cu-directory-search-sidebar h2 {
+  margin: 0;
+  padding-top: 25px;
+}
+.sidebar .email-long, #content .email-short {
+  display: none;
+}
+
 /* Messages */
 
 #messages-wrapper {
@@ -615,3 +656,4 @@ html.js input.form-autocomplete {
     padding: 20px;
   }
 }
+

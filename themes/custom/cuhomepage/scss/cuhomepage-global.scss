@@ -147,6 +147,12 @@ nav#main-menu a {
       background-color: $border_color;
       color:#222;
     }
+    &.active-trail {
+      background-color: #f7f7f7;
+      border-bottom-color: #f7f7f7;
+      border-top-color: #f7f7f7;
+      color:#222;
+    }
     &.active {
       background-color: $border_color;
       color:#222;

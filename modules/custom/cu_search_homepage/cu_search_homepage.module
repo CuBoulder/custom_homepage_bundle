@@ -313,6 +313,8 @@ function cu_search_homepage_ga_related_view() {
 function cu_search_homepage_preprocess_google_appliance_results(&$vars) {
   // Unset the appliances' default search form. We'll have our own as a block.
   unset($vars['search_form']);
+  // Unset synonyms to prevent 'You might also' text.
+  unset($vars['show_synonyms']);
 }
 
 /**

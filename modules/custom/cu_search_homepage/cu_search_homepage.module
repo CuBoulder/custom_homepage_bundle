@@ -189,10 +189,10 @@ function _cu_search_homepage_search_form($display = 'small') {
     '#title_display' =>  $title_display,
     '#size' => 15,
     '#default_value' => $default_keys,
-    // '#autocomplete_path' => 'gsuggest',
-    // '#attributes' => array(
-    //   'class' => array('auto_submit'),
-    // ),
+    '#autocomplete_path' => 'suggest',
+    '#attributes' => array(
+      'class' => array('auto_submit'),
+    ),
   );
 
   $default_scope = urlencode(arg(1));

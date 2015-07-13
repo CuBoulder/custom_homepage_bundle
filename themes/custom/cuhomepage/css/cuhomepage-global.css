@@ -173,6 +173,8 @@ html.js input.form-autocomplete { background-image: url(../images/throbber-inact
 
 #content #block-cu-search-cu-search-ga-related ul li.first { list-style: none; margin-left: 10px; }
 
+
+
 ul.cu-directory-results { padding: 0; list-style: none; list-style-image: none; }
 ul.cu-directory-results li { padding: 0; list-style: none; list-style-image: none; }
 
@@ -191,3 +193,7 @@ ul.cu-directory-results li { padding: 0; list-style: none; list-style-image: non
 #content #block-cu-directory-cu-directory-search-sidebar h2 { margin: 0; padding-top: 25px; }
 
 .sidebar .email-long, #content .email-short { display: none; }
+
+/* Messages */
+#messages-wrapper { background: #fff; }
+#messages-wrapper .messages { max-width: 1200px; margin: 0 auto; padding: 20px; }

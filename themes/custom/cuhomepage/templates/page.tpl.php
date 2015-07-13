@@ -86,7 +86,9 @@
     </div>
     <div class="clear"></div>
   <?php endif; ?>
-  <?php print $messages; ?>
+  <div id="messages-wrapper">
+    <?php print $messages; ?>
+  </div>
   <?php
     // Main content template
     print $main_content;    

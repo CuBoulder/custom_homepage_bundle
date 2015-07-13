@@ -610,6 +610,7 @@ html.js input.form-autocomplete {
   list-style: none;
   margin-left: 10px;
 }
+
 ul.cu-directory-results {
   padding:0;
   list-style: none;
@@ -649,5 +650,16 @@ ul.cu-directory-results {
 }
 .sidebar .email-long, #content .email-short {
   display: none;
+}
+
+/* Messages */
+
+#messages-wrapper {
+  background: #fff;
+  .messages {
+    max-width: 1200px;
+    margin:0 auto;
+    padding: 20px;
+  }
 }
 

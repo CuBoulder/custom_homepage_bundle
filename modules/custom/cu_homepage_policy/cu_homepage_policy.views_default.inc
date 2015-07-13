@@ -55,6 +55,8 @@ function cu_homepage_policy_views_default_views() {
   $handler->display->display_options['fields']['field_policy_categories']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_policy_categories']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_policy_categories']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_policy_categories']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_policy_categories']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_policy_categories']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_policy_categories']['field_api_classes'] = TRUE;
   /* Field: Content: Body */

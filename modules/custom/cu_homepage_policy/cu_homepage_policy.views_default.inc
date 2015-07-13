@@ -73,11 +73,14 @@ function cu_homepage_policy_views_default_views() {
     'trim_length' => '150',
   );
   $handler->display->display_options['fields']['body']['field_api_classes'] = TRUE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Policy Categories (field_policy_categories) */
+  $handler->display->display_options['sorts']['field_policy_categories_tid']['id'] = 'field_policy_categories_tid';
+  $handler->display->display_options['sorts']['field_policy_categories_tid']['table'] = 'field_data_field_policy_categories';
+  $handler->display->display_options['sorts']['field_policy_categories_tid']['field'] = 'field_policy_categories_tid';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

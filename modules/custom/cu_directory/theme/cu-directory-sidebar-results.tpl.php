@@ -11,7 +11,7 @@
   <?php if ($results && !$people_data['error']): ?>
     <ul class="cu-directory-results"><?php print $results; ?></ul>
     <?php if (!in_array(arg(1), array('people', 'students', 'facstaff'))) : ?>
-      <a href="/gsearch/people/<?php print $qstring; ?>" class="button-2 directory-view-all">
+      <a href="/gsearch/people/<?php print $qstring; ?>" class="button button-blue button-small">
         <?php print format_plural($people_count, 'View person', 'View all @count people', array('@count' => $people_count)) ?>
       </a>
     <?php endif; ?>
@@ -24,12 +24,12 @@
 </div>
 
 <script type="text/javascript">
-jQuery("#sidebar .people-meta").hide();
-jQuery("#sidebar ul.cu-directory-results li:gt(9)").hide();
-jQuery("#sidebar a.people-more").click(function(e) {
+jQuery(".sidebar .people-meta").hide();
+jQuery(".sidebar ul.cu-directory-results li:gt(9)").hide();
+jQuery(".sidebar a.people-more").click(function(e) {
   e.preventDefault();
   var showthis = jQuery(this).attr("href");
-  var el = jQuery("#sidebar " + showthis + " .people-meta");
+  var el = jQuery(".sidebar " + showthis + " .people-meta");
   el.is(':visible') ? el.fadeOut() : el.fadeIn();
   return false;
 });

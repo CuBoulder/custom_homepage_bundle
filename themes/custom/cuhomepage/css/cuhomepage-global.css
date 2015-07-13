@@ -171,3 +171,22 @@ html.js input.form-autocomplete { background-image: url(../images/throbber-inact
 #content #block-cu-search-cu-search-ga-related ul li { list-style: disc; float: left; margin-left: 25px; margin-top: 2px; font-size: .8em; }
 
 #content #block-cu-search-cu-search-ga-related ul li.first { list-style: none; margin-left: 10px; }
+
+ul.cu-directory-results { padding: 0; list-style: none; list-style-image: none; }
+ul.cu-directory-results li { padding: 0; list-style: none; list-style-image: none; }
+
+.sidebar .people-result { font-size: 80%; margin-bottom: 15px; }
+
+#content .people-result { border-bottom: 1px solid #e0e0e0; padding: 1.5em 0; }
+
+#content .people-result:last-child { border: none; }
+
+.people-meta { font-size: 90%; }
+
+#content a.people-more { color: #363636; font-size: 150%; font-weight: normal; }
+
+#content #block-cu-directory-cu-directory-search-sidebar .content ul.cu-directory-results li { padding: 1.5em 0; }
+
+#content #block-cu-directory-cu-directory-search-sidebar h2 { margin: 0; padding-top: 25px; }
+
+.sidebar .email-long, #content .email-short { display: none; }

@@ -38,6 +38,10 @@ function cu_homepage_policy_views_default_views() {
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Policy Categories (field_policy_categories) */
+  $handler->display->display_options['relationships']['field_policy_categories_tid']['id'] = 'field_policy_categories_tid';
+  $handler->display->display_options['relationships']['field_policy_categories_tid']['table'] = 'field_data_field_policy_categories';
+  $handler->display->display_options['relationships']['field_policy_categories_tid']['field'] = 'field_policy_categories_tid';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -73,10 +77,11 @@ function cu_homepage_policy_views_default_views() {
     'trim_length' => '150',
   );
   $handler->display->display_options['fields']['body']['field_api_classes'] = TRUE;
-  /* Sort criterion: Content: Policy Categories (field_policy_categories) */
-  $handler->display->display_options['sorts']['field_policy_categories_tid']['id'] = 'field_policy_categories_tid';
-  $handler->display->display_options['sorts']['field_policy_categories_tid']['table'] = 'field_data_field_policy_categories';
-  $handler->display->display_options['sorts']['field_policy_categories_tid']['field'] = 'field_policy_categories_tid';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_policy_categories_tid';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';

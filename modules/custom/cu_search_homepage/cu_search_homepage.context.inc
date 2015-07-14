@@ -67,6 +67,12 @@ function cu_search_homepage_context_default_contexts() {
           'region' => 'content',
           'weight' => '-4',
         ),
+        'cu_directory-cu_directory_people_results' => array(
+          'module' => 'cu_directory',
+          'delta' => 'cu_directory_people_results',
+          'region' => 'sidebar_second',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

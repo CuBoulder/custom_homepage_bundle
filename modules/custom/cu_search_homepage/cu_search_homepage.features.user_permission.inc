@@ -34,10 +34,15 @@ function cu_search_homepage_user_default_permissions() {
 
   // Exported permission: 'view_cu_search_homepage_results'.
   $permissions['view_cu_search_homepage_results'] = array(
-    'name' => 'view_cu_search_results',
+    'name' => 'view_cu_search_homepage_results',
     'roles' => array(
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
+      'blogger' => 'blogger',
+      'content_editor' => 'content_editor',
+      'developer' => 'developer',
+      'site_owner' => 'site_owner',
     ),
     'module' => 'cu_search_homepage',
   );

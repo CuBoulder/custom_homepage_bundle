@@ -22,10 +22,13 @@
     $('.view-id-degree_programs label').each(function(){
       var labelText = $(this).text();
       $(this).text('Explore by ' + labelText + ' +');
+      $(this).attr('aria-expanded', 'false');
     });
     // Add click events to labels to hide select links and scroll to area clicked
     $('.view-id-degree_programs label').click(function() {
       $('.view-id-degree_programs .views-widget').addClass('element-invisible');
+      $('.view-id-degree_programs label').attr('aria-expanded', 'false');
+      $(this).attr('aria-expanded', 'true');
       $(this).next().removeClass('element-invisible').focus();
       
       if ($(this).offset() != null) {

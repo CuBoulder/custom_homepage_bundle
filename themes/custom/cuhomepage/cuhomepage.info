@@ -30,6 +30,8 @@ regions[content_sidebar_left] = 'Content Sidebar Left'
 
 
 stylesheets[screen][] = css/cuhomepage-global.css
+; Add print styles
+stylesheets[print][] = css/cuhomepage-print.css
 
 settings[layout_style] = 'layout-wide'
 settings[banner_color] = 'black'

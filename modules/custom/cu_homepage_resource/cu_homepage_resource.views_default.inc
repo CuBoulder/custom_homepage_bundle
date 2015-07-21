@@ -39,6 +39,7 @@ function cu_homepage_resource_views_default_views() {
   );
   $handler->display->display_options['style_options']['collapsible'] = 1;
   $handler->display->display_options['style_options']['row-start-open'] = 'none';
+  $handler->display->display_options['style_options']['autoheight'] = 0;
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Content: Sub category (field_resource_sub_category) */
   $handler->display->display_options['relationships']['field_resource_sub_category_tid']['id'] = 'field_resource_sub_category_tid';
@@ -60,7 +61,6 @@ function cu_homepage_resource_views_default_views() {
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['body']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['body']['type'] = 'text_summary_or_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '300',
   );

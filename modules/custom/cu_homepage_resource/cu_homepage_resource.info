@@ -43,4 +43,4 @@ features[variable][] = node_preview_resource
 features[variable][] = node_submitted_resource
 features[views_view][] = resources
 features_exclude[dependencies][cu_homepage_people] = cu_homepage_people
-mtime = 1436393608
+mtime = 1436462022

@@ -40,9 +40,7 @@ function cu_homepage_admissions_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_admission_event';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_admission_event'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -75,6 +73,13 @@ function cu_homepage_admissions_strongarm() {
   $strongarm->name = 'node_submitted_admission_event';
   $strongarm->value = 0;
   $export['node_submitted_admission_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_admission_event_pattern';
+  $strongarm->value = 'admissions/event/[node:title]';
+  $export['pathauto_node_admission_event_pattern'] = $strongarm;
 
   return $export;
 }

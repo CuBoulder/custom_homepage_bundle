@@ -50,4 +50,5 @@ features[variable][] = node_preview_policy
 features[variable][] = node_submitted_policy
 features[variable][] = pathauto_node_policy_pattern
 features[views_view][] = policies
-mtime = 1436824977
+features_exclude[field_base][body] = body
+mtime = 1437663797

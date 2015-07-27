@@ -276,6 +276,60 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-admission_event-field_adm_recruitment_locations'
+  $field_instances['node-admission_event-field_adm_recruitment_locations'] = array(
+    'bundle' => 'admission_event',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div',
+    'field_name' => 'field_adm_recruitment_locations',
+    'label' => 'Admission Recruitment Location',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'term_reference_tree',
+      'settings' => array(
+        'cascading_selection' => 1,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => '',
+        'parent_term_id' => '',
+        'select_parents' => 0,
+        'start_minimized' => 1,
+        'token_display' => '',
+        'track_list' => 0,
+      ),
+      'type' => 'term_reference_tree',
+      'weight' => 47,
+    ),
+  );
+
   // Exported field_instance: 'node-person-field_adm_recruitment_locations'
   $field_instances['node-person-field_adm_recruitment_locations'] = array(
     'bundle' => 'person',
@@ -370,6 +424,7 @@ function cu_homepage_admissions_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
+  t('Admission Recruitment Location');
   t('Admission Recruitment Locations');
   t('Body');
   t('Date');

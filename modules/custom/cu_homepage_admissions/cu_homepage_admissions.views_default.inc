@@ -49,6 +49,14 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Sort criterion: Content: Last Name (field_person_last_name) */
+  $handler->display->display_options['sorts']['field_person_last_name_value']['id'] = 'field_person_last_name_value';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['table'] = 'field_data_field_person_last_name';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['field'] = 'field_person_last_name_value';
+  /* Sort criterion: Content: First Name (field_person_first_name) */
+  $handler->display->display_options['sorts']['field_person_first_name_value']['id'] = 'field_person_first_name_value';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['table'] = 'field_data_field_person_first_name';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['field'] = 'field_person_first_name_value';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -96,6 +104,7 @@ function cu_homepage_admissions_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
+  $handler->display->display_options['block_caching'] = '8';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');
@@ -115,6 +124,15 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<h2>Upcoming School Visits and College Fairs</h2>';
   $handler->display->display_options['header']['area']['format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<h2>Upcoming School Visits and College Fairs</h2>
+<p>Currently, there are no upcoming events for the selected area.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'wysiwyg';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_adm_event_date']['id'] = 'field_adm_event_date';

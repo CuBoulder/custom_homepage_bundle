@@ -648,3 +648,18 @@ ul.cu-directory-results {
   }
 }
 
+/* Admissions */
+
+.view-admission-recruitment-locations {
+  .views-row {
+    padding:10px 0;
+    border-bottom: 1px solid $border_color;
+  }
+  .views-row:last-child {
+    border-bottom: none;
+  }
+  .field-name-field-adm-event-date {
+    font-weight: 600;
+  }
+}
+

@@ -1,4 +1,21 @@
 <?php
+
+/**
+ * Preprocess html.
+ */
+function homepage_preprocess_html(&$vars) {
+  // Only allow Same Origin to iframe us.
+  $meta = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'content' => 'SAMEORIGIN',
+      'http-equiv' => 'X-Frame-Options',
+    ),
+  );
+  drupal_add_html_head($meta, 'homepage_xframe_options');
+}
+
 /**
  * Implements hook_enable().
  */

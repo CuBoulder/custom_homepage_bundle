@@ -14,10 +14,7 @@ function homepage_preprocess_html(&$vars) {
     ),
   );
   drupal_add_html_head($meta, 'homepage_xframe_options');
-
-  // IE is stupid and doesn't respect the X-Frame-Options meta tag.
-  // So a javascript solution is used as well.
-  drupal_add_js(drupal_get_path('module', 'homepage') . '/homepage.js');
+  drupal_add_http_header('X-Frame-Options', 'SAMEORIGIN');
 }
 
 /**

@@ -119,6 +119,7 @@ function homepage_secure_permissions($role) {
       'view_cu_search_homepage_results',
     ),
     'blogger' => array(
+      'access content overview',
       'create blog_post content',
       'delete own blog_post content',
       'delete revisions',
@@ -213,6 +214,7 @@ function homepage_secure_permissions($role) {
       'administer feeds',
       'administer feeds_tamper',
       'administer policy_categories vocabulary terms',
+      'administer postal code',
       'administer resource_category vocabulary terms',
       'administer resource_sub_category vocabulary terms',
       'assign blogger role',

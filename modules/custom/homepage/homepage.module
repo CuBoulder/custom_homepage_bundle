@@ -49,6 +49,7 @@ function homepage_secure_permissions_roles() {
 function homepage_secure_permissions($role) {
    $permissions = array(
     'administrator' => array(
+      'access_google_appliance_content',
       'administer admission_recruitment_location vocabulary terms',
       'administer audience vocabulary terms',
       'administer blog_post_tags vocabulary terms',
@@ -109,16 +110,19 @@ function homepage_secure_permissions($role) {
       'view_cu_search_homepage_results',
     ),
     'anonymous user' => array(
+      'access_google_appliance_content',
       'view any resources bean',
       'view atoz',
       'view_cu_search_homepage_results',
     ),
     'authenticated user' => array(
+      'access_google_appliance_content',
       'view any resources bean',
       'view atoz',
       'view_cu_search_homepage_results',
     ),
     'blogger' => array(
+      'access_google_appliance_content',
       'access content overview',
       'create blog_post content',
       'delete own blog_post content',
@@ -146,6 +150,7 @@ function homepage_secure_permissions($role) {
       'view_cu_search_homepage_results',
     ),
     'content_editor' => array(
+      'access_google_appliance_content',
       'administer admission_recruitment_location vocabulary terms',
       'administer blog_post_tags vocabulary terms',
       'administer career_interests vocabulary terms',
@@ -204,6 +209,8 @@ function homepage_secure_permissions($role) {
       'view_cu_search_homepage_results',
     ),
     'developer' => array(
+      'access_google_appliance_content',
+      'administer_google_appliance',
       'administer admission_recruitment_location vocabulary terms',
       'administer audience vocabulary terms',
       'administer blog_post_tags vocabulary terms',
@@ -289,6 +296,7 @@ function homepage_secure_permissions($role) {
       'view_cu_search_homepage_results',
     ),
     'site_owner' => array(
+      'access_google_appliance_content',
       'administer admission_recruitment_location vocabulary terms',
       'administer audience vocabulary terms',
       'administer blog_post_tags vocabulary terms',

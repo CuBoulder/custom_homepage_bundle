@@ -20,3 +20,18 @@ function homepage_update_7001() {
     ->condition('name', '[cu_image_styles]', '=')
     ->execute();
 }
+
+/**
+ * Delete all terms in Adm Location taxonomy to prepare for annual data refresh
+ */
+function homepage_update_7002() {
+  $homepage_7002_result = db_select('taxonomy_term_data','t')
+    ->fields('t',array('tid','vid'))
+    ->condition('vid', 30,'=')
+    ->execute()
+    ->fetchAll();
+
+  foreach ($homepage_7002_result as $object) {
+    taxonomy_term_delete($object->tid);
+  }
+}

@@ -21,6 +21,8 @@ function cuhomepage_preprocess_html(&$vars) {
   $vars['classes_array'][]='banner-' . $banner_color;
   $layout = theme_get_setting('layout_style', 'cuhomepage') ? theme_get_setting('layout_style', 'cuhomepage') : 'layout-wide';
   $vars['classes_array'][]=$layout;
+  unset($vars['head_title_array']['slogan']);
+  $vars['head_title'] = implode(' | ', $vars['head_title_array']);
 }
 
 /**
@@ -29,7 +31,7 @@ function cuhomepage_preprocess_html(&$vars) {
 
 function cuhomepage_preprocess_page(&$variables) {
   global $base_url;
-  $variables['site_name'] = 'University of Colorado <strong>Boulder</strong>';
+  //$variables['site_name'] = 'University of Colorado <strong>Boulder</strong>';
   $variables['site_slogan'] = '';
 }
 
@@ -52,7 +54,7 @@ function cuhomepage_preprocess_region(&$variables, $hook) {
     case 'branding':
       $variables['logo'] = theme_get_setting('logo');
       $variables['front_page'] = url('<front>');
-      $variables['site_name'] = 'University of Colorado <strong>Boulder</strong>';
+      //$variables['site_name'] = 'University of Colorado <strong>Boulder</strong>';
       $variables['site_slogan'] = '';
       $variables['print_logo'] = '<img src="' . $base_url . '/' . drupal_get_path('theme','cuzen') . '/images/print-logo.png" alt="University of Colorado Boulder" />';
       break;

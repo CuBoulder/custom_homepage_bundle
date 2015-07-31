@@ -1,4 +1,22 @@
 <?php
+
+/**
+ * Preprocess html.
+ */
+function homepage_preprocess_html(&$vars) {
+  // Only allow Same Origin to iframe us.
+  $meta = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'content' => 'SAMEORIGIN',
+      'http-equiv' => 'X-Frame-Options',
+    ),
+  );
+  drupal_add_html_head($meta, 'homepage_xframe_options');
+  drupal_add_http_header('X-Frame-Options', 'SAMEORIGIN');
+}
+
 /**
  * Implements hook_enable().
  */
@@ -105,6 +123,7 @@ function homepage_secure_permissions($role) {
     ),
     'blogger' => array(
       'access_google_appliance_content',
+      'access content overview',
       'create blog_post content',
       'delete own blog_post content',
       'delete revisions',
@@ -202,6 +221,7 @@ function homepage_secure_permissions($role) {
       'administer feeds',
       'administer feeds_tamper',
       'administer policy_categories vocabulary terms',
+      'administer postal code',
       'administer resource_category vocabulary terms',
       'administer resource_sub_category vocabulary terms',
       'assign blogger role',

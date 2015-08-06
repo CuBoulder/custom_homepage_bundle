@@ -43,7 +43,7 @@ function cu_block_row_field_default_field_bases() {
         'view' => array(
           'args' => array(),
           'display_name' => 'entityreference_1',
-          'view_name' => 'block_section_blocks_selector',
+          'view_name' => 'cu_block_selector_beans',
         ),
       ),
       'target_type' => 'bean',

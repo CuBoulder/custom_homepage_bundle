@@ -528,7 +528,7 @@ ul.orgunit-links {
       @extend .orgunit-member;
     }
   }
-  
+
 }
 .orgunit h3 a.expand:before {
   padding-right:5px;
@@ -662,4 +662,25 @@ ul.cu-directory-results {
     font-weight: 600;
   }
 }
+.event-address {
+  .addressfield-container-inline::after {
+    display: inline;
+  }
+}
+.event-map {
+  display: block;
+}
 
+
+@media screen and (min-width:720px) {
+  .event-map {
+    width:50%;
+    float:right;
+    margin:0 0 20px 20px;
+    display:block;
+  }
+  .event-address {
+    width:40%;
+    float: left;
+  }
+}

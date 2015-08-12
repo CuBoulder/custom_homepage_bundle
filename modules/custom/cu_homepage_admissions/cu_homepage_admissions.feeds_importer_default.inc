@@ -50,12 +50,14 @@ function cu_homepage_admissions_feeds_importer_default() {
           1 => array(
             'source' => 'series',
             'target' => 'field_adm_event_series',
-            'unique' => FALSE,
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
           2 => array(
             'source' => 'type',
             'target' => 'field_adm_event_type',
-            'unique' => FALSE,
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
           3 => array(
             'source' => 'start_date_time',

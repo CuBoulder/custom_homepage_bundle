@@ -13,6 +13,34 @@ function cu_homepage_admissions_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'admission_event-adm_location-explode';
+  $feeds_tamper->importer = 'admission_event';
+  $feeds_tamper->source = 'adm_location';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => ',',
+    'limit' => '',
+    'real_separator' => ',',
+  );
+  $feeds_tamper->weight = 4;
+  $feeds_tamper->description = 'Explode';
+  $export['admission_event-adm_location-explode'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'admission_event-adm_location-parent_child_terms';
+  $feeds_tamper->importer = 'admission_event';
+  $feeds_tamper->source = 'adm_location';
+  $feeds_tamper->plugin_id = 'parent_child_terms';
+  $feeds_tamper->settings = array();
+  $feeds_tamper->weight = 3;
+  $feeds_tamper->description = 'Select all parent and child terms';
+  $export['admission_event-adm_location-parent_child_terms'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'admission_event-country-country_to_code';
   $feeds_tamper->importer = 'admission_event';
   $feeds_tamper->source = 'country';
@@ -33,6 +61,18 @@ function cu_homepage_admissions_feeds_tamper_default() {
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'String to Unix timestamp';
   $export['admission_event-end_date_time-strtotime'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'admission_event-series-array_filter';
+  $feeds_tamper->importer = 'admission_event';
+  $feeds_tamper->source = 'series';
+  $feeds_tamper->plugin_id = 'array_filter';
+  $feeds_tamper->settings = array();
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Filter empty items';
+  $export['admission_event-series-array_filter'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */

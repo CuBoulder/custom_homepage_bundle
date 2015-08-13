@@ -159,7 +159,6 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Address - Locality (i.e. City) */
   $handler->display->display_options['fields']['field_adm_event_address_locality']['id'] = 'field_adm_event_address_locality';
   $handler->display->display_options['fields']['field_adm_event_address_locality']['table'] = 'field_data_field_adm_event_address';

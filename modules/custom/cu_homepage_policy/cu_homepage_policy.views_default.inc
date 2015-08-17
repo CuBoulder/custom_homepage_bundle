@@ -29,7 +29,7 @@ function cu_homepage_policy_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'field_policy_categories',
@@ -38,6 +38,10 @@ function cu_homepage_policy_views_default_views() {
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Policy Categories (field_policy_categories) */
+  $handler->display->display_options['relationships']['field_policy_categories_tid']['id'] = 'field_policy_categories_tid';
+  $handler->display->display_options['relationships']['field_policy_categories_tid']['table'] = 'field_data_field_policy_categories';
+  $handler->display->display_options['relationships']['field_policy_categories_tid']['field'] = 'field_policy_categories_tid';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -55,6 +59,8 @@ function cu_homepage_policy_views_default_views() {
   $handler->display->display_options['fields']['field_policy_categories']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_policy_categories']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['field_policy_categories']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_policy_categories']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_policy_categories']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_policy_categories']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_policy_categories']['field_api_classes'] = TRUE;
   /* Field: Content: Body */
@@ -71,11 +77,15 @@ function cu_homepage_policy_views_default_views() {
     'trim_length' => '150',
   );
   $handler->display->display_options['fields']['body']['field_api_classes'] = TRUE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_policy_categories_tid';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -116,9 +126,11 @@ function cu_homepage_policy_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'policies';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Policies';
+  $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $export['policies'] = $view;
 
   return $export;

@@ -1,0 +1,3 @@
+name = CU 404
+description = Custom module for the 404 page to try redirecting people to lowercase links before throwing the 404 image.
+core = 7.x

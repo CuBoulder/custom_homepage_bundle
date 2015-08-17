@@ -31,3 +31,13 @@ function cu_degree_programs_theme_registry_alter(&$theme_registry) {
     }
   }
 }
+
+/**
+ * Implements hook_page_alter().
+ */
+function cu_degree_programs_page_alter(&$page) {
+  drupal_add_css(drupal_get_path('module', 'cu_degree_programs') . '/css/cu-degree-programs.css');
+  if (current_path() == 'academics/programs') {
+    drupal_add_js(drupal_get_path('module','cu_degree_programs') .'/js/cu-degree-programs.js');
+  }
+}

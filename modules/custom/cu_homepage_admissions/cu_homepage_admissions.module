@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Code for the CU Homepage Admissions feature.
+ */
+
+include_once 'cu_homepage_admissions.features.inc';
+
+function cu_homepage_admissions_views_pre_render(&$view) {
+  if ($view->name == 'admission_recruitment_locations') {
+    drupal_add_js(drupal_get_path('module', 'cu_homepage_admissions') . '/js/reset_content.js');
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function cu_homepage_admissions_ctools_plugin_directory($owner, $plugin_type){
+  if ($owner == 'feeds_tamper' && $plugin_type == 'plugins') {
+    return 'plugins';
+  }
+}

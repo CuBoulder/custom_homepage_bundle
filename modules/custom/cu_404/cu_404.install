@@ -1,0 +1,24 @@
+<?PHP
+
+/**
+ * Implements hook_install()
+ */
+function cu_404_install() {
+  variable_set('site_404', 'fourohfour'); //something like this
+}
+
+/**
+ * Implements hook_enable()
+ */
+function cu_404_enable() {
+  variable_set('site_404', 'fourohfour');
+}
+
+/**
+ * Implements hook_disable()
+ */
+function cu_404_disable() {
+  variable_del('site_404');
+  //Tell the user that they should reset their site 404 variable
+  drush_log('The site_404 variable has been unset. You will need to go into your Site Information admin page and set a new 404 page.', 'notice');
+}

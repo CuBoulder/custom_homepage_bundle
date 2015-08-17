@@ -244,7 +244,6 @@ nav#main-menu a {
         color:#fff;
       }
     }
-
   }
   .cu-content-slider-style1 .cu-slider-slide-content-inner {
     padding:20px;
@@ -284,7 +283,25 @@ nav#main-menu a {
   .cu-content-slider-style1 .cu-slider-slide-content-inner {
     padding:20px;
   }
+  .flex-direction-nav {
+    display:none;
+  }
 }
+@media screen and (min-width:720px) {
+  #intro-wide-wrapper {
+    .cu-slider-caption {
+      font-size: 36px;
+    }
+    .cu-slider-teaser {
+      font-size: 120%;
+      line-height: 120%;
+    }
+    .flex-direction-nav {
+      display:block;
+    }
+  }
+}
+
 .cu-slider-slide-content {
   max-width: 1160px;
 }

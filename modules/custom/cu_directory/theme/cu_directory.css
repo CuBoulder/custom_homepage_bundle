@@ -1,0 +1,11 @@
+#block-cu-directory-cu-directory-search-sidebar .content ul.cu-directory-results {
+	list-style:none;
+	margin:0;
+	padding: 0;
+}
+#block-cu-directory-cu-directory-search-sidebar .content ul.cu-directory-results li {
+	padding:5px 0;
+	margin: 0;
+	list-style: none;
+	list-style-type: none;
+}

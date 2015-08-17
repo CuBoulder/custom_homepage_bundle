@@ -1,7 +1,7 @@
 name = CU Homepage Policy
 core = 7.x
 package = CU Homepage
-version = 7.x-1.0
+version = 7.x-1.1
 project = cu_homepage_policy
 dependencies[] = advanced_link
 dependencies[] = ctools
@@ -50,4 +50,5 @@ features[variable][] = node_preview_policy
 features[variable][] = node_submitted_policy
 features[variable][] = pathauto_node_policy_pattern
 features[views_view][] = policies
-mtime = 1435164539
+features_exclude[field_base][body] = body
+mtime = 1437663797

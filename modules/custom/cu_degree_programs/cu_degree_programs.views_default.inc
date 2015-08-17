@@ -28,6 +28,7 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
@@ -146,6 +147,57 @@ function cu_degree_programs_views_default_views() {
       'any_label' => NULL,
       'filter_rewrite_values' => NULL,
     ),
+    'field_degree_prog_college_school_tid' => array(
+      'bef_format' => 'bef_links',
+      'more_options' => array(
+        'bef_select_all_none' => FALSE,
+        'bef_collapsible' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+            1 => 'vocabulary',
+            'secondary_label' => NULL,
+            'collapsible_label' => NULL,
+            'combine_rewrite' => NULL,
+            'reset_label' => NULL,
+            'bef_filter_description' => NULL,
+            'any_label' => NULL,
+            'filter_rewrite_values' => NULL,
+          ),
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+          'filter_rewrite_values' => NULL,
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+          'secondary_label' => NULL,
+          'collapsible_label' => NULL,
+          'combine_rewrite' => NULL,
+          'reset_label' => NULL,
+          'bef_filter_description' => NULL,
+          'any_label' => NULL,
+        ),
+        'secondary_label' => NULL,
+        'collapsible_label' => NULL,
+        'combine_rewrite' => NULL,
+        'reset_label' => NULL,
+        'filter_rewrite_values' => NULL,
+      ),
+      'secondary_label' => NULL,
+      'collapsible_label' => NULL,
+      'combine_rewrite' => NULL,
+      'reset_label' => NULL,
+      'bef_filter_description' => NULL,
+      'any_label' => NULL,
+      'filter_rewrite_values' => NULL,
+    ),
     'secondary_label' => NULL,
     'collapsible_label' => NULL,
     'combine_rewrite' => NULL,
@@ -170,6 +222,10 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -189,13 +245,12 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['id'] = 'field_degree_prog_career_int_tid';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['table'] = 'field_data_field_degree_prog_career_int';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['field'] = 'field_degree_prog_career_int_tid';
-  $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['group'] = 2;
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['operator_id'] = 'field_degree_prog_career_int_tid_op';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['label'] = 'Career Interest';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['operator'] = 'field_degree_prog_career_int_tid_op';
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['identifier'] = 'field_degree_prog_career_int_tid';
-  $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_degree_prog_career_int_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -211,7 +266,7 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['id'] = 'field_degree_prog_category_tid';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['table'] = 'field_data_field_degree_prog_category';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['field'] = 'field_degree_prog_category_tid';
-  $handler->display->display_options['filters']['field_degree_prog_category_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_degree_prog_category_tid']['group'] = 2;
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['expose']['operator_id'] = 'field_degree_prog_category_tid_op';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['expose']['label'] = 'Category';
@@ -224,9 +279,31 @@ function cu_degree_programs_views_default_views() {
     11 => 0,
     5 => 0,
     9 => 0,
+    18 => 0,
   );
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_degree_prog_category_tid']['vocabulary'] = 'categories';
+  /* Filter criterion: Content: College or School (field_degree_prog_college_school) */
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['id'] = 'field_degree_prog_college_school_tid';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['table'] = 'field_data_field_degree_prog_college_school';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['field'] = 'field_degree_prog_college_school_tid';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['group'] = 2;
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['expose']['operator_id'] = 'field_degree_prog_college_school_tid_op';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['expose']['label'] = 'College or School';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['expose']['operator'] = 'field_degree_prog_college_school_tid_op';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['expose']['identifier'] = 'field_degree_prog_college_school_tid';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+    28 => 0,
+  );
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_degree_prog_college_school_tid']['vocabulary'] = 'college_school';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

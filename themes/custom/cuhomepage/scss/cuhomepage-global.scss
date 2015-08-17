@@ -106,29 +106,89 @@ nav#main-menu a {
   }
 }
 
+
+#mobile-menu {
+  a {
+    background: #fff;
+    color:#333;
+    border-top:1px solid $border_color;
+    border-bottom: 1px solid $border_color;
+    margin-bottom: -1px;
+    font-weight: 600;
+  }
+  #secondary-menu-mobile a {
+    background: #e7e7e7;
+    border-top:1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+  }
+  a.active,
+  a.active-trail {
+    background-color: #333;
+    border-bottom-color: #333;
+    border-top-color: #333;
+    color:#fff;
+  }
+}
 #content-wrapper {
   //border-top: 1px solid $border_color;
 }
 
-.sidebars .menu-block-wrapper ul.menu a {
-  display: block;
-  color:#666;
-  padding:10px 0;
-  border-top:1px solid $border_color;
-  border-bottom: 1px solid $border_color;
-  margin-bottom: -1px;
-  &.active {
-    background-color: $border_color;
-    color:#222;
-    font-weight: 600;
+.sidebars,
+#block-menu-block-site-navigation-menus-1,
+#block-menu-block-site-navigation-menus-4 {
+  .menu-block-wrapper ul.menu a {
+    display: block;
+    color:#666;
     padding:10px;
+    border-top:1px solid $border_color;
+    border-bottom: 1px solid $border_color;
+    margin-bottom: -1px;
+    &:hover {
+      background-color: $border_color;
+      color:#222;
+    }
+    &.active-trail {
+      background-color: #f7f7f7;
+      border-bottom-color: #f7f7f7;
+      border-top-color: #f7f7f7;
+      color:#222;
+    }
+    &.active {
+      background-color: $border_color;
+      color:#222;
+      font-weight: 600;
+    }
+  }
+  .menu-block-wrapper ul.menu ul.menu a {
+    padding-left:25px;
+    font-size: 85%;
+    padding-top:5px;
+    padding-bottom: 5px;
+  }
+  .menu-block-wrapper ul.menu ul.menu ul.menu a {
+    padding-left: 40px;
+  }
+  .menu-block-wrapper ul.menu ul.menu ul.menu ul.menu a {
+    padding-left: 55px;
   }
 }
-
+#block-menu-block-site-navigation-menus-1 {
+  display: none;
+}
+#block-menu-block-site-navigation-menus-4 {
+  display: block;
+}
 .block-section {
   padding: 20px;
 }
-@media screen and (min-width:740px) {
+
+@media screen and (min-width:720px) {
+  #block-menu-block-site-navigation-menus-4 {
+    display: none;
+  }
+  #block-menu-block-site-navigation-menus-1 {
+    display: block;
+  }
   .block-section-content-wrapper {
     max-width: none;
     margin: 0 auto;
@@ -167,17 +227,44 @@ nav#main-menu a {
   background-color: #fff;
   .cu-slider-caption {
     font-weight: 900;
-    font-size: 36px;
+
     i.fa {
       display: none;
     }
+
+  }
+  .cu-slider-teaser p.lead {
+    font-size: 100%;
   }
   .cu-slider-teaser {
-    font-size: 120%;
-    line-height: 120%;
+    a {
+      color:$cugold;
+      &:hover,
+      &:active {
+        color:#fff;
+      }
+    }
+
   }
   .cu-content-slider-style1 .cu-slider-slide-content-inner {
     padding:20px;
+  }
+  .flex-direction-nav {
+    display:none;
+  }
+}
+@media screen and (min-width:720px) {
+  #intro-wide-wrapper {
+    .cu-slider-caption {
+      font-size: 36px;
+    }
+    .cu-slider-teaser {
+      font-size: 120%;
+      line-height: 120%;
+    }
+    .flex-direction-nav {
+      display:block;
+    }
   }
 }
 #slider-wrapper {
@@ -222,23 +309,23 @@ nav#main-menu a {
 .field-name-field-article-grid-more-link {
   text-align: right;
 }
+#branding {
+  padding: 0 20px;
+}
 #branding img.custom-logo {
   //max-width:50%;
-  margin-left:20px;
   height: auto;
   width: 100%;
 }
 @media screen and (min-width:740px) {
   #branding img.custom-logo {
     //max-width:50%;
-    margin-left:20px;
     margin-top: 10px;
   }
 }
 @media screen and (min-width:960px) {
   #branding img.custom-logo {
     max-width:100%;
-    margin-left:0px;
     margin-top: 0;
   }
 }
@@ -318,11 +405,15 @@ $zen-gutter-width:  40px;
   display: block;
   text-align: center;
   font-size: 150%;
-  padding:20px;
-  background: #f7f7f7;
+  padding:20px 20px;
+  background: #333;
+  color:#fff;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 #edit-field-degree-prog-career-int-tid-wrapper,
-#edit-field-degree-prog-category-tid-wrapper {
+#edit-field-degree-prog-category-tid-wrapper,
+#edit-field-degree-prog-college-school-tid-wrapper {
   float: none;
   padding: 0;
 }
@@ -332,8 +423,8 @@ $zen-gutter-width:  40px;
     text-align: center;
     a {
       display: block;
-      padding: 20px;
-      border-bottom: 1px solid $border_color;
+      padding: 10px 20px;
+      //border-bottom: 1px solid $border_color;
       &:hover,
       &.active {
         background: $border_color;
@@ -345,12 +436,269 @@ $zen-gutter-width:  40px;
 @media screen and (min-width:760px) {
   .view-degree-programs .bef-select-as-links > .form-item {
     .form-item {
-      width:50%;
+      width:33%;
       float:left;
+      &:nth-child(3n+1) {
+        @include zen-clear();
+      }
+    }
+  }
+}
+
+/* RESOURCES */
+.view-resources {
+  .view-content {
+    overflow:hidden;
+  }
+  .resource-group {
+    margin-bottom:20px;
+  }
+}
+@media screen and (min-width:760px) {
+  $zen-column-count:  2;
+  .view-resources {
+    .resource-group {
+      clear: none;
+      @include zen-float();
+      @include zen-grid-flow-item(1,2, false, true);
+      &:nth-child(2n+2) {
+        @include zen-grid-flow-item(1, 2, false, false);
+      }
       &:nth-child(2n+1) {
         @include zen-clear();
       }
     }
+  }
+}
+
+
+/* A TO Z */
+.orgunit {
+  padding:10px;
+  border:1px solid $border_color;
+  margin-bottom: 20px;
+}
+.atoz-links {
+  a.button:link,
+  a.button:visited {
+    color:#333 !important;
+    background: #d7d7d7;
+    font-size: 85%;
+    padding:1px 5px;
+  }
+}
+.atoz-partof {
+  text-transform: uppercase;
+  font-size: 85%;
+}
+
+ul.orgunit-links {
+  margin:20px 0;
+  list-style: none;
+  list-style-image: none;
+  padding: 0;
+  li {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+  }
+  li:first-child {
+    font-weight: 600;
+  }
+  a:before {
+  padding-right:5px;
+  font-family: FontAwesome;
+  content: '\f0c1';
+  }
+}
+.orgunit-members {
+  ul, li {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+  }
+  li.orgunit-member {
+    background: #f7f7f7;
+    padding: 10px;
+    margin-bottom: 20px;
+    .orgunit-member-desc {
+      font-weight: 600;
+    }
+  }
+  ul.orgunit-member-meta {
+    margin-left: 15px;
+  }
+}
+.atoz-subunits,
+.atoz-subunits .item-list {
+  ul, li {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    margin-left: 15px;
+    li.orgunit-member {
+      @extend .orgunit-member;
+    }
+  }
+
+}
+.orgunit h3 a.expand:before {
+  padding-right:5px;
+  font-family: FontAwesome;
+  content: '\f0fe';
+}
+.orgunit h3 a.collapse:before {
+  padding-right:5px;
+  font-family: FontAwesome;
+  content: '\f146';
+}
+
+/* Views Exposed */
+
+.views-exposed-widget {
+  select {
+    margin-right: 10px;
+  }
+}
+
+/* GSEARCH */
+html.js input.form-autocomplete {
+  background-image: url(../images/throbber-inactive.png);
+  background-image: none;
+}
+#cu-search-homepage-search-form-full {
+  .form-item,
+  .form-actions {
+    display: inline-block;
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .form-item-search-keys {
+    input.form-text {
+      width:100%;
+      min-width: 300px;
+    }
+  }
+}
+#content #block-cu-search-cu-search-ga-related {
+  float: left;
+  clear: both;
+  padding: 20px 0;
+}
+#content #block-cu-search-cu-search-ga-related h2 {
+  padding: 0;
+  float: left;
+  font-size: 1em;
+  font-weight: bold;
+}
+#content #block-cu-search-cu-search-ga-related ul {
+  height: 1.5em;
+  overflow: hidden;
+}
+#content #block-cu-search-cu-search-ga-related ul li {
+  list-style: disc;
+  float: left;
+  margin-left: 25px;
+  margin-top: 2px;
+  font-size: .8em;
+}
+#content #block-cu-search-cu-search-ga-related ul li.first {
+  list-style: none;
+  margin-left: 10px;
+}
+
+ul.cu-directory-results {
+  padding:0;
+  list-style: none;
+  list-style-image: none;
+  li {
+    padding: 0;
+    list-style: none;
+    list-style-image: none;
+  }
+}
+.sidebar .people-result {
+	font-size: 80%;
+	margin-bottom: 15px;
+}
+
+#content .people-result {
+	border-bottom:1px solid $border_color;
+	padding:1.5em 0;
+}
+#content .people-result:last-child {
+	border: none;
+}
+.people-meta {
+	font-size: 90%;
+}
+#content a.people-more {
+	color:#363636;
+	font-size: 150%;
+	font-weight: normal;
+}
+#content #block-cu-directory-cu-directory-search-sidebar .content ul.cu-directory-results li {
+  padding:1.5em 0;
+}
+#content #block-cu-directory-cu-directory-search-sidebar h2 {
+  margin: 0;
+  padding-top: 25px;
+}
+.sidebar .email-long, #content .email-short {
+  display: none;
+}
+
+/* Messages */
+
+#messages-wrapper {
+  background: #fff;
+  .messages {
+    max-width: 1200px;
+    margin:0 auto;
+    padding: 20px;
+  }
+}
+
+/* Admissions */
+
+.view-admission-recruitment-locations {
+  .views-row {
+    padding:10px 0;
+    border-bottom: 1px solid $border_color;
+  }
+  .views-row:last-child {
+    border-bottom: none;
+  }
+  .field-name-field-adm-event-date {
+    font-weight: 600;
+  }
+}
+.event-address {
+  .addressfield-container-inline::after {
+    display: inline;
+  }
+}
+.event-map {
+  display: block;
+}
+
+
+@media screen and (min-width:720px) {
+  .event-map {
+    width:50%;
+    float:right;
+    margin:0 0 20px 20px;
+    display:block;
+  }
+  .event-address {
+    width:40%;
+    float: left;
   }
 }
 @media screen and (max-width:640px) {

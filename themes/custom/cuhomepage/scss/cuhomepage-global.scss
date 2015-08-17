@@ -70,13 +70,13 @@ body {
   ul.list-style-underline>li {
     border-color: #555;
   }
-  
+
 }
 #footer-section {
   background: #000;
   color:#fff;
   a {
-    color:$cugold; 
+    color:$cugold;
     &:hover {
       color:#fff;
     }
@@ -180,6 +180,24 @@ nav#main-menu a {
     padding:20px;
   }
 }
+#slider-wrapper {
+  background-color: #f7f7f7;
+  padding-top: 20px;
+  .cu-slider-caption {
+    font-weight: 900;
+    font-size: 32px;
+    i.fa {
+      display: none;
+    }
+  }
+  .cu-slider-teaser {
+    font-size: 110%;
+    line-height: 110%;
+  }
+  .cu-content-slider-style1 .cu-slider-slide-content-inner {
+    padding:20px;
+  }
+}
 .cu-slider-slide-content {
   max-width: 1160px;
 }
@@ -270,7 +288,7 @@ $zen-gutter-width:  40px;
       @include zen-float();
       @include zen-grid-flow-item(1,2, false, true);
       &:nth-child(2n+2) {
-        @include zen-grid-flow-item(1, 2, false, false); 
+        @include zen-grid-flow-item(1, 2, false, false);
       }
       &:nth-child(2n+1) {
         @include zen-clear();
@@ -288,7 +306,7 @@ $zen-gutter-width:  40px;
       @include zen-float();
       @include zen-grid-flow-item(1,3, false, true);
       &:nth-child(3n+3) {
-        @include zen-grid-flow-item(1, 3, false, false); 
+        @include zen-grid-flow-item(1, 3, false, false);
       }
       &:nth-child(3n+1) {
         @include zen-clear();
@@ -333,5 +351,12 @@ $zen-gutter-width:  40px;
         @include zen-clear();
       }
     }
+  }
+}
+@media screen and (max-width:640px) {
+  .view-admission-recruitment-locations .views-exposed-widget select {
+    display: block;
+    width:100%;
+    max-width:none;
   }
 }

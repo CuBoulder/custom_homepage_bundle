@@ -222,8 +222,8 @@ nav#main-menu a {
 }
 .block {
 }
-
-#intro-wide-wrapper {
+#intro-wide-wrapper,
+#slider-wrapper {
   background-color: #fff;
   .cu-slider-caption {
     font-weight: 900;
@@ -261,6 +261,18 @@ nav#main-menu a {
     .cu-slider-teaser {
       font-size: 120%;
       line-height: 120%;
+    }
+    .flex-direction-nav {
+      display:block;
+    }
+  }
+  #slider-wrapper {
+    .cu-slider-caption {
+      font-size: 32px;
+    }
+    .cu-slider-teaser {
+      font-size: 110%;
+      line-height: 110%;
     }
     .flex-direction-nav {
       display:block;
@@ -682,5 +694,12 @@ ul.cu-directory-results {
   .event-address {
     width:40%;
     float: left;
+  }
+}
+@media screen and (max-width:640px) {
+  .view-admission-recruitment-locations .views-exposed-widget select {
+    display: block;
+    width:100%;
+    max-width:none;
   }
 }

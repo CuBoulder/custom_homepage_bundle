@@ -281,9 +281,8 @@ function cu_homepage_admissions_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(

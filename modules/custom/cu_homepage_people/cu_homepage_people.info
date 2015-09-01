@@ -1,7 +1,7 @@
 name = CU Homepage People
 core = 7.x
 package = CU Homepage
-version = 7.x-1.2
+version = 7.x-1.1
 project = cu_homepage_people
 dependencies[] = ctools
 dependencies[] = entityreference
@@ -28,5 +28,5 @@ features[field_instance][] = node-person-field_person_degree_program_ref
 features[field_instance][] = node-person-field_person_hometown
 features[taxonomy][] = audience
 features[views_view][] = person_bloggers
-mtime = 1441037121
+mtime = 1436385749
 project path = sites/all/modules/custom

@@ -1,12 +1,12 @@
 <?php
 /**
- * @file
- * cu_homepage_admissions.views_default.inc
- */
+* @file
+* cu_homepage_admissions.views_default.inc
+*/
 
 /**
- * Implements hook_views_default_views().
- */
+* Implements hook_views_default_views().
+*/
 function cu_homepage_adm_views_views_default_views() {
   $export = array();
 
@@ -31,9 +31,7 @@ function cu_homepage_adm_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'input_required';
-  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a location to find your Admission representative and events in your area.';
-  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'wysiwyg';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -123,13 +121,13 @@ function cu_homepage_adm_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'admission_event' => 'admission_event',
   );
-  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
@@ -186,6 +184,10 @@ function cu_homepage_adm_views_views_default_views() {
   $handler = $view->new_display('block', 'Person Block', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Find Your Counselor';
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a location to find your Admission representative and events in your area.';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'wysiwyg';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -230,13 +232,13 @@ function cu_homepage_adm_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
-  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
@@ -255,6 +257,7 @@ function cu_homepage_adm_views_views_default_views() {
     28 => 0,
   );
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+
 
   $export['admission_events_and_counselors'] = $view;
 

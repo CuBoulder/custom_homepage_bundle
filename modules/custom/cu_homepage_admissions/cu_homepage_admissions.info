@@ -26,7 +26,6 @@ dependencies[] = taxonomy
 dependencies[] = term_reference_tree
 dependencies[] = text
 dependencies[] = views
-dependencies[] = views_block_filter_block
 features[ctools][] = feeds:feeds_importer_default:1
 features[ctools][] = feeds_tamper:feeds_tamper_default:2
 features[ctools][] = field_group:field_group:1

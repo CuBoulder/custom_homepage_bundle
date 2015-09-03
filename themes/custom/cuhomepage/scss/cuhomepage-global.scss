@@ -662,7 +662,8 @@ ul.cu-directory-results {
 
 /* Admissions */
 
-.view-admission-recruitment-locations {
+.view-adm-events-counselors,
+.view-admission-events-and-counselors {
   .views-row {
     padding:10px 0;
     border-bottom: 1px solid $border_color;
@@ -672,6 +673,9 @@ ul.cu-directory-results {
   }
   .field-name-field-adm-event-date {
     font-weight: 600;
+  }
+  .view-display-id-attachment_1 .views-row {
+    border-bottom: none;
   }
 }
 .event-address {
@@ -697,7 +701,7 @@ ul.cu-directory-results {
   }
 }
 @media screen and (max-width:640px) {
-  .view-admission-recruitment-locations .views-exposed-widget select {
+  .view-adm-events-counselors .views-exposed-widget select {
     display: block;
     width:100%;
     max-width:none;

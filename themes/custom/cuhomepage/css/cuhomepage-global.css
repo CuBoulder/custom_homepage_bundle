@@ -197,9 +197,10 @@ ul.cu-directory-results li { padding: 0; list-style: none; list-style-image: non
 #messages-wrapper .messages { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
 /* Admissions */
-.view-admission-recruitment-locations .views-row { padding: 10px 0; border-bottom: 1px solid #e0e0e0; }
-.view-admission-recruitment-locations .views-row:last-child { border-bottom: none; }
-.view-admission-recruitment-locations .field-name-field-adm-event-date { font-weight: 600; }
+.view-adm-events-counselors .views-row, .view-admission-events-and-counselors .views-row { padding: 10px 0; border-bottom: 1px solid #e0e0e0; }
+.view-adm-events-counselors .views-row:last-child, .view-admission-events-and-counselors .views-row:last-child { border-bottom: none; }
+.view-adm-events-counselors .field-name-field-adm-event-date, .view-admission-events-and-counselors .field-name-field-adm-event-date { font-weight: 600; }
+.view-adm-events-counselors .view-display-id-attachment_1 .views-row, .view-admission-events-and-counselors .view-display-id-attachment_1 .views-row { border-bottom: none; }
 
 .event-address .addressfield-container-inline::after { display: inline; }
 
@@ -207,4 +208,4 @@ ul.cu-directory-results li { padding: 0; list-style: none; list-style-image: non
 
 @media screen and (min-width: 720px) { .event-map { width: 50%; float: right; margin: 0 0 20px 20px; display: block; }
   .event-address { width: 40%; float: left; } }
-@media screen and (max-width: 640px) { .view-admission-recruitment-locations .views-exposed-widget select { display: block; width: 100%; max-width: none; } }
+@media screen and (max-width: 640px) { .view-adm-events-counselors .views-exposed-widget select { display: block; width: 100%; max-width: none; } }

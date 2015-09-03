@@ -1,0 +1,13 @@
+name = CU Homepage Adm Views
+core = 7.x
+package = CU Homepage
+version = 7.x-1.0
+project = cu_homepage_adm_views
+dependencies[] = ctools
+dependencies[] = cu_homepage_admissions
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = admission_events_and_counselors
+mtime = 1441297411
+project path = sites/all/modules/custom

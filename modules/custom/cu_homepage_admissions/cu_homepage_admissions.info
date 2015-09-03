@@ -73,6 +73,5 @@ features[variable][] = node_options_admission_event
 features[variable][] = node_preview_admission_event
 features[variable][] = node_submitted_admission_event
 features[variable][] = pathauto_node_admission_event_pattern
-features[views_view][] = adm_events_counselors
 features[views_view][] = admission_recruitment_locations
-mtime = 1441139255
+mtime = 1441293772

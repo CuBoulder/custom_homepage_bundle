@@ -126,7 +126,7 @@ function cu_homepage_admissions_feeds_importer_default() {
     'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 1,
-    'process_in_background' => 1,
+    'process_in_background' => 0,
   );
   $export['admission_event'] = $feeds_importer;
 
@@ -135,7 +135,7 @@ function cu_homepage_admissions_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'admission_recruitment_locations';
   $feeds_importer->config = array(
-    'name' => 'Admission Recruitment Locations - Country',
+    'name' => 'Admission Recruitment Locations - Location 1',
     'description' => 'Run 1st',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
@@ -161,17 +161,7 @@ function cu_homepage_admissions_feeds_importer_default() {
         'vocabulary' => 'admission_recruitment_location',
         'mappings' => array(
           0 => array(
-            'source' => 'person_nid',
-            'target' => 'field_adm_counselor:etid',
-            'unique' => FALSE,
-          ),
-          1 => array(
-            'source' => 'postal',
-            'target' => 'field_adm_loc_postal_code',
-            'unique' => FALSE,
-          ),
-          2 => array(
-            'source' => 'country',
+            'source' => 'location1',
             'target' => 'name',
             'unique' => 1,
           ),
@@ -196,7 +186,7 @@ function cu_homepage_admissions_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'admission_recruitment_locations_high_school';
   $feeds_importer->config = array(
-    'name' => 'Admission Recruitment Locations - High School',
+    'name' => 'Admission Recruitment Locations - Location 4',
     'description' => 'Run 4th',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
@@ -222,24 +212,14 @@ function cu_homepage_admissions_feeds_importer_default() {
         'vocabulary' => 'admission_recruitment_location',
         'mappings' => array(
           0 => array(
-            'source' => 'person_nid',
-            'target' => 'field_adm_counselor:etid',
+            'source' => 'location3',
+            'target' => 'parent',
             'unique' => FALSE,
           ),
           1 => array(
-            'source' => 'postal',
-            'target' => 'field_adm_loc_postal_code',
-            'unique' => FALSE,
-          ),
-          2 => array(
-            'source' => 'high_school',
+            'source' => 'location4',
             'target' => 'name',
             'unique' => 1,
-          ),
-          3 => array(
-            'source' => 'state',
-            'target' => 'parent',
-            'unique' => FALSE,
           ),
         ),
         'update_existing' => '2',
@@ -262,7 +242,7 @@ function cu_homepage_admissions_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'admission_recruitment_locations_region';
   $feeds_importer->config = array(
-    'name' => 'Admission Recruitment Locations - Region',
+    'name' => 'Admission Recruitment Locations - Location 3',
     'description' => 'Run 3rd',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
@@ -288,24 +268,14 @@ function cu_homepage_admissions_feeds_importer_default() {
         'vocabulary' => 'admission_recruitment_location',
         'mappings' => array(
           0 => array(
-            'source' => 'person_nid',
-            'target' => 'field_adm_counselor:etid',
+            'source' => 'location2',
+            'target' => 'parent',
             'unique' => FALSE,
           ),
           1 => array(
-            'source' => 'postal',
-            'target' => 'field_adm_loc_postal_code',
-            'unique' => FALSE,
-          ),
-          2 => array(
-            'source' => 'region',
+            'source' => 'location3',
             'target' => 'name',
             'unique' => 1,
-          ),
-          3 => array(
-            'source' => 'state',
-            'target' => 'parent',
-            'unique' => FALSE,
           ),
         ),
         'update_existing' => '2',
@@ -328,7 +298,7 @@ function cu_homepage_admissions_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'admission_recruitment_locations_state';
   $feeds_importer->config = array(
-    'name' => 'Admission Recruitment Locations - State',
+    'name' => 'Admission Recruitment Locations - Location 2',
     'description' => 'Run 2nd',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
@@ -354,22 +324,12 @@ function cu_homepage_admissions_feeds_importer_default() {
         'vocabulary' => 'admission_recruitment_location',
         'mappings' => array(
           0 => array(
-            'source' => 'person_nid',
-            'target' => 'field_adm_counselor:etid',
-            'unique' => FALSE,
-          ),
-          1 => array(
-            'source' => 'postal',
-            'target' => 'field_adm_loc_postal_code',
-            'unique' => FALSE,
-          ),
-          2 => array(
-            'source' => 'country',
+            'source' => 'location1',
             'target' => 'parent',
             'unique' => FALSE,
           ),
-          3 => array(
-            'source' => 'state',
+          1 => array(
+            'source' => 'location2',
             'target' => 'name',
             'unique' => 1,
           ),

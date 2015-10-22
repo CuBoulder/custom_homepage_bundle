@@ -32,27 +32,43 @@
   margin-top: 10px;
 }
 .countdown-stacked .countdown-hours,
-.countdown-stacked .countdown-minutes {
+.countdown-stacked .countdown-minutes,
+.countdown-stacked .countdown-seconds {
   display: table-cell;
   font-size: 150%;
 }
 .countdown-stacked .countdown-hours {
   padding-right: 10px;
 }
-.countdown-stacked .countdown-minutes {
+.countdown-stacked.countdown-days-hours-minutes .countdown-hours {
+  padding-right: 10px;
+}
+.countdown-stacked.countdown-days-hours-minutes .countdown-minutes {
+  padding-left: 10px;
+}
+.countdown-stacked.countdown-days-hours-minutes-seconds .countdown-minutes {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.countdown-stacked .countdown-seconds {
   padding-left: 10px;
 }
 
 .countdown-stacked .countdown-hours span.countdown-value,
-.countdown-stacked .countdown-minutes span.countdown-value {
+.countdown-stacked .countdown-minutes span.countdown-value,
+.countdown-stacked .countdown-seconds span.countdown-value {
   font-weight: 900;
   display: block;
   text-align: center;
 }
 .countdown-stacked .countdown-hours span.countdown-label,
-.countdown-stacked .countdown-minutes span.countdown-label {
+.countdown-stacked .countdown-minutes span.countdown-label,
+.countdown-stacked .countdown-seconds span.countdown-label {
   display: block;
   text-align: center;
+  font-size:11px;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 .countdown-inline {
   font-size: 150%;
@@ -66,20 +82,25 @@
 .countdown-inline .countdown-days,
 .countdown-inline .countdown-bottom,
 .countdown-inline .countdown-hours,
-.countdown-inline .countdown-minutes {
+.countdown-inline .countdown-minutes,
+.countdown-inline .countdown-seconds {
   display: inline-block;
 }
-.countdown-inline .countdown-hours {
-  margin:0 10px;
+.countdown-inline .countdown-hours,
+.countdown-inline .countdown-minutes,
+.countdown-inline .countdown-seconds {
+  margin-left: 10px;
 }
 .countdown-inline .countdown-days .countdown-value,
 .countdown-inline .countdown-hours .countdown-value,
-.countdown-inline .countdown-minutes .countdown-value {
+.countdown-inline .countdown-minutes .countdown-value,
+.countdown-inline .countdown-seconds .countdown-value {
   font-weight: 900;
 }
 .countdown-inline .countdown-days .countdown-label,
 .countdown-inline .countdown-hours .countdown-label,
-.countdown-inline .countdown-minutes .countdown-label {
+.countdown-inline .countdown-minutes .countdown-label,
+.countdown-inline .countdown-seconds .countdown-label {
   font-weight: 300;
   padding-left: 5px;
 }

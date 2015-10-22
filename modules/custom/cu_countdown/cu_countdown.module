@@ -90,8 +90,7 @@ function cu_countdown_countdown($attrs, $content = NULL) {
                 </div>';
     }
     if (isset($time_parts[2])) {
-      $output .= '
-                  <div class="countdown-seconds">
+      $output .= '<div class="countdown-seconds">
                     <span class="countdown-value"></span><span class="countdown-label">seconds</span>
                   </div>';
     }

@@ -5,6 +5,7 @@ package = CU Homepage
 dependencies[] = cu_404
 dependencies[] = cu_atoz
 dependencies[] = cu_block_row
+dependencies[] = cu_countdown
 dependencies[] = cu_degree_programs
 dependencies[] = cu_directory
 dependencies[] = cu_homepage_admissions

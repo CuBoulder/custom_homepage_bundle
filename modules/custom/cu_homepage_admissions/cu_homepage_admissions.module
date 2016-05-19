@@ -6,8 +6,11 @@
 
 include_once 'cu_homepage_admissions.features.inc';
 
-function cu_homepage_admissions_views_pre_render(&$view) {
-  if ($view->name == 'admission_recruitment_locations') {
+function cu_homepage_admissions_page_alter(&$page) {
+
+  if ($_SERVER['REQUEST_URI'] == '/homepage/admissions/connect') {
     drupal_add_js(drupal_get_path('module', 'cu_homepage_admissions') . '/js/reset_content.js');
+    drupal_add_css(drupal_get_path('module', 'cu_homepage_admissions') . '/css/cu_homepage_admissions.css');
   }
 }
+

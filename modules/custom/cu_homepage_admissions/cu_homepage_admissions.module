@@ -18,7 +18,6 @@ function cu_homepage_admissions_page_alter(&$page) {
 }
 
 /**
-<<<<<<< HEAD
  * Implements hook_menu().
  *
  * @return array
@@ -58,7 +57,7 @@ function cu_homepage_admissions_views_query_alter(&$view, &$query) {
   }
 }
 
-=======
+/**
  * Implements hook_ctools_plugin_directory().
  */
 function cu_homepage_admissions_ctools_plugin_directory($owner, $plugin_type){
@@ -66,4 +65,3 @@ function cu_homepage_admissions_ctools_plugin_directory($owner, $plugin_type){
     return 'plugins';
   }
 }
->>>>>>> master

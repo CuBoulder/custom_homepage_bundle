@@ -6,9 +6,55 @@
 
 include_once 'cu_homepage_admissions.features.inc';
 
-function cu_homepage_admissions_views_pre_render(&$view) {
-  if ($view->name == 'admission_recruitment_locations') {
-    drupal_add_js(drupal_get_path('module', 'cu_homepage_admissions') . '/js/reset_content.js');
+/**
+ * Implements hook_page_alter().
+ *
+ * @param $page
+ */
+function cu_homepage_admissions_page_alter(&$page) {
+  if (request_path() == 'admissions/connect' || request_path() == 'admissions/connect/events') {
+    // Commenting out to test on...test.
+    //drupal_add_js(drupal_get_path('module', 'cu_homepage_admissions') . '/js/reset_content.js');
+  }
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * @return array
+ *   An array of menu items.
+ */
+function cu_homepage_admissions_menu() {
+  $items = array();
+  $items['admissions/connect/events/ajax'] = array(
+    'title' => 'AJAX Response for Admissions Events',
+    'page callback' => 'cu_homepage_admissions_ajax',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+/**
+ * Page callback to return rendered view via AJAX.
+ */
+function cu_homepage_admissions_ajax() {
+  print views_embed_view('admission_events_and_counselors_geolocation_view', 'block');
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * Add location data to views query if the data is present.
+ *
+ * @param $view
+ * @param $query
+ */
+function cu_homepage_admissions_views_query_alter(&$view, &$query) {
+  if ($view->name == 'admission_events_and_counselors_geolocation_view') {
+    $query_params = drupal_get_query_parameters();
+    if (array_key_exists('lat', $query_params)) {
+      $view->query->where[1]['conditions'][3]['field'] = '( 3959 * ACOS( COS( RADIANS(' . $query_params['lat'] . ') ) * COS( RADIANS(field_data_field_adm_event_geofield.field_adm_event_geofield_lat) ) * COS( RADIANS(field_data_field_adm_event_geofield.field_adm_event_geofield_lon) - RADIANS(' . $query_params['long'] . ') ) + SIN( RADIANS(' . $query_params['lat'] . ') ) * SIN( RADIANS(field_data_field_adm_event_geofield.field_adm_event_geofield_lat) ) ) ) <= 50';
+    }
   }
 }
 

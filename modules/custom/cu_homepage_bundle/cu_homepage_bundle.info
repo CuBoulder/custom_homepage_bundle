@@ -1,8 +1,7 @@
-name = Homepage
-description = Custom module for the Homepage
+name = Homepage Bundle
+description = Custom modules for the Homepage
 core = 7.x
 package = CU Homepage
-dependencies[] = cu_404
 dependencies[] = cu_atoz
 dependencies[] = cu_block_row
 dependencies[] = cu_countdown
@@ -14,3 +13,7 @@ dependencies[] = cu_homepage_policy
 dependencies[] = cu_homepage_resource
 dependencies[] = cu_search_homepage
 dependencies[] = homepage_blog_post
+
+bundle_contrib_packages = addressfield, better_exposed_filters, feeds, feeds_tamper, geocoder, geofield, geophp, postal_code, shs, term_merge, term_reference_tree, views_block_filter_block, views_responsive_grid,
+
+# contrib modules excluded for now but may be needed after further testing: boxes, media, advanced_link

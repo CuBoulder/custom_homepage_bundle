@@ -49,7 +49,7 @@
 
                 httpRequest2 = new XMLHttpRequest();
                 httpRequest2.onreadystatechange = locationReplace;
-                httpRequest2.open('POST', Drupal.settings.basePath + '/admissions/connect/events/ajax?long=' + long + '&lat=' + lat);
+                httpRequest2.open('POST', Drupal.settings.baseUrl + '/admissions/connect/events/ajax?long=' + long + '&lat=' + lat);
                 httpRequest2.setRequestHeader('Content-Type', 'application/json');
                 httpRequest2.send();
                     //}

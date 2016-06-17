@@ -11,7 +11,7 @@
 
     Drupal.behaviors.cu_homepage_admissions_geolocation = {
         attach: function (context, settings) {
-            var long, lat, query, httpRequest2, httpRequest, response, viewDiv;
+            var long, lat, query, httpRequest2, httpRequest, response, viewDiv, oldView, options;
 
             // Don't do anything if the user has interacted with the search.
             query = window.location.search;
@@ -19,10 +19,11 @@
                 return;
             }
 
-            //viewDiv = document.querySelector('.view-id-admission_events_and_counselors.view-display-id-block');
+            // Get view content and replace with spinner.
+            // Save the view content for now to replace if spinner times out.
             viewDiv = document.querySelector('.view-content');
+            oldView = viewDiv.innerHTML;
             viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
-            //viewDiv.innerHTML = '<div style=\x22background:url(\x22://mdn.mozillademos.org/files/11987/startransparent.gif\x22) #FFEE99 2.5cm bottom no-repeat;\x22 alt=\x22Loading...\x22></div>';
 
             /*
             // Code for Google Geolocation API.
@@ -32,6 +33,25 @@
             httpRequest.setRequestHeader('Content-Type', 'application/json');
             httpRequest.send();
             */
+
+            // Set timeout.
+            options = {
+                timeout: 5000,
+            };
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(locationView, error, options);
+            } else {
+                console.log("Geolocation is not supported by your browser");
+                viewDiv.innerHTML = oldView;
+            }
+
+            function error(err) {
+                console.warn('ERROR(' + err.code + '): ' + err.message);
+                // Replace view content.
+                viewDiv.innerHTML = oldView;
+            }
+
 
             function locationView(position) {
                /*
@@ -63,16 +83,6 @@
                         viewDiv.innerHTML = response;
                     }
                 }
-            }
-
-            function error() {
-                console.log("Unable to retrieve your location");
-            }
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(locationView, error);
-            } else {
-                console.log("Geolocation is not supported by your browser");
             }
         }
     };

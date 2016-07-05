@@ -13,45 +13,50 @@
         attach: function (context, settings) {
             var long, lat, query, httpRequest2, httpRequest, response, viewDiv, oldView, options;
 
-            // Don't do anything if the user has interacted with the search.
-            query = window.location.search;
-            if (query.indexOf('location') != -1) {
-                return;
-            }
+                // Don't do anything if the user has interacted with the search.
+                query = window.location.search;
+                if (query.indexOf('location') != -1) {
+                    return;
+                }
 
-            // Get view content and replace with spinner.
-            // Save the view content for now to replace if spinner times out.
-            viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-block');
-            oldView = viewDiv.innerHTML;
-            viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+                // Get view content and replace with spinner.
+                // Save the view content for now to replace if spinner times out.
+                viewDiv = document.querySelector('.view-admission-events-and-counselors .view-content');
 
-            /*
-            // Code for Google Geolocation API.
-            httpRequest = new XMLHttpRequest();
-            httpRequest.onreadystatechange = locationView;
-            httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyD5LVNF5mw36wdisNAgI3UqNb678zLEqP4');
-            httpRequest.setRequestHeader('Content-Type', 'application/json');
-            httpRequest.send();
-            */
+                // View div is different for events page so need to check if selection above is empty and select correct div.
+                if (viewDiv === null) {
+                    viewDiv = document.querySelector('.view-admission-events-and-counselors .view-empty');
+                }
 
-            // Set timeout.
-            options = {
-                timeout: 5000,
-            };
+                oldView = viewDiv.innerHTML;
+                viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
 
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(locationView, error, options);
-            } else {
-                console.log("Geolocation is not supported by your browser");
-                viewDiv.innerHTML = oldView;
-            }
+                /*
+                 // Code for Google Geolocation API.
+                 httpRequest = new XMLHttpRequest();
+                 httpRequest.onreadystatechange = locationView;
+                 httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyD5LVNF5mw36wdisNAgI3UqNb678zLEqP4');
+                 httpRequest.setRequestHeader('Content-Type', 'application/json');
+                 httpRequest.send();
+                 */
+
+                // Set timeout.
+                options = {
+                    timeout: 5000,
+                };
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(locationView, error, options);
+                } else {
+                    console.log("Geolocation is not supported by your browser");
+                    viewDiv.innerHTML = oldView;
+                }
 
             function error(err) {
                 console.warn('ERROR(' + err.code + '): ' + err.message);
                 // Replace view content.
                 viewDiv.innerHTML = oldView;
             }
-
 
             function locationView(position) {
                /*

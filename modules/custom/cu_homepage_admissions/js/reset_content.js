@@ -21,7 +21,7 @@
 
             // Get view content and replace with spinner.
             // Save the view content for now to replace if spinner times out.
-            viewDiv = document.querySelector('.view-content');
+            viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-block');
             oldView = viewDiv.innerHTML;
             viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
 

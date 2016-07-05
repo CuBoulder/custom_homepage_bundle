@@ -19,20 +19,32 @@
                 return;
             }
 
-            // Get view content and replace with spinner.
+            // Get view content. Need to check for empty and content results.
+            viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-block .view-content');
+            if (viewDiv === null) {
+                viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-block .view-empty');
+            }
+
+            // If viewDiv is still null, then the current page is on the page display and needs to select that view display.
+            if (viewDiv === null) {
+                viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-page .view-content');
+                if (viewDiv === null) {
+                    viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-page .view-empty');
+                }
+            }
+
             // Save the view content for now to replace if spinner times out.
-            viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-block');
             oldView = viewDiv.innerHTML;
             viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
 
             /*
-            // Code for Google Geolocation API.
-            httpRequest = new XMLHttpRequest();
-            httpRequest.onreadystatechange = locationView;
-            httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyD5LVNF5mw36wdisNAgI3UqNb678zLEqP4');
-            httpRequest.setRequestHeader('Content-Type', 'application/json');
-            httpRequest.send();
-            */
+             // Code for Google Geolocation API.
+             httpRequest = new XMLHttpRequest();
+             httpRequest.onreadystatechange = locationView;
+             httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=');
+             httpRequest.setRequestHeader('Content-Type', 'application/json');
+             httpRequest.send();
+             */
 
             // Set timeout.
             options = {
@@ -51,7 +63,6 @@
                 // Replace view content.
                 viewDiv.innerHTML = oldView;
             }
-
 
             function locationView(position) {
                /*

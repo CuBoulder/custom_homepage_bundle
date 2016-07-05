@@ -573,6 +573,7 @@ function cu_homepage_admissions_views_default_views() {
 
   /* Display: Event Page */
   $handler = $view->new_display('page', 'Event Page', 'page');
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['path'] = 'admissions/connect/events';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Upcoming Events';

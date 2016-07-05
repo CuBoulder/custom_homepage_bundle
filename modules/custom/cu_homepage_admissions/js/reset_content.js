@@ -41,7 +41,7 @@
              // Code for Google Geolocation API.
              httpRequest = new XMLHttpRequest();
              httpRequest.onreadystatechange = locationView;
-             httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyD5LVNF5mw36wdisNAgI3UqNb678zLEqP4');
+             httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=');
              httpRequest.setRequestHeader('Content-Type', 'application/json');
              httpRequest.send();
              */

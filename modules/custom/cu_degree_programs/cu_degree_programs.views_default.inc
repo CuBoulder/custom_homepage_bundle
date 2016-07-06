@@ -210,6 +210,7 @@ function cu_degree_programs_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'wysiwyg';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'col-lg-4 col-md-6 col-sm-12 col-xs-12';
   $handler->display->display_options['row_plugin'] = 'node';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';

@@ -37,5 +37,6 @@ function cu_degree_programs_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

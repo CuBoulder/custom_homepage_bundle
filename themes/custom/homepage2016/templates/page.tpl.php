@@ -86,10 +86,13 @@
       <?php endif; ?>
 
       <div id="content-wrapper" class="section-wrapper content-wrapper">
-        <div id="main" class="clearfix container-max">
-          <div class="breadcrumb-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="breadcrumb-wrapper  clearfix">
+          <div class="element-max-width-padding">
             <?php print $breadcrumb; ?>
           </div>
+        </div>
+
+        <div id="main" class="clearfix container-max">
           <div id="content" class="<?php print $main_content_classes; ?>" role="main">
 
             <a id="main-content"></a>

@@ -24,4 +24,6 @@ function homepage2016_preprocess_html(&$vars) {
   $vars['classes_array'][]='banner-' . $banner_color;
   $layout = theme_get_setting('layout_style', 'homepage2016') ? theme_get_setting('layout_style', 'homepage2016') : 'layout-wide';
   $vars['classes_array'][]=$layout;
+  unset($vars['head_title_array']['slogan']);
+  $vars['head_title'] = implode(' | ', $vars['head_title_array']);
 }

@@ -390,3 +390,260 @@ $border: #e7e7e7;
 #intro-wide-wrapper img {
   display: block;
 }
+
+/* GSEARCH */
+html.js input.form-autocomplete {
+  background-image: url(../images/throbber-inactive.png);
+  background-image: none;
+}
+#cu-search-homepage-search-form-full {
+  .form-item,
+  .form-actions {
+    display: inline-block;
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .form-item-search-keys {
+    input.form-text {
+      width:100%;
+      min-width: 300px;
+    }
+  }
+}
+#content #block-cu-search-cu-search-ga-related {
+  float: left;
+  clear: both;
+  padding: 20px 0;
+}
+#content #block-cu-search-cu-search-ga-related h2 {
+  padding: 0;
+  float: left;
+  font-size: 1em;
+  font-weight: bold;
+}
+#content #block-cu-search-cu-search-ga-related ul {
+  height: 1.5em;
+  overflow: hidden;
+}
+#content #block-cu-search-cu-search-ga-related ul li {
+  list-style: disc;
+  float: left;
+  margin-left: 25px;
+  margin-top: 2px;
+  font-size: .8em;
+}
+#content #block-cu-search-cu-search-ga-related ul li.first {
+  list-style: none;
+  margin-left: 10px;
+}
+
+ul.cu-directory-results {
+  padding:0;
+  list-style: none;
+  list-style-image: none;
+  li {
+    padding: 0;
+    list-style: none;
+    list-style-image: none;
+  }
+}
+.sidebar .people-result {
+	font-size: 80%;
+	margin-bottom: 15px;
+}
+
+#content .people-result {
+	border-bottom:1px solid $border_color;
+	padding:1.5em 0;
+}
+#content .people-result:last-child {
+	border: none;
+}
+.people-meta {
+	font-size: 90%;
+}
+#content a.people-more {
+	color:#363636;
+	font-size: 150%;
+	font-weight: normal;
+}
+#content #block-cu-directory-cu-directory-search-sidebar .content ul.cu-directory-results li {
+  padding:1.5em 0;
+}
+#content #block-cu-directory-cu-directory-search-sidebar h2 {
+  margin: 0;
+  padding-top: 25px;
+}
+.sidebar .email-long, #content .email-short {
+  display: none;
+}
+
+/* A TO Z */
+.orgunit {
+  padding:10px;
+  border:1px solid $border_color;
+  margin-bottom: 20px;
+}
+.atoz-links {
+  a.button:link,
+  a.button:visited {
+    color:#333 !important;
+    background: #d7d7d7;
+    font-size: 85%;
+    padding:1px 5px;
+  }
+}
+.atoz-partof {
+  text-transform: uppercase;
+  font-size: 85%;
+}
+
+ul.orgunit-links {
+  margin:20px 0;
+  list-style: none;
+  list-style-image: none;
+  padding: 0;
+  li {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+  }
+  li:first-child {
+    font-weight: 600;
+  }
+  a:before {
+  padding-right:5px;
+  font-family: FontAwesome;
+  content: '\f0c1';
+  }
+}
+.orgunit-members {
+  ul, li {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+  }
+  li.orgunit-member {
+    background: #f7f7f7;
+    padding: 10px;
+    margin-bottom: 20px;
+    .orgunit-member-desc {
+      font-weight: 600;
+    }
+  }
+  ul.orgunit-member-meta {
+    margin-left: 15px;
+  }
+}
+.atoz-subunits,
+.atoz-subunits .item-list {
+  ul, li {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    margin-left: 15px;
+    li.orgunit-member {
+      @extend .orgunit-member;
+    }
+  }
+
+}
+.orgunit h3 a.expand:before {
+  padding-right:5px;
+  font-family: FontAwesome;
+  content: '\f0fe';
+}
+.orgunit h3 a.collapse:before {
+  padding-right:5px;
+  font-family: FontAwesome;
+  content: '\f146';
+}
+
+/* Admissions */
+
+.view-adm-events-counselors,
+.view-admission-events-and-counselors {
+  .views-row {
+    padding:10px 0;
+    border-bottom: 1px solid $border_color;
+  }
+  .views-row:last-child {
+    border-bottom: none;
+  }
+  .field-name-field-adm-event-date {
+    font-weight: 600;
+  }
+  .view-display-id-attachment_1 .views-row {
+    border-bottom: none;
+  }
+}
+.event-address {
+  .addressfield-container-inline::after {
+    display: inline;
+  }
+}
+.event-map {
+  display: block;
+}
+
+
+@media screen and (min-width:720px) {
+  .event-map {
+    width:50%;
+    float:right;
+    margin:0 0 20px 20px;
+    display:block;
+  }
+  .event-address {
+    width:40%;
+    float: left;
+  }
+}
+@media screen and (max-width:640px) {
+  .view-adm-events-counselors .views-exposed-widget select {
+    display: block;
+    width:100%;
+    max-width:none;
+  }
+}
+
+/* RESOURCES */
+.view-resources {
+  .view-content {
+    overflow:hidden;
+    margin: 0 -20px;
+    @media (min-width: 1200px) {
+      .col-lg-6:nth-child(2n+1),
+      .col-lg-4:nth-child(3n+1),
+      .col-lg-3:nth-child(4n+1),
+      .col-lg-5c:nth-child(5n+1) {
+        clear:left;
+      }
+    }
+    @media (min-width: 960px) and (max-width: 1199px){
+      .col-md-6:nth-child(2n+1),
+      .col-md-4:nth-child(3n+1),
+      .col-md-3:nth-child(4n+1),
+      .col-md-5c:nth-child(5n+1) {
+        clear:left;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 959px){
+      .col-sm-6:nth-child(2n+1),
+      .col-sm-4:nth-child(3n+1),
+      .col-sm-3:nth-child(4n+1),
+      .col-sm-5c:nth-child(5n+1) {
+        clear:left;
+      }
+    }
+  }
+  .resource-group {
+    margin-bottom:20px;
+  }
+}

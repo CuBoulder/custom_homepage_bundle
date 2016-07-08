@@ -1,0 +1,339 @@
+<?php
+
+/**
+ * Implements hook_permission().
+ */
+function cu_atoz_permission() {
+  return array(
+    'view atoz' => array(
+      'title' => t('View AtoZ'),
+      'description' => t('View the AtoZ directory'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu()
+ */
+function cu_atoz_menu() {
+  $items['atoz'] = array(
+    'title' => 'CU-Boulder A to Z',
+    'page callback' => '_cu_atoz_default',
+    'access arguments' => array('view atoz'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+  $items['atoz/category/%'] = array(
+    'title' => 'CU-Boulder A to Z',
+    'page callback' => '_cu_atoz_category_list',
+    'page arguments' => array(2),
+    'access arguments' => array('view atoz'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['atoz/letter/%'] = array(
+    'title' => 'CU-Boulder A to Z',
+    'page callback' => '_cu_atoz_letter',
+    'page arguments' => array(2),
+    'access arguments' => array('view atoz'),
+    'type' => MENU_CALLBACK,
+  );
+  $items['atoz/show/%'] = array(
+    'title' => 'CU-Boulder A to Z',
+    'page callback' => '_cu_atoz_show',
+    'page arguments' => array(2),
+    'access arguments' => array('view atoz'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function cu_atoz_block_info() {
+  $blocks['cu_atoz_search'] = array(
+    'info' => t('Search AtoZ'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['cu_atoz_letter_list'] = array(
+    'info' => t('cu_atoz: letters'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function cu_atoz_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'cu_atoz_search':
+      $block['subject'] = t('Search Directory by Name');
+      $block['content'] = cu_atoz_search_form();
+      break;
+    case 'cu_atoz_letter_list':
+      $block['subject'] = t('Search Directory by Letter');
+      $block['content'] = cu_atoz_letters_list();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Page callback for /atoz.
+ *
+ * Just send the user on to letter/a.
+ */
+function _cu_atoz_default() {
+  drupal_goto('atoz/letter/a');  
+}
+
+/**
+ * Page callback for /atoz/show.
+ *
+ * Return the specified atoz entry.
+ */
+function _cu_atoz_show($id) {
+  //$output['letters'] = cu_atoz_letters_list();
+  //$output['search'] = cu_atoz_search_form();
+  
+  $data = _cu_atoz_get("ou/$id");
+  if(isset($data->error)) {
+    if ($data->error == 'No ou with that id') {
+      drupal_not_found();
+    }
+    else {
+      drupal_set_message(t('Error fetching results'), 'error');
+      return $output;
+    }
+  }
+  // @todo, render array.
+  $output['children'] = _cu_atoz_render_children($data);
+
+  return $output;
+}
+
+/**
+ * Recursively Render Children
+ * Build the tree
+ */
+function _cu_atoz_render_children($orgunit) {
+  $output = array();
+  $vars = array();
+  $vars['orgid'] = isset($orgunit->id) ? $orgunit->id : '';
+  $vars['description'] = isset($orgunit->description) ? $orgunit->description : '';
+  $vars['website'] = isset($orgunit->website) ? $orgunit->website : '';
+  $vars['campusbox'] = isset($orgunit->campusbox) ? $orgunit->campusbox : '';
+  $vars['building'] = isset($orgunit->building) ? $orgunit->building : '';
+  $vars['roomnumber'] = isset($orgunit->roomnumber) ? $orgunit->roomnumber : '';
+  $vars['streetaddress'] = isset($orgunit->streetaddress) ? $orgunit->streetaddress : '';
+  $vars['city'] = isset($orgunit->city) ? $orgunit->city : '';
+  $vars['state'] = isset($orgunit->state) ? $orgunit->state : '';
+  $vars['zip'] = isset($orgunit->zip) ? $orgunit->zip : '';
+  $vars['phones'] = isset($orgunit->phones) ? $orgunit->phones : '';
+  $vars['urls'] = isset($orgunit->urls) ? $orgunit->urls : '';
+  $vars['members'] = isset($orgunit->members) ? $orgunit->members : '';
+
+  $output['orgunit']['#markup'] = theme('cu_orgunit_full', $vars);
+  if (!empty($orgunit->children_ous)) {
+    $output['children']['#theme'] = 'item_list';
+    $output['children']['#prefix'] = '<div class="atoz-subunits">';
+    $output['children']['#suffix'] = '</div>';
+    foreach($orgunit->children_ous as $child_orgunit) {
+      $output['children']['#items'][] = render(_cu_atoz_render_children($child_orgunit));
+    }
+  }
+  return $output;
+}
+
+/**
+ * Page callback for /atoz/category
+ *
+ * Pull a category list
+ */
+function _cu_atoz_category_list($category) {
+  // Pull our categories
+  $cats = cu_atoz_categories();
+
+  // Check our category
+  if(!$key = array_search($category, $cats))
+    return 'Invalid Category';
+    
+  $data = _cu_atoz_get("categories/$category");
+  if(isset($data->error)) { return 'Error'; }
+
+  $out = cu_atoz_letters_list();
+  
+  foreach($data as $i) {
+    $out .= "<div class=\"orgUnit hover\" id=\"{$i->id}\">\n";
+    $out .= "<h3>{$i->description}</h3>\n";
+    $out .= "<div class=\"expand\">\n";
+    if($i->homepage) { 
+      $out .= "<p><a href=\"{$i->homepage}\" target=\"_blank\">WebSite</a></p>\n";
+    }
+    $out .= "<p>Part of: {$i->parent_description}</p>\n";
+    $out .= "</div>\n";
+    $out .= "</div>\n";
+  }
+  return $out;
+}
+
+/**
+ * Page callback for atoz/letter/%
+ *
+ * Returns all directory listings which begin with
+ * letter, %.
+ */
+function _cu_atoz_letter($letter) {
+  // Query api to get directory data.
+  $data = _cu_atoz_get("letter/$letter");
+
+  if (isset($data->error)) {
+    $output['error']['#markup'] = t('No results.');
+  }
+
+  // Loop through returned directory results and
+  // add the themed results to the page.
+  foreach ($data as $k => $orgunit) {
+    $vars = array();
+    $vars['orgid'] = isset($orgunit->id) ? $orgunit->id : '';
+    $vars['type'] = isset($orgunit->type) ? $orgunit->type : '';
+    $vars['description'] = isset($orgunit->description) ? $orgunit->description : '';
+    $vars['website'] = isset($orgunit->website) ? $orgunit->website : '';
+    $vars['also_listed'] = isset($orgunit->also_listed) ? $orgunit->also_listed : '';
+    $vars['parent_id'] = isset($orgunit->parent_id) ? $orgunit->parent_id : '';
+    $vars['part_of'] = isset($orgunit->part_of) ? $orgunit->part_of : '';
+    
+    // "teaser" output.
+    $vars['page'] = FALSE;
+
+    $output['data'][$k]['#markup'] = theme('cu_orgunit', $vars);
+  }
+  return $output;
+}
+
+/**
+ * List of the categories this module will display
+ * a list for
+ * key is the nice name, value is the URI for /category/
+ */
+function cu_atoz_categories() {
+  /* Returns a hash of categories for the jump menu */
+  $cats = array(
+    'Academic Departments' => 'academic_department',
+    'Academic Enrichment Programs' => 'academic_enrichment_program',
+    'Colleges %&amp; Schools' => 'college',
+    'Libraries' => 'library',
+    'Museums' => 'museum',
+    'Research Centers' => 'research_center',
+    'Research Institutes' => 'reasearch_institute',
+  );
+  
+  return $cats;
+}
+
+/**
+ * Returns render array of item list containing
+ * links to all 26 letters within the atoz directory.
+ */
+function cu_atoz_letters_list() {
+  $output = array();
+  $output['letters'] = array(
+    '#theme' => 'item_list',
+    '#attributes' => array(
+      'class' => array('atozletters', 'clearfix'),
+    ),
+  );
+  foreach(range('a', 'z') as $l) {
+    $output['letters']['#items'][] = l($l, "atoz/letter/$l");
+  }
+  return $output;
+}
+
+/**
+ * Returns render array of the search form with appropriate
+ * attributes and adds associated autocomplete js.
+ */
+function cu_atoz_search_form() {
+  global $base_url;
+  $module_atoz = drupal_get_path('module', 'cu_atoz');
+  drupal_add_library('system', 'ui.autocomplete');
+  drupal_add_js($module_atoz . '/js/cu_atoz.js'); 
+  
+  $form = array();
+  $form['atozsearch'] = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'id' => 'atozsearch',
+      'data-base-url' => $base_url,
+    ),
+  );
+  
+  //@todo switch to drupal's autocomplete
+
+  //@todo get throbber to work
+  //<div id="atozloading" style="display:none;">
+  //  <img src="$base_url/$module_path/images/ajax-loader.gif">
+  //</div>
+  
+  return $form;
+}
+
+// Set up a few wrapper function around _cu_atoz_get
+function cu_atoz_get_letter($letter) {
+  return _cu_atoz_get("letter/$letter");
+}
+function cu_atoz_get_orgunit($orgunit) {
+  return _cu_atoz_get("ou/$ou");
+}
+function cu_atoz_get_category($category) {
+  return _cu_atoz_get("categories/$category");
+}
+
+/**
+ * CURL helper functionto get the HTTP request from atozapi.colorado.edu
+ * Curl has proven to be much faster than file_get_contents
+ */
+function _cu_atoz_get($path) {
+  /* Set the URL */
+  $url = 'http://atozapi.colorado.edu/' . $path;
+  /* Build our array of CURL options */
+  $options = array(
+      CURLOPT_RETURNTRANSFER => true,           // return web page
+      CURLOPT_HEADER         => false,          // don't return headers
+      CURLOPT_ENCODING       => "",             // handle all encodings
+      CURLOPT_USERAGENT      => "atozreader",   // who am i
+      CURLOPT_AUTOREFERER    => true,           // set referer on redirect
+      CURLOPT_CONNECTTIMEOUT => 120,            // timeout on connect
+      CURLOPT_TIMEOUT        => 60,             // timeout on response
+      CURLOPT_MAXREDIRS      => 10,             // stop after 10 redirects
+  );
+  
+  $ch      = curl_init( $url );
+  curl_setopt_array( $ch, $options );
+  $content = curl_exec( $ch );
+  $err     = curl_errno( $ch );
+  $errmsg  = curl_error( $ch );
+  $header  = curl_getinfo( $ch );
+  curl_close( $ch );
+
+  /* JSON decode the data we got back */
+  $data = json_decode($content);
+  return $data;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function cu_atoz_theme($existing, $type, $theme, $path) {
+  return array(
+    'cu_orgunit' => array(
+      'variables' => array('orgid' => NULL, 'type' => NULL, 'description' => NULL, 'website' => NULL, 'also_listed' => NULL, 'parent_id' => NULL, 'part_of' => NULL, 'campusbox' => NULL, 'building' => NULL, 'roomnumber' => NULL),
+      'template' => 'orgunit'
+    ),
+    'cu_orgunit_full' => array(
+      'variables' => array('orgid' => NULL, 'description' => NULL, 'parent_id' => NULL, 'campusbox' => NULL, 'building' => NULL, 'roomnumber' => NULL, 'streetaddress' => NULL, 'city' => NULL, 'state' => NULL, 'zip' => NULL, 'phones' => array(), 'urls' => array(), 'members' => array(),),
+      'template' => 'orgunit-full'
+    ),
+  );
+}

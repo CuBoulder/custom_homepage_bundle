@@ -3,7 +3,7 @@
 /**
  * Preprocess html.
  */
-function homepage_preprocess_html(&$vars) {
+function cu_homepage_bundle_preprocess_html(&$vars) {
   // Only allow Same Origin to iframe us.
   $meta = array(
     '#type' => 'html_tag',
@@ -18,35 +18,9 @@ function homepage_preprocess_html(&$vars) {
 }
 
 /**
- * Implements hook_enable().
- */
-function homepage_enable() {
-  return array(
-    'homepage_secure_permissions' => array(),
-    'homepage_secure_permissions_roles' => array(),
-  );
-}
-
-
-/**
- * Implements hook_secure_permissions_roles().
- *
- * Create a secure_permissions_data module directory and place this function
- * in secure_permissions_data.module.
- *
- * @return
- *   An array defining all the roles for the site.
- */
-function homepage_secure_permissions_roles() {
-  return array(
-    'blogger',
-  );
-}
-
-/**
  * Implements hook_secure_permissions().
  */
-function homepage_secure_permissions($role) {
+function cu_homepage_bundle_secure_permissions($role) {
    $permissions = array(
     'administrator' => array(
       'administer admission_event_series vocabulary terms',
@@ -140,45 +114,6 @@ function homepage_secure_permissions($role) {
     'authenticated user' => array(
       'access_google_appliance_content',
       'view any resources bean',
-      'view atoz',
-      'view_cu_search_homepage_results',
-    ),
-    'blogger' => array(
-      'access_google_appliance_content',
-      'access content overview',
-      'create blog_post content',
-      'delete own blog_post content',
-      'delete revisions',
-      'edit own blog_post content',
-      'edit own person content',
-      'geocoder_service_all_handlers',
-      'geocoder_service_handler_exif',
-      'geocoder_service_handler_google',
-      'geocoder_service_handler_gpx',
-      'geocoder_service_handler_json',
-      'geocoder_service_handler_kml',
-      'geocoder_service_handler_latlon',
-      'geocoder_service_handler_mapquest_nominatim',
-      'geocoder_service_handler_wkt',
-      'geocoder_service_handler_yahoo',
-      'geocoder_service_handler_yandex',
-      'preview focal point',
-      'revert revisions',
-      'use text format wysiwyg',
-      'view any articles bean',
-      'view any article_grid bean',
-      'view any article_slider bean',
-      'view any cu_events_calendar_block bean',
-      'view any events_calendar_grid bean',
-      'view any facebook_activity bean',
-      'view any facebook_like_button bean',
-      'view any hero_unit bean',
-      'view any resources bean',
-      'view any slider bean',
-      'view any twitter_block bean',
-      'view own unpublished content',
-      'view revisions',
-      'view the administration theme',
       'view atoz',
       'view_cu_search_homepage_results',
     ),

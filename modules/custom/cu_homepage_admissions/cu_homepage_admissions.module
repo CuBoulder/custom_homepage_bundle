@@ -34,6 +34,7 @@ function cu_homepage_admissions_menu() {
     'title' => 'AJAX Response for Admissions Events',
     'page callback' => 'cu_homepage_admissions_ajax',
     'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
   );
   return $items;
 }

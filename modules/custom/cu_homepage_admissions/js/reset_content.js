@@ -19,23 +19,14 @@
                 return;
             }
 
-            // Get view content. Need to check for empty and content results.
-            viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-block .view-content');
-            if (viewDiv === null) {
-                viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-block .view-empty');
-            }
-
-            // If viewDiv is still null, then the current page is on the page display and needs to select that view display.
-            if (viewDiv === null) {
-                viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-page .view-content');
-                if (viewDiv === null) {
-                    viewDiv = document.querySelector('.view-admission-events-and-counselors.view-display-id-page .view-empty');
-                }
-            }
+            // Get view content to replace if geo lookup fails.
+            viewDiv = document.querySelector('.admissions-geolocation-view');
 
             // Save the view content for now to replace if spinner times out.
-            oldView = viewDiv.innerHTML;
-            viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+            if (viewDiv) {
+              oldView = viewDiv.innerHTML;
+              viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+            }
 
             /*
              // Code for Google Geolocation API.
@@ -48,7 +39,7 @@
 
             // Set timeout.
             options = {
-                timeout: 5000,
+                timeout: 5000
             };
 
             if (navigator.geolocation) {

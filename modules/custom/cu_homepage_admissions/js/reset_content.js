@@ -11,7 +11,13 @@
 
     Drupal.behaviors.cu_homepage_admissions_geolocation = {
         attach: function (context, settings) {
-            var long, lat, query, httpRequest2, httpRequest, response, viewDiv, oldView, options;
+            var long, lat, query, httpRequest2, httpRequest, response, viewDiv, oldView, options, moreLink;
+
+            // Change more link on the events view block to remove query string.
+            moreLink = document.querySelector('.view-id-admission_events_and_counselors.view-display-id-block .more-link');
+            if (moreLink) {
+              moreLink.innerHTML = '<a href="' + Drupal.settings.baseUrl + '/admissions/connect/events">more events</a>';
+            }
 
             // Don't do anything if the user has interacted with the search.
             query = window.location.search;
@@ -28,11 +34,12 @@
               viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
             }
 
-            /*
+
              // Code for Google Geolocation API.
+             /*
              httpRequest = new XMLHttpRequest();
              httpRequest.onreadystatechange = locationView;
-             httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=');
+             httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key');
              httpRequest.setRequestHeader('Content-Type', 'application/json');
              httpRequest.send();
              */
@@ -46,7 +53,7 @@
                 navigator.geolocation.getCurrentPosition(locationView, error, options);
             } else {
                 console.log("Geolocation is not supported by your browser");
-                viewDiv.innerHTML = oldView;
+                //viewDiv.innerHTML = oldView;
             }
 
             function error(err) {
@@ -56,18 +63,20 @@
             }
 
             function locationView(position) {
-               /*
+
                // Code for Google Geolocation API.
+              /*
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     if (httpRequest.status === 200) {
 
                         response = JSON.parse(httpRequest.responseText);
                         lat = response.location.lat;
                         long = response.location.lng;
-                        */
+               */
 
                 lat  = position.coords.latitude;
                 long = position.coords.longitude;
+
 
                 httpRequest2 = new XMLHttpRequest();
                 httpRequest2.onreadystatechange = locationReplace;
@@ -76,6 +85,7 @@
                 httpRequest2.send();
                     //}
                 //}
+
             }
 
             function locationReplace() {

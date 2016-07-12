@@ -1,0 +1,59 @@
+/* AtoZ reader CSS */
+
+ul.atozletters {
+  list-style: none; 
+  padding: 12px 0 !important;
+  margin: 0px !important;
+}
+
+ul.atozletters li {
+  display: inline;
+  float:left;
+  margin:0;
+  padding:0;
+}
+
+ul.atozletters li a {
+  display:block;
+  float:left;
+  padding:5px;
+  text-transform:uppercase;
+  
+}
+ul.atozletters li a.active {
+  background:#e7e7e7;
+  color:#333;
+}
+
+.ui-autocomplete-loading { background: white url('../images/ui-anim_basic_16x16.gif') right center no-repeat; }
+.ui-autocomplete {
+  background: #fff;
+  font-size: 14px;
+}
+.ui-autocomplete li,
+.ui-autocomplete li:hover {
+  padding:0;
+  margin: 0;
+  border-bottom: 1px solid #e7e7e7;
+  
+}
+.ui-autocomplete li:last-child {
+  border-bottom: none;
+}
+.ui-menu {
+  border:1px solid #e7e7e7;
+}
+.ui-menu .ui-menu-item a {
+  padding: 10px;
+  margin: 0;
+  color:#333;
+  display: block;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.ui-menu .ui-menu-item a:hover {
+  color:#333;
+  padding:11px;
+  background-color: #e7e7e7;
+}

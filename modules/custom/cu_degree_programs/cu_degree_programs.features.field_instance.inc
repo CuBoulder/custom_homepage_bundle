@@ -10,7 +10,7 @@
 function cu_degree_programs_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-degree_program-body'
+  // Exported field_instance: 'node-degree_program-body'.
   $field_instances['node-degree_program-body'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -64,7 +64,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_additional_img'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_additional_img'.
   $field_instances['node-degree_program-field_degree_prog_additional_img'] = array(
     'bundle' => 'degree_program',
     'deleted' => 0,
@@ -87,6 +88,7 @@ function cu_degree_programs_field_default_field_instances() {
           'colorbox_image_style' => 'large',
           'colorbox_multivalue_index' => NULL,
           'colorbox_node_style' => 'square_thumbnail',
+          'colorbox_node_style_first' => '',
         ),
         'type' => 'colorbox',
         'weight' => 13,
@@ -191,7 +193,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_advising_url'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_advising_url'.
   $field_instances['node-degree_program-field_degree_prog_advising_url'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -231,6 +234,7 @@ function cu_degree_programs_field_default_field_instances() {
     'label' => 'Advising',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'button button-blue ',
         'configurable_title' => 0,
@@ -244,6 +248,7 @@ function cu_degree_programs_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'Advising',
       'url' => 0,
@@ -259,7 +264,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_career_int'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_career_int'.
   $field_instances['node-degree_program-field_degree_prog_career_int'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -311,7 +317,7 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_category'
+  // Exported field_instance: 'node-degree_program-field_degree_prog_category'.
   $field_instances['node-degree_program-field_degree_prog_category'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -363,7 +369,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_college_school'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_college_school'.
   $field_instances['node-degree_program-field_degree_prog_college_school'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -410,7 +417,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_deg_reqs_url'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_deg_reqs_url'.
   $field_instances['node-degree_program-field_degree_prog_deg_reqs_url'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -450,6 +458,7 @@ function cu_degree_programs_field_default_field_instances() {
     'label' => 'Degree Requirements',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'button button-blue ',
         'configurable_title' => 0,
@@ -463,6 +472,7 @@ function cu_degree_programs_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'Degree Requirements',
       'url' => 0,
@@ -478,7 +488,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_degrees_offer'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_degrees_offer'.
   $field_instances['node-degree_program-field_degree_prog_degrees_offer'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -532,7 +543,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_dept_website'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_dept_website'.
   $field_instances['node-degree_program-field_degree_prog_dept_website'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -572,6 +584,7 @@ function cu_degree_programs_field_default_field_instances() {
     'label' => 'Department Website',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'button button-blue',
         'configurable_title' => 0,
@@ -585,6 +598,7 @@ function cu_degree_programs_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'Department Website',
       'url' => 0,
@@ -600,7 +614,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_grad_adm_url'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_grad_adm_url'.
   $field_instances['node-degree_program-field_degree_prog_grad_adm_url'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -640,6 +655,7 @@ function cu_degree_programs_field_default_field_instances() {
     'label' => 'Graduate Admission',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'button button-blue',
         'configurable_title' => 0,
@@ -653,6 +669,7 @@ function cu_degree_programs_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'Graduate Admission',
       'url' => 0,
@@ -668,7 +685,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_grad_studies'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_grad_studies'.
   $field_instances['node-degree_program-field_degree_prog_grad_studies'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -724,7 +742,7 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_image'
+  // Exported field_instance: 'node-degree_program-field_degree_prog_image'.
   $field_instances['node-degree_program-field_degree_prog_image'] = array(
     'bundle' => 'degree_program',
     'deleted' => 0,
@@ -850,7 +868,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_online_opp'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_online_opp'.
   $field_instances['node-degree_program-field_degree_prog_online_opp'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -906,7 +925,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_research_opp'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_research_opp'.
   $field_instances['node-degree_program-field_degree_prog_research_opp'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -962,7 +982,8 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_under_adm_url'
+  // Exported field_instance:
+  // 'node-degree_program-field_degree_prog_under_adm_url'.
   $field_instances['node-degree_program-field_degree_prog_under_adm_url'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -1002,6 +1023,7 @@ function cu_degree_programs_field_default_field_instances() {
     'label' => 'Undergraduate Admission',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'button button-blue',
         'configurable_title' => 0,
@@ -1015,6 +1037,7 @@ function cu_degree_programs_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'value',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => 'Undergraduate Admission',
       'url' => 0,
@@ -1030,7 +1053,7 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_under_opp'
+  // Exported field_instance: 'node-degree_program-field_degree_prog_under_opp'.
   $field_instances['node-degree_program-field_degree_prog_under_opp'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -1086,7 +1109,7 @@ function cu_degree_programs_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-degree_program-field_degree_prog_videos'
+  // Exported field_instance: 'node-degree_program-field_degree_prog_videos'.
   $field_instances['node-degree_program-field_degree_prog_videos'] = array(
     'bundle' => 'degree_program',
     'default_value' => NULL,
@@ -1104,6 +1127,7 @@ function cu_degree_programs_field_default_field_instances() {
         'module' => 'video_embed_field',
         'settings' => array(
           'description' => 1,
+          'description_position' => 'bottom',
           'video_style' => 'normal',
         ),
         'type' => 'video_embed_field',
@@ -1114,6 +1138,7 @@ function cu_degree_programs_field_default_field_instances() {
         'module' => 'video_embed_field',
         'settings' => array(
           'description' => 1,
+          'description_position' => 'bottom',
           'video_style' => 'normal',
         ),
         'type' => 'video_embed_field',
@@ -1132,7 +1157,12 @@ function cu_degree_programs_field_default_field_instances() {
     'label' => 'Videos',
     'required' => 0,
     'settings' => array(
+      'allowed_providers' => array(
+        0 => 'youtube',
+        1 => 'vimeo',
+      ),
       'description_field' => 0,
+      'description_length' => 128,
       'user_register_form' => FALSE,
     ),
     'widget' => array(

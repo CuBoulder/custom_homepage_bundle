@@ -1,0 +1,5 @@
+name = CU AtoZ
+description = A module to read and display AtoZ data from atozapi.colorado.edu
+package = CU
+core = 7.x
+stylesheets[all][] = css/cu_atoz.css

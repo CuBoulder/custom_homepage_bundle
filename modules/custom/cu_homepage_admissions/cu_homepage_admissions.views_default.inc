@@ -268,6 +268,7 @@ function cu_homepage_admissions_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Upcoming Admission Events';
+  $handler->display->display_options['css_class'] = 'admissions-geolocation-view';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'more events';
@@ -394,6 +395,7 @@ function cu_homepage_admissions_views_default_views() {
 
   /* Display: Event Page */
   $handler = $view->new_display('page', 'Event Page', 'page');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
@@ -410,7 +412,6 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Upcoming Events';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
@@ -440,7 +441,6 @@ function cu_homepage_admissions_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Upcoming Admission Events';
-  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'more events';
   $handler->display->display_options['link_display'] = 'page';
@@ -573,7 +573,6 @@ function cu_homepage_admissions_views_default_views() {
 
   /* Display: Event Page */
   $handler = $view->new_display('page', 'Event Page', 'page');
-  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['path'] = 'admissions/connect/events';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Upcoming Events';
@@ -583,6 +582,9 @@ function cu_homepage_admissions_views_default_views() {
   $handler = $view->new_display('block', 'Event Block', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Upcoming Events';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
@@ -590,6 +592,9 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'more events';
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'page';
+  $handler->display->display_options['link_url'] = 'admissions/connect/events/poop';
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -602,6 +607,9 @@ function cu_homepage_admissions_views_default_views() {
   $handler = $view->new_display('block', 'Person Block', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Find Your Counselor';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'input_required';
   $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a location to find your Admission representative and events in your area.';
@@ -675,6 +683,7 @@ function cu_homepage_admissions_views_default_views() {
     28 => 0,
   );
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+
 
   $export['admission_events_and_counselors'] = $view;
 

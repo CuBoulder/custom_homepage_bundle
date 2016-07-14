@@ -199,3 +199,5 @@ ul.orgunit-links a:before { padding-right: 5px; font-family: FontAwesome; conten
 @media (min-width: 960px) and (max-width: 1199px) { .view-resources .view-content .col-md-6:nth-child(2n+1), .view-resources .view-content .col-md-4:nth-child(3n+1), .view-resources .view-content .col-md-3:nth-child(4n+1), .view-resources .view-content .col-md-5c:nth-child(5n+1) { clear: left; } }
 @media (min-width: 768px) and (max-width: 959px) { .view-resources .view-content .col-sm-6:nth-child(2n+1), .view-resources .view-content .col-sm-4:nth-child(3n+1), .view-resources .view-content .col-sm-3:nth-child(4n+1), .view-resources .view-content .col-sm-5c:nth-child(5n+1) { clear: left; } }
 .view-resources .resource-group { margin-bottom: 20px; }
+
+.headings-bold h1#page-title, .headings-bold h1#page-title-image-title, .headings-bold .page-title-section h1, .headings-bold h2, .headings-bold h3, .headings-bold h4, .headings-bold h1#page-title strong, .headings-bold h1#page-title-image-title strong, .headings-bold .page-title-section h1 strong, .headings-bold h2 strong, .headings-bold h3 strong, .headings-bold h4 strong { font-weight: 900; }

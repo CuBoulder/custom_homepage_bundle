@@ -647,3 +647,7 @@ ul.orgunit-links {
     margin-bottom:20px;
   }
 }
+.headings-bold h1#page-title, .headings-bold h1#page-title-image-title, .headings-bold .page-title-section h1, .headings-bold h2, .headings-bold h3, .headings-bold h4,
+.headings-bold h1#page-title strong, .headings-bold h1#page-title-image-title strong, .headings-bold .page-title-section h1 strong, .headings-bold h2 strong, .headings-bold h3 strong, .headings-bold h4 strong {
+  font-weight: 900;
+}

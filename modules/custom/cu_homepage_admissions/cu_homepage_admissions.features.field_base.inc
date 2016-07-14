@@ -10,14 +10,13 @@
 function cu_homepage_admissions_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_adm_event_address'
+  // Exported field_base: 'field_adm_event_address'.
   $field_bases['field_adm_event_address'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_adm_event_address',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'addressfield',
@@ -26,14 +25,13 @@ function cu_homepage_admissions_field_default_field_bases() {
     'type' => 'addressfield',
   );
 
-  // Exported field_base: 'field_adm_event_date'
+  // Exported field_base: 'field_adm_event_date'.
   $field_bases['field_adm_event_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_adm_event_date',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -56,14 +54,13 @@ function cu_homepage_admissions_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_adm_event_geofield'
+  // Exported field_base: 'field_adm_event_geofield'.
   $field_bases['field_adm_event_geofield'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_adm_event_geofield',
-    'foreign keys' => array(),
     'indexes' => array(
       'bbox' => array(
         0 => 'top',
@@ -107,21 +104,13 @@ function cu_homepage_admissions_field_default_field_bases() {
     'type' => 'geofield',
   );
 
-  // Exported field_base: 'field_adm_event_series'
+  // Exported field_base: 'field_adm_event_series'.
   $field_bases['field_adm_event_series'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_adm_event_series',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -141,21 +130,13 @@ function cu_homepage_admissions_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_adm_event_type'
+  // Exported field_base: 'field_adm_event_type'.
   $field_bases['field_adm_event_type'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_adm_event_type',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -175,14 +156,13 @@ function cu_homepage_admissions_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_adm_loc_postal_code'
+  // Exported field_base: 'field_adm_loc_postal_code'.
   $field_bases['field_adm_loc_postal_code'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_adm_loc_postal_code',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'postal_code',
@@ -193,21 +173,13 @@ function cu_homepage_admissions_field_default_field_bases() {
     'type' => 'postal_code',
   );
 
-  // Exported field_base: 'field_adm_recruitment_locations'
+  // Exported field_base: 'field_adm_recruitment_locations'.
   $field_bases['field_adm_recruitment_locations'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_adm_recruitment_locations',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',

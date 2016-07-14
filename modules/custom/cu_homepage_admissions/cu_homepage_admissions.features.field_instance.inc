@@ -10,7 +10,7 @@
 function cu_homepage_admissions_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-admission_event-body'
+  // Exported field_instance: 'node-admission_event-body'.
   $field_instances['node-admission_event-body'] = array(
     'bundle' => 'admission_event',
     'default_value' => NULL,
@@ -60,7 +60,7 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-admission_event-field_adm_event_address'
+  // Exported field_instance: 'node-admission_event-field_adm_event_address'.
   $field_instances['node-admission_event-field_adm_event_address'] = array(
     'bundle' => 'admission_event',
     'default_value' => NULL,
@@ -122,7 +122,7 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-admission_event-field_adm_event_date'
+  // Exported field_instance: 'node-admission_event-field_adm_event_date'.
   $field_instances['node-admission_event-field_adm_event_date'] = array(
     'bundle' => 'admission_event',
     'deleted' => 0,
@@ -143,6 +143,7 @@ function cu_homepage_admissions_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 0,
@@ -182,7 +183,7 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-admission_event-field_adm_event_geofield'
+  // Exported field_instance: 'node-admission_event-field_adm_event_geofield'.
   $field_instances['node-admission_event-field_adm_event_geofield'] = array(
     'bundle' => 'admission_event',
     'deleted' => 0,
@@ -266,7 +267,7 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-admission_event-field_adm_event_series'
+  // Exported field_instance: 'node-admission_event-field_adm_event_series'.
   $field_instances['node-admission_event-field_adm_event_series'] = array(
     'bundle' => 'admission_event',
     'default_value' => NULL,
@@ -312,7 +313,7 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-admission_event-field_adm_event_type'
+  // Exported field_instance: 'node-admission_event-field_adm_event_type'.
   $field_instances['node-admission_event-field_adm_event_type'] = array(
     'bundle' => 'admission_event',
     'default_value' => NULL,
@@ -359,7 +360,8 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-admission_event-field_adm_recruitment_locations'
+  // Exported field_instance:
+  // 'node-admission_event-field_adm_recruitment_locations'.
   $field_instances['node-admission_event-field_adm_recruitment_locations'] = array(
     'bundle' => 'admission_event',
     'default_value' => NULL,
@@ -412,7 +414,7 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_adm_recruitment_locations'
+  // Exported field_instance: 'node-person-field_adm_recruitment_locations'.
   $field_instances['node-person-field_adm_recruitment_locations'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -432,7 +434,19 @@ function cu_homepage_admissions_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 28,
       ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'grid' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'sidebar' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -445,6 +459,12 @@ function cu_homepage_admissions_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -478,7 +498,8 @@ function cu_homepage_admissions_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-admission_recruitment_location-field_adm_loc_postal_code'
+  // Exported field_instance:
+  // 'taxonomy_term-admission_recruitment_location-field_adm_loc_postal_code'.
   $field_instances['taxonomy_term-admission_recruitment_location-field_adm_loc_postal_code'] = array(
     'bundle' => 'admission_recruitment_location',
     'default_value' => NULL,

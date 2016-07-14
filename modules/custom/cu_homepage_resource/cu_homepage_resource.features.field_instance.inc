@@ -10,7 +10,7 @@
 function cu_homepage_resource_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'bean-resources-field_resource_bean_audience'
+  // Exported field_instance: 'bean-resources-field_resource_bean_audience'.
   $field_instances['bean-resources-field_resource_bean_audience'] = array(
     'bundle' => 'resources',
     'default_value' => NULL,
@@ -42,7 +42,7 @@ function cu_homepage_resource_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-resources-field_resource_bean_category'
+  // Exported field_instance: 'bean-resources-field_resource_bean_category'.
   $field_instances['bean-resources-field_resource_bean_category'] = array(
     'bundle' => 'resources',
     'default_value' => NULL,
@@ -74,7 +74,7 @@ function cu_homepage_resource_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-resource-body'
+  // Exported field_instance: 'node-resource-body'.
   $field_instances['node-resource-body'] = array(
     'bundle' => 'resource',
     'default_value' => NULL,
@@ -124,7 +124,7 @@ function cu_homepage_resource_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-resource-field_resource_audience'
+  // Exported field_instance: 'node-resource-field_resource_audience'.
   $field_instances['node-resource-field_resource_audience'] = array(
     'bundle' => 'resource',
     'default_value' => NULL,
@@ -168,7 +168,7 @@ function cu_homepage_resource_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-resource-field_resource_category'
+  // Exported field_instance: 'node-resource-field_resource_category'.
   $field_instances['node-resource-field_resource_category'] = array(
     'bundle' => 'resource',
     'default_value' => NULL,
@@ -215,7 +215,7 @@ function cu_homepage_resource_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-resource-field_resource_sub_category'
+  // Exported field_instance: 'node-resource-field_resource_sub_category'.
   $field_instances['node-resource-field_resource_sub_category'] = array(
     'bundle' => 'resource',
     'default_value' => NULL,
@@ -262,7 +262,8 @@ function cu_homepage_resource_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-resource_category-field_resource_cat_image'
+  // Exported field_instance:
+  // 'taxonomy_term-resource_category-field_resource_cat_image'.
   $field_instances['taxonomy_term-resource_category-field_resource_cat_image'] = array(
     'bundle' => 'resource_category',
     'deleted' => 0,

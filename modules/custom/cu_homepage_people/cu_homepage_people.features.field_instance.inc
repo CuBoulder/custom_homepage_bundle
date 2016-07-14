@@ -10,7 +10,7 @@
 function cu_homepage_people_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-person-field_person_audience_ref'
+  // Exported field_instance: 'node-person-field_person_audience_ref'.
   $field_instances['node-person-field_person_audience_ref'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -30,7 +30,19 @@ function cu_homepage_people_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 21,
       ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'grid' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'sidebar' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -43,6 +55,12 @@ function cu_homepage_people_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -66,7 +84,7 @@ function cu_homepage_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_degree_program_ref'
+  // Exported field_instance: 'node-person-field_person_degree_program_ref'.
   $field_instances['node-person-field_person_degree_program_ref'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -88,7 +106,19 @@ function cu_homepage_people_field_default_field_instances() {
         'type' => 'entityreference_label',
         'weight' => 20,
       ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'grid' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'sidebar' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -101,6 +131,12 @@ function cu_homepage_people_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -128,7 +164,7 @@ function cu_homepage_people_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-person-field_person_hometown'
+  // Exported field_instance: 'node-person-field_person_hometown'.
   $field_instances['node-person-field_person_hometown'] = array(
     'bundle' => 'person',
     'default_value' => NULL,
@@ -149,7 +185,19 @@ function cu_homepage_people_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 19,
       ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'grid' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'sidebar' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -162,6 +210,12 @@ function cu_homepage_people_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

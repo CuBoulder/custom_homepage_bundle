@@ -101,7 +101,6 @@
                 if (httpRequest2.readyState === XMLHttpRequest.DONE) {
                     if (httpRequest2.status === 200) {
                         response = JSON.parse(httpRequest2.responseText);
-                        console.log(response);
                         fullViewDiv.innerHTML = response.main_events;
                         featuredViewDiv.innerHTML = response.featured_events;
                     }

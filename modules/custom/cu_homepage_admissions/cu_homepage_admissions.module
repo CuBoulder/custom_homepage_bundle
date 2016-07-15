@@ -60,7 +60,6 @@ function cu_homepage_admissions_ajax() {
 function cu_homepage_admissions_views_query_alter(&$view, &$query) {
   if ($view->name == 'admission_events_and_counselors_geolocation_view') {
     $query_params = drupal_get_query_parameters();
-    //dpm($view);
     if (array_key_exists('lat', $query_params)) {
       $view->query->where[1]['conditions'][3]['field'] = '( 3959 * ACOS( COS( RADIANS(' . $query_params['lat'] . ') ) * COS( RADIANS(field_data_field_adm_event_geofield.field_adm_event_geofield_lat) ) * COS( RADIANS(field_data_field_adm_event_geofield.field_adm_event_geofield_lon) - RADIANS(' . $query_params['long'] . ') ) + SIN( RADIANS(' . $query_params['lat'] . ') ) * SIN( RADIANS(field_data_field_adm_event_geofield.field_adm_event_geofield_lat) ) ) ) <= 50';
     }

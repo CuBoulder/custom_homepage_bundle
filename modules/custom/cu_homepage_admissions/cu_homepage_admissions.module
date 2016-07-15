@@ -44,8 +44,6 @@ function cu_homepage_admissions_menu() {
  */
 function cu_homepage_admissions_ajax() {
   $views = array();
-  //$views['main_events'] = '<div class="admissions-events-full">' . views_embed_view('admission_events_and_counselors_geolocation_view', 'block') . '</div>';
-  //$views['featured_events'] = '<div class="admissions-events-featured">' . views_embed_view('admission_events_and_counselors_geolocation_view', 'block_1') . '</div>';
   $views['main_events'] = views_embed_view('admission_events_and_counselors_geolocation_view', 'block');
   $views['featured_events'] = views_embed_view('admission_events_and_counselors_geolocation_view', 'block_1');
   print json_encode($views);

@@ -651,3 +651,22 @@ ul.orgunit-links {
 .headings-bold h1#page-title strong, .headings-bold h1#page-title-image-title strong, .headings-bold .page-title-section h1 strong, .headings-bold h2 strong, .headings-bold h3 strong, .headings-bold h4 strong {
   font-weight: 900;
 }
+
+/* Views exposed filter description */
+.view-admission-events-and-counselors,
+.view-degree-programs {
+  .views-exposed-form {
+    .description {
+      display: none;
+    }
+  }
+}
+
+/* Degree Programs */
+
+.field-name-field-degree-prog-image {
+  img {
+    width:100%;
+    height: auto;
+  }
+}

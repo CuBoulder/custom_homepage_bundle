@@ -27,6 +27,5 @@ features[field_instance][] = node-person-field_person_audience_ref
 features[field_instance][] = node-person-field_person_degree_program_ref
 features[field_instance][] = node-person-field_person_hometown
 features[taxonomy][] = audience
-features[views_view][] = person_bloggers
 mtime = 1436385749
 project path = sites/all/modules/custom

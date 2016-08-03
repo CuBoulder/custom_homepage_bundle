@@ -56,7 +56,7 @@ function cu_homepage_admissions_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 41,
+      'weight' => 4,
     ),
   );
 
@@ -118,7 +118,7 @@ function cu_homepage_admissions_field_default_field_instances() {
         ),
       ),
       'type' => 'addressfield_standard',
-      'weight' => 43,
+      'weight' => 6,
     ),
   );
 
@@ -179,7 +179,59 @@ function cu_homepage_admissions_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 42,
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-admission_event-field_adm_event_featured'.
+  $field_instances['node-admission_event-field_adm_event_featured'] = array(
+    'bundle' => 'admission_event',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'default_value_function' => '',
+    'default_value_php' => '',
+    'deleted' => 0,
+    'description' => 'Choose whether to include this event in the featured events view located on the upcoming admissions events page.',
+    'display' => array(
+      'blogger' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'fences_wrapper' => 'div_div_div',
+    'field_name' => 'field_adm_event_featured',
+    'label' => 'Featured Event',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 8,
     ),
   );
 
@@ -263,7 +315,7 @@ function cu_homepage_admissions_field_default_field_instances() {
         ),
       ),
       'type' => 'geocoder',
-      'weight' => 48,
+      'weight' => 11,
     ),
   );
 
@@ -309,7 +361,7 @@ function cu_homepage_admissions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 45,
+      'weight' => 9,
     ),
   );
 
@@ -356,7 +408,7 @@ function cu_homepage_admissions_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 44,
+      'weight' => 7,
     ),
   );
 
@@ -410,7 +462,7 @@ function cu_homepage_admissions_field_default_field_instances() {
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 47,
+      'weight' => 10,
     ),
   );
 
@@ -537,7 +589,9 @@ function cu_homepage_admissions_field_default_field_instances() {
   t('Admission Recruitment Location');
   t('Admission Recruitment Locations');
   t('Body');
+  t('Choose whether to include this event in the featured events view located on the upcoming admissions events page.');
   t('Date');
+  t('Featured Event');
   t('Geofield');
   t('Postal Code');
   t('Select the locations that this person is responsible for.');

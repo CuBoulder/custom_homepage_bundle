@@ -54,6 +54,32 @@ function cu_homepage_admissions_field_default_field_bases() {
     'type' => 'datetime',
   );
 
+  // Exported field_base: 'field_adm_event_featured'.
+  $field_bases['field_adm_event_featured'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_adm_event_featured',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+      'allowed_values_php' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_adm_event_geofield'.
   $field_bases['field_adm_event_geofield'] = array(
     'active' => 1,

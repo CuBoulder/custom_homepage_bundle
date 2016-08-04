@@ -27,21 +27,7 @@
                 return;
             }
 
-            // Get view content to replace if geo lookup fails.
-            fullViewDiv = document.querySelector('.admissions-geolocation-full');
-            featuredViewDiv = document.querySelector('.admissions-geolocation-featured');
 
-            // Save the view content for now to replace if spinner times out.
-            if (fullViewDiv) {
-              oldFullView = fullViewDiv.innerHTML;
-              fullViewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
-            }
-
-            // Save the view content for now to replace if spinner times out.
-            if (featuredViewDiv) {
-              oldFeaturedView = featuredViewDiv.innerHTML;
-              featuredViewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
-            }
 
              // Code for Google Geolocation API.
              /*
@@ -72,6 +58,22 @@
             }
 
             function locationView(position) {
+
+                // Get view content to replace if geo lookup fails.
+                fullViewDiv = document.querySelector('.admissions-geolocation-full');
+                featuredViewDiv = document.querySelector('.admissions-geolocation-featured');
+
+                // Save the view content for now to replace if spinner times out.
+                if (fullViewDiv) {
+                    oldFullView = fullViewDiv.innerHTML;
+                    fullViewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+                }
+
+                // Save the view content for now to replace if spinner times out.
+                if (featuredViewDiv) {
+                    oldFeaturedView = featuredViewDiv.innerHTML;
+                    featuredViewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+                }
 
                // Code for Google Geolocation API.
                 /*

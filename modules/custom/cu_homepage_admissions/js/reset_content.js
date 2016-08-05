@@ -51,10 +51,7 @@
             }
 
             function error(err) {
-                console.warn('ERROR(' + err.code + '): ' + err.message);
-                // Replace view content.
-                fullViewDiv.innerHTML = oldFullView;
-                featuredViewDiv.innerHTML = oldFeaturedView;
+                console.log('ERROR(' + err.code + '): ' + err.message);
             }
 
             function locationView(position) {

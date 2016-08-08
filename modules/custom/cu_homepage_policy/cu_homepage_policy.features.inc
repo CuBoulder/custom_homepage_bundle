@@ -37,5 +37,6 @@ function cu_homepage_policy_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

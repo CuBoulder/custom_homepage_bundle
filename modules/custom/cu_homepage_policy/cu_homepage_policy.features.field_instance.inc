@@ -10,7 +10,7 @@
 function cu_homepage_policy_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-policy-body'
+  // Exported field_instance: 'node-policy-body'.
   $field_instances['node-policy-body'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -60,7 +60,7 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_approved_by'
+  // Exported field_instance: 'node-policy-field_policy_approved_by'.
   $field_instances['node-policy-field_policy_approved_by'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -107,7 +107,7 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_authors'
+  // Exported field_instance: 'node-policy-field_policy_authors'.
   $field_instances['node-policy-field_policy_authors'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -154,7 +154,7 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_categories'
+  // Exported field_instance: 'node-policy-field_policy_categories'.
   $field_instances['node-policy-field_policy_categories'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -201,7 +201,7 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_effective_date'
+  // Exported field_instance: 'node-policy-field_policy_effective_date'.
   $field_instances['node-policy-field_policy_effective_date'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -222,6 +222,7 @@ function cu_homepage_policy_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 5,
@@ -263,7 +264,7 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_external_url'
+  // Exported field_instance: 'node-policy-field_policy_external_url'.
   $field_instances['node-policy-field_policy_external_url'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -296,6 +297,7 @@ function cu_homepage_policy_field_default_field_instances() {
     'label' => 'External URL',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -309,6 +311,7 @@ function cu_homepage_policy_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -317,19 +320,19 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'advanced_link',
+      'module' => 'link',
       'settings' => array(
         'default_titles' => '',
         'urls_allowed' => 'both',
         'urls_filter' => '',
         'urls_search' => 'start',
       ),
-      'type' => 'advanced_link',
+      'type' => 'link_field',
       'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_file'
+  // Exported field_instance: 'node-policy-field_policy_file'.
   $field_instances['node-policy-field_policy_file'] = array(
     'bundle' => 'policy',
     'deleted' => 0,
@@ -433,7 +436,7 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_related_policies'
+  // Exported field_instance: 'node-policy-field_policy_related_policies'.
   $field_instances['node-policy-field_policy_related_policies'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,
@@ -483,7 +486,7 @@ function cu_homepage_policy_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-policy-field_policy_revisions'
+  // Exported field_instance: 'node-policy-field_policy_revisions'.
   $field_instances['node-policy-field_policy_revisions'] = array(
     'bundle' => 'policy',
     'default_value' => NULL,

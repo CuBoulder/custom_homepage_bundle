@@ -206,7 +206,7 @@ function cu_homepage_admissions_field_default_field_instances() {
         'label' => 'above',
         'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'teaser' => array(

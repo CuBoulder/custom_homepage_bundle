@@ -3,7 +3,7 @@
 /**
  * Implements hook_install().
  */
-function homepage_install() {
+function cu_homepage_bundle_install() {
   db_query("UPDATE {system} SET weight = 99 WHERE name = 'homepage'");
   module_enable(array(
     'cu_homepage_people',
@@ -14,7 +14,7 @@ function homepage_install() {
 /**
  * Set weight of cu_image_styles to 100 to override other image styles for homepage
  */
-function homepage_update_7001() {
+function cu_homepage_bundle_update_7001() {
   db_update('system')
     ->fields(array('weight' => 100))
     ->condition('name', '[cu_image_styles]', '=')
@@ -24,7 +24,7 @@ function homepage_update_7001() {
 /**
  * Delete all terms in Adm Location taxonomy to prepare for annual data refresh
  */
-function homepage_update_7002() {
+function cu_homepage_bundle_update_7002() {
   $homepage_7002_result = db_select('taxonomy_term_data','t')
     ->fields('t',array('tid','vid'))
     ->condition('vid', 30,'=')
@@ -33,5 +33,27 @@ function homepage_update_7002() {
 
   foreach ($homepage_7002_result as $object) {
     taxonomy_term_delete($object->tid);
+  }
+}
+
+/**
+ * Update IEF fields since view name has changed.
+ */
+function cu_homepage_bundle_update_7003() {
+  $fields = array(
+    'field_footer',
+    'field_header',
+    'field_intro',
+    'field_sidebar_first',
+    'field_sidebar_second',
+    'field_slider',
+    'field_wide_2',
+    'field_inner_content_left',
+    'field_inner_content_right',
+  );
+  foreach ($fields as $field) {
+    $info = field_info_field($field);
+    $info['settings']['handler_settings']['view']['view_name'] = 'express_layout_beans';
+    field_update_field($info);
   }
 }

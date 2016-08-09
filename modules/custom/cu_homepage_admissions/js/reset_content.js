@@ -14,10 +14,12 @@
             var long, lat, query, httpRequest2, httpRequest, response, viewDiv, oldView, options, moreLink;
 
             // Change more link on the events view block to remove query string.
+            /*
             moreLink = document.querySelector('.view-id-admission_events_and_counselors.view-display-id-block .more-link');
             if (moreLink) {
               moreLink.innerHTML = '<a href="' + Drupal.settings.baseUrl + '/admissions/connect/events">more events</a>';
             }
+            */
 
             // Don't do anything if the user has interacted with the search.
             query = window.location.search;
@@ -25,21 +27,13 @@
                 return;
             }
 
-            // Get view content to replace if geo lookup fails.
-            viewDiv = document.querySelector('.admissions-geolocation-view');
-
-            // Save the view content for now to replace if spinner times out.
-            if (viewDiv) {
-              oldView = viewDiv.innerHTML;
-              viewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
-            }
 
 
              // Code for Google Geolocation API.
              /*
              httpRequest = new XMLHttpRequest();
              httpRequest.onreadystatechange = locationView;
-             httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key');
+             httpRequest.open('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=');
              httpRequest.setRequestHeader('Content-Type', 'application/json');
              httpRequest.send();
              */
@@ -57,26 +51,40 @@
             }
 
             function error(err) {
-                console.warn('ERROR(' + err.code + '): ' + err.message);
-                // Replace view content.
-                viewDiv.innerHTML = oldView;
+                console.log('ERROR(' + err.code + '): ' + err.message);
             }
 
             function locationView(position) {
 
+                // Get view content to replace if geo lookup fails.
+                fullViewDiv = document.querySelector('.admissions-geolocation-full');
+                featuredViewDiv = document.querySelector('.admissions-geolocation-featured');
+
+                // Save the view content for now to replace if spinner times out.
+                if (fullViewDiv) {
+                    oldFullView = fullViewDiv.innerHTML;
+                    fullViewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+                }
+
+                // Save the view content for now to replace if spinner times out.
+                if (featuredViewDiv) {
+                    oldFeaturedView = featuredViewDiv.innerHTML;
+                    featuredViewDiv.innerHTML = '<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+                }
+
                // Code for Google Geolocation API.
-              /*
+                /*
                 if (httpRequest.readyState === XMLHttpRequest.DONE) {
                     if (httpRequest.status === 200) {
 
                         response = JSON.parse(httpRequest.responseText);
+                      console.log(response);
                         lat = response.location.lat;
                         long = response.location.lng;
-               */
+                 */
 
                 lat  = position.coords.latitude;
                 long = position.coords.longitude;
-
 
                 httpRequest2 = new XMLHttpRequest();
                 httpRequest2.onreadystatechange = locationReplace;
@@ -91,8 +99,9 @@
             function locationReplace() {
                 if (httpRequest2.readyState === XMLHttpRequest.DONE) {
                     if (httpRequest2.status === 200) {
-                        response = httpRequest2.responseText;
-                        viewDiv.innerHTML = response;
+                        response = JSON.parse(httpRequest2.responseText);
+                        fullViewDiv.innerHTML = response.main_events;
+                        featuredViewDiv.innerHTML = response.featured_events;
                     }
                 }
             }

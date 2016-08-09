@@ -421,10 +421,118 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'admission_event' => 'admission_event',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date - end date (field_adm_event_date:value2) */
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['field'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['granularity'] = 'hour';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: Geofield (field_adm_event_geofield) - proximity */
+  $handler->display->display_options['filters']['field_geofield_distance']['id'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['table'] = 'field_data_field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['field'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_geofield_distance']['value'] = array(
+    'distance' => '50',
+    'distance2' => 200,
+    'unit' => '3959',
+    'origin' => array(
+      'lat' => '',
+      'lon' => '',
+    ),
+  );
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_entity_url_field'] = 'field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_current_user_field'] = 'field_adm_event_geofield';
 
+  /* Display: Featured Events Block */
+  $handler = $view->new_display('block', 'Featured Events Block', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Upcoming Events';
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'more events';
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'admission_event' => 'admission_event',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Date - end date (field_adm_event_date:value2) */
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['field'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['granularity'] = 'hour';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: Geofield (field_adm_event_geofield) - proximity */
+  $handler->display->display_options['filters']['field_geofield_distance']['id'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['table'] = 'field_data_field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['field'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_geofield_distance']['value'] = array(
+    'distance' => '50',
+    'distance2' => 200,
+    'unit' => '3959',
+    'origin' => array(
+      'lat' => '',
+      'lon' => '',
+    ),
+  );
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_entity_url_field'] = 'field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_current_user_field'] = 'field_adm_event_geofield';
+  /* Filter criterion: Content: Featured Event (field_adm_event_featured) */
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['id'] = 'field_adm_event_featured_value';
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['table'] = 'field_data_field_adm_event_featured';
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['field'] = 'field_adm_event_featured_value';
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['value'] = array(
+    1 => '1',
+  );
 
   $export['admission_events_and_counselors_geolocation_view'] = $view;
 
@@ -567,12 +675,13 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['field'] = 'field_adm_event_date_value2';
-  $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '<=';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['granularity'] = 'hour';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['default_date'] = 'now';
 
   /* Display: Event Page */
   $handler = $view->new_display('page', 'Event Page', 'page');
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['path'] = 'admissions/connect/events';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Upcoming Events';
@@ -586,7 +695,6 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
@@ -598,10 +706,61 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'admission_event' => 'admission_event',
+  );
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+    28 => 0,
+  );
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+  /* Filter criterion: Content: Date - end date (field_adm_event_date:value2) */
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['field'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['granularity'] = 'hour';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['default_date'] = 'now';
 
   /* Display: Person Block */
   $handler = $view->new_display('block', 'Person Block', 'block_1');
@@ -684,6 +843,159 @@ function cu_homepage_admissions_views_default_views() {
   );
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
 
+  /* Display: Counselors Page */
+  $handler = $view->new_display('page', 'Counselors Page', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Find Your Counselor';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a location to find available counselors.';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'full';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There are currently no counselors assigned to the selected location or the location is not specific enough.';
+  $handler->display->display_options['empty']['area']['format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Address - Last name */
+  $handler->display->display_options['sorts']['field_adm_event_address_last_name']['id'] = 'field_adm_event_address_last_name';
+  $handler->display->display_options['sorts']['field_adm_event_address_last_name']['table'] = 'field_data_field_adm_event_address';
+  $handler->display->display_options['sorts']['field_adm_event_address_last_name']['field'] = 'field_adm_event_address_last_name';
+  /* Sort criterion: Content: Address - First name */
+  $handler->display->display_options['sorts']['field_adm_event_address_first_name']['id'] = 'field_adm_event_address_first_name';
+  $handler->display->display_options['sorts']['field_adm_event_address_first_name']['table'] = 'field_data_field_adm_event_address';
+  $handler->display->display_options['sorts']['field_adm_event_address_first_name']['field'] = 'field_adm_event_address_first_name';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['group'] = 1;
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+    28 => 0,
+  );
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+  $handler->display->display_options['path'] = 'admissions/connect/counselors';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Find Your Counselor';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Featured Events Block */
+  $handler = $view->new_display('block', 'Featured Events Block', 'block_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Featured Events';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'admission_event' => 'admission_event',
+  );
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
+  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+    28 => 0,
+  );
+  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+  /* Filter criterion: Content: Date - end date (field_adm_event_date:value2) */
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['field'] = 'field_adm_event_date_value2';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['granularity'] = 'hour';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: Featured Event (field_adm_event_featured) */
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['id'] = 'field_adm_event_featured_value';
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['table'] = 'field_data_field_adm_event_featured';
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['field'] = 'field_adm_event_featured_value';
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['value'] = array(
+    1 => '1',
+  );
 
   $export['admission_events_and_counselors'] = $view;
 

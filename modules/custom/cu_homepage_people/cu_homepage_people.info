@@ -1,7 +1,7 @@
 name = CU Homepage People
 core = 7.x
 package = CU Homepage
-version = 7.x-1.1
+version = 7.x-1.2
 project = cu_homepage_people
 dependencies[] = ctools
 dependencies[] = entityreference

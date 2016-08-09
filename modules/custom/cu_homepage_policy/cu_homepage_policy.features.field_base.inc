@@ -10,21 +10,13 @@
 function cu_homepage_policy_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_policy_approved_by'
+  // Exported field_base: 'field_policy_approved_by'.
   $field_bases['field_policy_approved_by'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_approved_by',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -39,21 +31,13 @@ function cu_homepage_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_authors'
+  // Exported field_base: 'field_policy_authors'.
   $field_bases['field_policy_authors'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_authors',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -68,21 +52,13 @@ function cu_homepage_policy_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_policy_categories'
+  // Exported field_base: 'field_policy_categories'.
   $field_bases['field_policy_categories'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_categories',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -102,14 +78,13 @@ function cu_homepage_policy_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_policy_effective_date'
+  // Exported field_base: 'field_policy_effective_date'.
   $field_bases['field_policy_effective_date'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_effective_date',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'date',
@@ -132,14 +107,13 @@ function cu_homepage_policy_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_policy_external_url'
+  // Exported field_base: 'field_policy_external_url'.
   $field_bases['field_policy_external_url'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_external_url',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -162,21 +136,13 @@ function cu_homepage_policy_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_policy_file'
+  // Exported field_base: 'field_policy_file'.
   $field_bases['field_policy_file'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_file',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -193,21 +159,13 @@ function cu_homepage_policy_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_policy_related_policies'
+  // Exported field_base: 'field_policy_related_policies'.
   $field_bases['field_policy_related_policies'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_related_policies',
-    'foreign keys' => array(
-      'node' => array(
-        'columns' => array(
-          'target_id' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -236,15 +194,18 @@ function cu_homepage_policy_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_policy_revisions'
+  // Exported field_base: 'field_policy_revisions'.
   $field_bases['field_policy_revisions'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_policy_revisions',
-    'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(

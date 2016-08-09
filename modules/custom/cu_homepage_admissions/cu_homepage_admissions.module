@@ -12,7 +12,7 @@ include_once 'cu_homepage_admissions.features.inc';
  * @param $page
  */
 function cu_homepage_admissions_page_alter(&$page) {
-  if (request_path() == 'admissions/connect' || request_path() == 'admissions/connect/events') {
+  if (request_path() == 'admissions/connect/events') {
 
     // Add baseURL to Drupal JS object to retrieve later.
     global $base_url;
@@ -43,7 +43,10 @@ function cu_homepage_admissions_menu() {
  * Page callback to return rendered view via AJAX.
  */
 function cu_homepage_admissions_ajax() {
-  print views_embed_view('admission_events_and_counselors_geolocation_view', 'block');
+  $views = array();
+  $views['main_events'] = views_embed_view('admission_events_and_counselors_geolocation_view', 'block');
+  $views['featured_events'] = views_embed_view('admission_events_and_counselors_geolocation_view', 'block_1');
+  print json_encode($views);
 }
 
 /**

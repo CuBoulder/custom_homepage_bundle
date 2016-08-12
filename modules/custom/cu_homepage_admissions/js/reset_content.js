@@ -23,7 +23,7 @@
 
             // Don't do anything if the user has interacted with the search.
             query = window.location.search;
-            if (query.indexOf('location') != -1) {
+            if (query.indexOf('field_person_address_value') != -1) {
                 return;
             }
 

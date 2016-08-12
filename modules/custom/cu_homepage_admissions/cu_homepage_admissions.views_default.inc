@@ -646,13 +646,13 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'admission_event' => 'admission_event',
   );
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
@@ -729,38 +729,66 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'admission_event' => 'admission_event',
   );
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    7 => 0,
-    11 => 0,
-    5 => 0,
-    9 => 0,
-    28 => 0,
-  );
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Date - end date (field_adm_event_date:value2) */
   $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['field'] = 'field_adm_event_date_value2';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['group'] = 1;
   $handler->display->display_options['filters']['field_adm_event_date_value2']['granularity'] = 'hour';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['default_date'] = 'now';
+  /* Filter criterion: Content: Geofield (field_adm_event_geofield) - proximity */
+  $handler->display->display_options['filters']['field_geofield_distance']['id'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['table'] = 'field_data_field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['field'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_geofield_distance']['value'] = array(
+    'distance' => '50',
+    'distance2' => 200,
+    'unit' => '3959',
+    'origin' => array(
+      'lat' => '40.0100923',
+      'lon' => '-105.2487371',
+    ),
+  );
+  $handler->display->display_options['filters']['field_geofield_distance']['group'] = 1;
+  $handler->display->display_options['filters']['field_geofield_distance']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['operator_id'] = 'field_geofield_distance_op';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['label'] = 'Proximity';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['operator'] = 'field_geofield_distance_op';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['identifier'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    29 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+  );
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_entity_url_field'] = 'field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_current_user_field'] = 'field_adm_event_geofield';
+  /* Filter criterion: Content: Address (field_person_address) */
+  $handler->display->display_options['filters']['field_person_address_value']['id'] = 'field_person_address_value';
+  $handler->display->display_options['filters']['field_person_address_value']['table'] = 'field_data_field_person_address';
+  $handler->display->display_options['filters']['field_person_address_value']['field'] = 'field_person_address_value';
+  $handler->display->display_options['filters']['field_person_address_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_person_address_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_person_address_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['operator_id'] = 'field_person_address_value_op';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['label'] = 'Address';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['operator'] = 'field_person_address_value_op';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['identifier'] = 'field_person_address_value';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    29 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+  );
 
   /* Display: Person Block */
   $handler = $view->new_display('block', 'Person Block', 'block_1');
@@ -817,13 +845,13 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
@@ -893,14 +921,14 @@ function cu_homepage_admissions_views_default_views() {
     'person' => 'person',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
+  /* Filter criterion: Content: Admission Recruitment Locations (field_adm_recruitment_locations) */
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
   $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
@@ -957,36 +985,13 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'admission_event' => 'admission_event',
   );
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    7 => 0,
-    11 => 0,
-    5 => 0,
-    9 => 0,
-    28 => 0,
-  );
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Date - end date (field_adm_event_date:value2) */
   $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['field'] = 'field_adm_event_date_value2';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_adm_event_date_value2']['group'] = 1;
   $handler->display->display_options['filters']['field_adm_event_date_value2']['granularity'] = 'hour';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['default_date'] = 'now';
   /* Filter criterion: Content: Featured Event (field_adm_event_featured) */
@@ -996,6 +1001,57 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['field_adm_event_featured_value']['value'] = array(
     1 => '1',
   );
+  $handler->display->display_options['filters']['field_adm_event_featured_value']['group'] = 1;
+  /* Filter criterion: Content: Address (field_person_address) */
+  $handler->display->display_options['filters']['field_person_address_value']['id'] = 'field_person_address_value';
+  $handler->display->display_options['filters']['field_person_address_value']['table'] = 'field_data_field_person_address';
+  $handler->display->display_options['filters']['field_person_address_value']['field'] = 'field_person_address_value';
+  $handler->display->display_options['filters']['field_person_address_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_person_address_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['operator_id'] = 'field_person_address_value_op';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['label'] = 'Address';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['operator'] = 'field_person_address_value_op';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['identifier'] = 'field_person_address_value';
+  $handler->display->display_options['filters']['field_person_address_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    29 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+  );
+  /* Filter criterion: Content: Geofield (field_adm_event_geofield) - proximity */
+  $handler->display->display_options['filters']['field_geofield_distance']['id'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['table'] = 'field_data_field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['field'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_geofield_distance']['value'] = array(
+    'distance' => '100',
+    'distance2' => 200,
+    'unit' => '3959',
+    'origin' => array(
+      'lat' => '',
+      'lon' => '',
+    ),
+  );
+  $handler->display->display_options['filters']['field_geofield_distance']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['operator_id'] = 'field_geofield_distance_op';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['label'] = 'Proximity';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['operator'] = 'field_geofield_distance_op';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['identifier'] = 'field_geofield_distance';
+  $handler->display->display_options['filters']['field_geofield_distance']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    29 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+  );
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_entity_url_field'] = 'field_adm_event_geofield';
+  $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_current_user_field'] = 'field_adm_event_geofield';
+
 
   $export['admission_events_and_counselors'] = $view;
 

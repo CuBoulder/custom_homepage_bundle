@@ -19,6 +19,7 @@ function cu_homepage_admissions_page_alter(&$page) {
     drupal_add_js(array('baseUrl' => $base_url), 'setting');
 
     drupal_add_js(drupal_get_path('module', 'cu_homepage_admissions') . '/js/reset_content.js');
+    drupal_add_css(drupal_get_path('module', 'cu_homepage_admissions') . '/css/admissions_events.css');
   }
 }
 
@@ -58,6 +59,7 @@ function cu_homepage_admissions_ajax() {
  * @param $query
  */
 function cu_homepage_admissions_views_query_alter(&$view, &$query) {
+  // Pass in location data to views filter.
   if ($view->name == 'admission_events_and_counselors_geolocation_view') {
     $query_params = drupal_get_query_parameters();
     if (array_key_exists('lat', $query_params)) {
@@ -67,10 +69,148 @@ function cu_homepage_admissions_views_query_alter(&$view, &$query) {
 }
 
 /**
+ * Implements hook_form_views_exposed_form_alter().
+ *
+ * Take address data and geocode it for views output.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function cu_homepage_admissions_form_views_exposed_form_alter(&$form, &$form_state) {
+  // Need to limit this to only this view.
+
+  // Add submit function before regular views submit so coordinates can be passed.
+  array_unshift($form['#submit'], 'cu_homepage_admissions_address_submit');
+}
+
+/**
  * Implements hook_ctools_plugin_directory().
  */
 function cu_homepage_admissions_ctools_plugin_directory($owner, $plugin_type){
   if ($owner == 'feeds_tamper' && $plugin_type == 'plugins') {
     return 'plugins';
+  }
+}
+
+/**
+ * Convert Address from exposed filter to geo coordinates.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function cu_homepage_admissions_address_submit(&$form, &$form_state) {
+
+  // Get coordinates.
+  $geo_data = cu_homepage_admissions_geocoder_google($form_state['values']['field_person_address_value']);
+
+  // Reset address field to not conflict with geo coordinates.
+  $form_state['values']['field_person_address_value'] = NULL;
+
+  // Pass back coordinates into views query.
+  $form_state['values']['field_geofield_distance']['origin']['lat'] = $geo_data->coords[1];
+  $form_state['values']['field_geofield_distance']['origin']['lon'] = $geo_data->coords[0];
+}
+
+/**
+ * Using function from Geocoder module to convert addressfield to coordinates.
+ *
+ * Located in geocode/plugins/geocoder_handler/google.inc.
+ */
+function cu_homepage_admissions_geocoder_google($address, $options = array()) {
+
+  try {
+    geophp_load();
+
+    $query = array(
+      'address' => $address,
+      'sensor' => 'false',
+    );
+
+    $url = url("http://maps.googleapis.com/maps/api/geocode/json", array('query' => $query));
+    $result = drupal_http_request($url);
+
+    if (isset($result->error)) {
+      $args = array(
+        '@code' => $result->code,
+        '@error' => $result->error,
+      );
+      $msg = t('HTTP request to google API failed.\nCode: @code\nError: @error', $args);
+      throw new Exception($msg);
+    }
+
+    $data = json_decode($result->data);
+
+    if ($data->status != 'OK') {
+      $args = array('@status' => $data->status);
+      $msg = t('Google API returned bad status.\nStatus: @status', $args);
+      throw new Exception($msg);
+    }
+
+    $geometries = array();
+
+    foreach ($data->results as $item) {
+      // Check if we should reject these results
+      if (isset($options['reject_results'])) {
+        if (in_array($item->geometry->location_type, $options['reject_results'], TRUE)) {
+          continue;
+        }
+      }
+
+      // Construct a geoPHP Geometry depending on what type of geometry we want returned (defaults to point)
+      if (!isset($options['geometry_type']) || $options['geometry_type'] == 'point') {
+        $geom = new Point($item->geometry->location->lng, $item->geometry->location->lat);
+      }
+      elseif ($options['geometry_type'] == 'bounds') {
+        $points = array(
+          new Point($item->geometry->bounds->southwest->lng, $item->geometry->bounds->southwest->lat),
+          new Point($item->geometry->bounds->southwest->lng, $item->geometry->bounds->northeast->lat),
+          new Point($item->geometry->bounds->northeast->lng, $item->geometry->bounds->northeast->lat),
+          new Point($item->geometry->bounds->northeast->lng, $item->geometry->bounds->southwest->lat),
+          new Point($item->geometry->bounds->southwest->lng, $item->geometry->bounds->southwest->lat),
+        );
+        $geom = new Polygon(array(new LineString($points)));
+      }
+      elseif ($options['geometry_type'] == 'viewport') {
+        $points = array(
+          new Point($item->geometry->viewport->southwest->lng, $item->geometry->viewport->southwest->lat),
+          new Point($item->geometry->viewport->southwest->lng, $item->geometry->viewport->northeast->lat),
+          new Point($item->geometry->viewport->northeast->lng, $item->geometry->viewport->northeast->lat),
+          new Point($item->geometry->viewport->northeast->lng, $item->geometry->viewport->southwest->lat),
+          new Point($item->geometry->viewport->southwest->lng, $item->geometry->viewport->southwest->lat),
+        );
+        $geom = new Polygon(array(new LineString($points)));
+      }
+
+      // Add additional metadata to the geometry - it might be useful!
+      $geom->data = array();
+      $geom->data['geocoder_accuracy'] = $item->geometry->location_type;
+      $geom->data['geocoder_formatted_address'] = $item->formatted_address;
+      $geom->data['geocoder_address_components'] = $item->address_components;
+
+      $geometries[] = $geom;
+    }
+
+    if (empty($geometries)) {
+      return;
+    }
+
+    // Check if we should return all results as a compound geometry
+    if (isset($options['all_results'])) {
+      if ($options['all_results']) {
+        return geoPHP::geometryReduce($geometries);
+      }
+    }
+    // The connonical geometry is the first result (best guesse)
+    $geometry = array_shift($geometries);
+
+    // If there are any other geometries, these are auxiliary geometries that represent "alternatives"
+    if (count($geometries)) {
+      $geometry->data['geocoder_alternatives'] = $geometries;
+    }
+
+    return $geometry;
+  } catch (Exception $e) {
+    watchdog_exception('geocoder', $e);
+    return FALSE;
   }
 }

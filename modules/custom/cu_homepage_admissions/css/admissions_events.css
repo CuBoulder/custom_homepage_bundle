@@ -1,0 +1,8 @@
+
+.geofield-proximity-origin {
+    display: none;
+}
+
+input#edit-field-geofield-distance-distance {
+    width: 55px;
+}

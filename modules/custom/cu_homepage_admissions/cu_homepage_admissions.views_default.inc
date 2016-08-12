@@ -1029,7 +1029,7 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['field_geofield_distance']['value'] = array(
     'distance' => '100',
     'distance2' => 200,
-    'unit' => '6371',
+    'unit' => '3959',
     'origin' => array(
       'lat' => '',
       'lon' => '',

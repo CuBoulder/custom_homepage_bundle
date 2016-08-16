@@ -15,7 +15,47 @@ function cu_homepage_policy_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__policy';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embed' => array(
+        'custom_settings' => FALSE,
+      ),
+      'feature' => array(
+        'custom_settings' => FALSE,
+      ),
+      'promo' => array(
+        'custom_settings' => FALSE,
+      ),
+      'sidebar' => array(
+        'custom_settings' => FALSE,
+      ),
+      'table' => array(
+        'custom_settings' => FALSE,
+      ),
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'grid' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(

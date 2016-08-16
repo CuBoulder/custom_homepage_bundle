@@ -29,7 +29,7 @@ function cu_homepage_admissions_taxonomy_default_vocabularies() {
       'name' => 'Admission Recruitment Location',
       'machine_name' => 'admission_recruitment_location',
       'description' => '',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

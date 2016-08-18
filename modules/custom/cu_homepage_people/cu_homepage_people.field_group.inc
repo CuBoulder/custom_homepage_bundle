@@ -18,14 +18,16 @@ function cu_homepage_people_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'person';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_information';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Homepage Information',
     'weight' => '25',
     'children' => array(
       0 => 'field_person_hometown',
-      1 => 'field_adm_recruitment_locations',
-      2 => 'group_blogger',
+      1 => 'field_lc_domestic_freshman',
+      2 => 'field_lc_domestic_transfer',
+      3 => 'field_lc_international_undergrad',
+      4 => 'field_lc_international_graduate',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

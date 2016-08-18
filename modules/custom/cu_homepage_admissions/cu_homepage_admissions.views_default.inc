@@ -120,31 +120,6 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'admission_event' => 'admission_event',
   );
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    7 => 0,
-    11 => 0,
-    5 => 0,
-    9 => 0,
-    28 => 0,
-  );
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
   /* Filter criterion: Content: Date - end date (field_adm_event_date:value2) */
   $handler->display->display_options['filters']['field_adm_event_date_value2']['id'] = 'field_adm_event_date_value2';
   $handler->display->display_options['filters']['field_adm_event_date_value2']['table'] = 'field_data_field_adm_event_date';
@@ -264,8 +239,8 @@ function cu_homepage_admissions_views_default_views() {
     9 => 0,
   );
 
-  /* Display: Person Block */
-  $handler = $view->new_display('block', 'Person Block', 'block_1');
+  /* Display: Domestic Freshman */
+  $handler = $view->new_display('block', 'Domestic Freshman', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Find Your Counselor';
   $handler->display->display_options['defaults']['css_class'] = FALSE;
@@ -319,36 +294,32 @@ function cu_homepage_admissions_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'person' => 'person',
   );
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Locations: Domestic Freshman (field_lc_domestic_freshman) */
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['id'] = 'field_lc_domestic_freshman_tid';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['table'] = 'field_data_field_lc_domestic_freshman';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['field'] = 'field_lc_domestic_freshman_tid';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['operator_id'] = 'field_lc_domestic_freshman_tid_op';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['label'] = 'Select Your Location';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['operator'] = 'field_lc_domestic_freshman_tid_op';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['identifier'] = 'field_lc_domestic_freshman_tid';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
+    29 => 0,
     7 => 0,
     11 => 0,
     5 => 0,
     9 => 0,
-    28 => 0,
   );
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
+  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['vocabulary'] = 'admissions_locations_domestic_freshman';
 
   /* Display: Counselors Page */
   $handler = $view->new_display('page', 'Counselors Page', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Find Your Counselor';
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'input_required';
@@ -395,33 +366,6 @@ function cu_homepage_admissions_views_default_views() {
     'person' => 'person',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['id'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid']['vocabulary'] = 'admission_recruitment_location';
-  /* Filter criterion: Content: Admission Recruitment Location (field_adm_recruitment_locations) */
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['id'] = 'field_adm_recruitment_locations_tid_1';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['table'] = 'field_data_field_adm_recruitment_locations';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['field'] = 'field_adm_recruitment_locations_tid';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['group'] = 1;
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator_id'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['label'] = 'Select your location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['operator'] = 'field_adm_recruitment_locations_tid_1_op';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['identifier'] = 'location';
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    7 => 0,
-    11 => 0,
-    5 => 0,
-    9 => 0,
-    28 => 0,
-  );
-  $handler->display->display_options['filters']['field_adm_recruitment_locations_tid_1']['vocabulary'] = 'admission_recruitment_location';
   $handler->display->display_options['path'] = 'admissions/connect/counselors';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Find Your Counselor';
@@ -525,6 +469,234 @@ function cu_homepage_admissions_views_default_views() {
   );
   $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_entity_url_field'] = 'field_adm_event_geofield';
   $handler->display->display_options['filters']['field_geofield_distance']['geofield_proximity_current_user_field'] = 'field_adm_event_geofield';
+
+  /* Display: Domestic Transfer */
+  $handler = $view->new_display('block', 'Domestic Transfer', 'block_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Find Your Counselor';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a location to find your Admission representative and events in your area.';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Please select a more specific location to see your counselor.';
+  $handler->display->display_options['empty']['area']['format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Last Name (field_person_last_name) */
+  $handler->display->display_options['sorts']['field_person_last_name_value']['id'] = 'field_person_last_name_value';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['table'] = 'field_data_field_person_last_name';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['field'] = 'field_person_last_name_value';
+  /* Sort criterion: Content: First Name (field_person_first_name) */
+  $handler->display->display_options['sorts']['field_person_first_name_value']['id'] = 'field_person_first_name_value';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['table'] = 'field_data_field_person_first_name';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['field'] = 'field_person_first_name_value';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Locations: Domestic Transfer (field_lc_domestic_transfer) */
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['id'] = 'field_lc_domestic_transfer_tid';
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['table'] = 'field_data_field_lc_domestic_transfer';
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['field'] = 'field_lc_domestic_transfer_tid';
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['operator_id'] = 'field_lc_domestic_transfer_tid_op';
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['label'] = 'Select Your Location';
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['operator'] = 'field_lc_domestic_transfer_tid_op';
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['identifier'] = 'field_lc_domestic_transfer_tid';
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    29 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+  );
+  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['vocabulary'] = 'admissions_locations_domestic_transfer';
+
+  /* Display: International Graduate */
+  $handler = $view->new_display('block', 'International Graduate', 'block_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Find Your Counselor';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a location to find your Admission representative and events in your area.';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Please select a more specific location to see your counselor.';
+  $handler->display->display_options['empty']['area']['format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Last Name (field_person_last_name) */
+  $handler->display->display_options['sorts']['field_person_last_name_value']['id'] = 'field_person_last_name_value';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['table'] = 'field_data_field_person_last_name';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['field'] = 'field_person_last_name_value';
+  /* Sort criterion: Content: First Name (field_person_first_name) */
+  $handler->display->display_options['sorts']['field_person_first_name_value']['id'] = 'field_person_first_name_value';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['table'] = 'field_data_field_person_first_name';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['field'] = 'field_person_first_name_value';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Locations: International Graduate (field_lc_international_graduate) */
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['id'] = 'field_lc_international_graduate_tid';
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['table'] = 'field_data_field_lc_international_graduate';
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['field'] = 'field_lc_international_graduate_tid';
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['expose']['operator_id'] = 'field_lc_international_graduate_tid_op';
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['expose']['label'] = 'Select Your Location';
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['expose']['operator'] = 'field_lc_international_graduate_tid_op';
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['expose']['identifier'] = 'field_lc_international_graduate_tid';
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    29 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+  );
+  $handler->display->display_options['filters']['field_lc_international_graduate_tid']['vocabulary'] = 'admissions_locations_international_graduate';
+
+  /* Display: International Undergraduate */
+  $handler = $view->new_display('block', 'International Undergraduate', 'block_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Find Your Counselor';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['exposed_form'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'input_required';
+  $handler->display->display_options['exposed_form']['options']['text_input_required'] = 'Select a location to find your Admission representative and events in your area.';
+  $handler->display->display_options['exposed_form']['options']['text_input_required_format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['links'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'Please select a more specific location to see your counselor.';
+  $handler->display->display_options['empty']['area']['format'] = 'wysiwyg';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Last Name (field_person_last_name) */
+  $handler->display->display_options['sorts']['field_person_last_name_value']['id'] = 'field_person_last_name_value';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['table'] = 'field_data_field_person_last_name';
+  $handler->display->display_options['sorts']['field_person_last_name_value']['field'] = 'field_person_last_name_value';
+  /* Sort criterion: Content: First Name (field_person_first_name) */
+  $handler->display->display_options['sorts']['field_person_first_name_value']['id'] = 'field_person_first_name_value';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['table'] = 'field_data_field_person_first_name';
+  $handler->display->display_options['sorts']['field_person_first_name_value']['field'] = 'field_person_first_name_value';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'person' => 'person',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Locations: International Undergrad (field_lc_international_undergrad) */
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['id'] = 'field_lc_international_undergrad_tid';
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['table'] = 'field_data_field_lc_international_undergrad';
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['field'] = 'field_lc_international_undergrad_tid';
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['operator_id'] = 'field_lc_international_undergrad_tid_op';
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['label'] = 'Select Your Location';
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['operator'] = 'field_lc_international_undergrad_tid_op';
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['identifier'] = 'field_lc_international_undergrad_tid';
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    29 => 0,
+    7 => 0,
+    11 => 0,
+    5 => 0,
+    9 => 0,
+  );
+  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['vocabulary'] = 'admissions_locations_international_undergrad';
   $export['admission_events_and_counselors'] = $view;
 
   $view = new view();

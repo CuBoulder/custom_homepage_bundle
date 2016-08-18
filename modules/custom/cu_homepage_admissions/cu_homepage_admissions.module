@@ -37,7 +37,133 @@ function cu_homepage_admissions_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );
+
+  $items['admin/config/content/admissions'] = array(
+    'title' => 'Admissions Section Configuration',
+    'description' => 'Configuration for the admissions section of the homepage.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('cu_homepage_admissions_config_form'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  $items['admin/config/content/admissions/import'] = array(
+    'title' => 'Admissions Counselor Import',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -20,
+  );
+
   return $items;
+}
+
+/**
+ * Callback for admin/config/content/admissions.
+ *
+ * @return array
+ */
+function cu_homepage_admissions_config_form($form_state) {
+  $form = array();
+
+  $form['file'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Image'),
+    '#description' => t('Upload a .csv to convert for Feeds importer.'),
+    '#upload_location' => 'public://feeds',
+    "#upload_validators"  => array('file_validate_extensions' => array('csv')),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Process'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit callback for cu_homepage_admissions_config_form.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function cu_homepage_admissions_config_form_submit($form, &$form_state) {
+
+  // Load file contents.
+  $file = file_load($form_state['values']['file']);
+  $filepath = drupal_realpath($file->uri);
+  $file_contents = str_getcsv(file_get_contents($filepath));
+
+  // @todo make the following two variables into something you can change in the UI.
+
+  // Currently 9 headers.
+  $headers = array(
+    0 => 'person_nid',
+    1 => 'lastname',
+    2 => 'location1',
+    3 => 'location2',
+    4 => 'location3',
+    5 => 'location4',
+    6 => 'location5',
+    7 => 'location6',
+    8 => 'comments',
+  );
+
+  // Six locations.
+  $locations =  array(
+    2 => 'location1',
+    3 => 'location2',
+    4 => 'location3',
+    5 => 'location4',
+    6 => 'location5',
+    7 => 'location6',
+  );
+
+  $locations_array = array();
+  $i = 0;
+  $j = 0;
+  foreach ($file_contents as $key => $item) {
+    $locations_array[$i][$headers[$j]] = $item;
+    $j++;
+
+    if ($key % 8 == 0 && $key != 0) {
+      $j = 0;
+      $i++;
+    }
+  }
+
+  // First key is useless. Jank it up!
+  $header_row = array_shift($locations_array);
+
+  $counselors = array();
+  foreach ($locations_array as $key => $item) {
+    // Check and see if last item has the same name.
+    if ($item['lastname'] == $locations_array[$key - 1]['lastname'] || $item['lastname'] = $locations_array[$key + 1]['lastname']) {
+      // Then add locations to person if not exist.
+      foreach ($locations as $location_key => $location) {
+        if (!in_array($item[$location], $counselors[$item['lastname']]) && !empty($item[$location])) {
+          // Replace commas.
+          $item[$location] = str_replace(',', '-', $item[$location]);
+
+          // Add locations to related counselors.
+          $counselors[$item['lastname']][] = $item[$location];
+        }
+      }
+    }
+
+  }
+
+  // Make header row.
+  $counselor_file = "lastname,all_terms,\r\n";
+
+  // Add terms to output file.
+  foreach ($counselors as $counselor => $terms) {
+    $counselor_file .= $counselor . ',' . implode('|', $terms) . ",\r\n";
+  }
+
+  // Output and download file.
+  file_put_contents(drupal_realpath('public://feeds/') . '/counselors.csv', $counselor_file);
+  $form_state['redirect'] = 'sites/default/files/feeds/counselors.csv';
 }
 
 /**
@@ -78,9 +204,10 @@ function cu_homepage_admissions_views_query_alter(&$view, &$query) {
  */
 function cu_homepage_admissions_form_views_exposed_form_alter(&$form, &$form_state) {
   // Need to limit this to only this view.
-
-  // Add submit function before regular views submit so coordinates can be passed.
-  array_unshift($form['#submit'], 'cu_homepage_admissions_address_submit');
+  if ($form['#id'] == 'views-exposed-form-admission-events-and-counselors-block-2') {
+    // Add submit function before regular views submit so coordinates can be passed.
+    array_unshift($form['#submit'], 'cu_homepage_admissions_address_submit');
+  }
 }
 
 /**
@@ -102,6 +229,11 @@ function cu_homepage_admissions_address_submit(&$form, &$form_state) {
 
   // Get coordinates.
   $geo_data = cu_homepage_admissions_geocoder_google($form_state['values']['field_person_address_value']);
+
+  // If no result, e.g no object returned, then...return.
+  if (!is_object($geo_data)) {
+    return;
+  }
 
   // Reset address field to not conflict with geo coordinates.
   $form_state['values']['field_person_address_value'] = NULL;

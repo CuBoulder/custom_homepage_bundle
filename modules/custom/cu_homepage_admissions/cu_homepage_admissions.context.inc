@@ -26,24 +26,6 @@ function cu_homepage_admissions_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-0c23af82c70e0eae8126122d095371fe' => array(
-          'module' => 'views',
-          'delta' => '0c23af82c70e0eae8126122d095371fe',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'views-019d2e83e983b4a6f6b6fcf468ea1ac8' => array(
-          'module' => 'views',
-          'delta' => '019d2e83e983b4a6f6b6fcf468ea1ac8',
-          'region' => 'content',
-          'weight' => '-8',
-        ),
-        'views-c3e53a781c5700e397961b767b2652ca' => array(
-          'module' => 'views',
-          'delta' => 'c3e53a781c5700e397961b767b2652ca',
-          'region' => 'content',
-          'weight' => '-7',
-        ),
         'bean-block-section-adm-connect-contac' => array(
           'module' => 'bean',
           'delta' => 'block-section-adm-connect-contac',
@@ -122,6 +104,158 @@ function cu_homepage_admissions_context_default_contexts() {
   t('Admission Section');
   t('Upcoming Events Page');
   $export['admissions_events'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'domestic_freshman_counselors';
+  $context->description = '';
+  $context->tag = 'Admission Section';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'admissions/connect/counselors/domestic-freshman' => 'admissions/connect/counselors/domestic-freshman',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-27667a246677df2b39c6219e9d64b36f' => array(
+          'module' => 'views',
+          'delta' => '27667a246677df2b39c6219e9d64b36f',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-dd5ffc32774ad7df5fd6294bb4a35d0a' => array(
+          'module' => 'views',
+          'delta' => 'dd5ffc32774ad7df5fd6294bb4a35d0a',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Admission Section');
+  $export['domestic_freshman_counselors'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'domestic_transfer_counselors';
+  $context->description = '';
+  $context->tag = 'Admission Section';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'admissions/connect/counselors/domestic-transfer' => 'admissions/connect/counselors/domestic-transfer',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-f9de1e7e42362d6eb35c3ca67cde0eb0' => array(
+          'module' => 'views',
+          'delta' => 'f9de1e7e42362d6eb35c3ca67cde0eb0',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-0640f0e2d25f3bea933303c81a6c250f' => array(
+          'module' => 'views',
+          'delta' => '0640f0e2d25f3bea933303c81a6c250f',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Admission Section');
+  $export['domestic_transfer_counselors'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'international_graduate_counselors';
+  $context->description = '';
+  $context->tag = 'Admission Section';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'admissions/connect/counselors/international-graduate' => 'admissions/connect/counselors/international-graduate',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-97ef5df0e29a218e749912df1765fe0a' => array(
+          'module' => 'views',
+          'delta' => '97ef5df0e29a218e749912df1765fe0a',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-60ff29fa97a158d1ec6bb27567421b8d' => array(
+          'module' => 'views',
+          'delta' => '60ff29fa97a158d1ec6bb27567421b8d',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Admission Section');
+  $export['international_graduate_counselors'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'international_undergraduate_counselors';
+  $context->description = '';
+  $context->tag = 'Admission Section';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'admissions/connect/counselors/international-undergraduate' => 'admissions/connect/counselors/international-undergraduate',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-851de560203ddf280249653907cf80fd' => array(
+          'module' => 'views',
+          'delta' => '851de560203ddf280249653907cf80fd',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-ad824640a074007854b70ce4740b093c' => array(
+          'module' => 'views',
+          'delta' => 'ad824640a074007854b70ce4740b093c',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Admission Section');
+  $export['international_undergraduate_counselors'] = $context;
 
   return $export;
 }

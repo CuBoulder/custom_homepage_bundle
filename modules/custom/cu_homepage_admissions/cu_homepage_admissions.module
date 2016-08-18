@@ -204,7 +204,7 @@ function cu_homepage_admissions_views_query_alter(&$view, &$query) {
  */
 function cu_homepage_admissions_form_views_exposed_form_alter(&$form, &$form_state) {
   // Need to limit this to only this view.
-  if ($form['#id'] == 'views-exposed-form-admission-events-and-counselors-block-2') {
+  if ($form['#id'] == 'views-exposed-form-admission-events-and-counselors-block') {
     // Add submit function before regular views submit so coordinates can be passed.
     array_unshift($form['#submit'], 'cu_homepage_admissions_address_submit');
   }

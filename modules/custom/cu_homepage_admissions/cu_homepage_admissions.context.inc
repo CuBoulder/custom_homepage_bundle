@@ -114,7 +114,7 @@ function cu_homepage_admissions_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'admissions/connect/counselors/domestic-freshman' => 'admissions/connect/counselors/domestic-freshman',
+        'admissions/connect/counselors/freshman' => 'admissions/connect/counselors/freshman',
       ),
     ),
   );
@@ -152,7 +152,7 @@ function cu_homepage_admissions_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'admissions/connect/counselors/domestic-transfer' => 'admissions/connect/counselors/domestic-transfer',
+        'admissions/connect/counselors/transfer' => 'admissions/connect/counselors/transfer',
       ),
     ),
   );
@@ -228,7 +228,7 @@ function cu_homepage_admissions_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'admissions/connect/counselors/international-undergraduate' => 'admissions/connect/counselors/international-undergraduate',
+        'admissions/connect/counselors/international' => 'admissions/connect/counselors/international',
       ),
     ),
   );

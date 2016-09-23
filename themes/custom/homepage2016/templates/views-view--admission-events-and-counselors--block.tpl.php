@@ -89,3 +89,9 @@
   <?php endif; ?>
 
 </div><?php /* class view */ ?>
+<div class="sneaky-snake">
+  <div class="item-list">
+    <ul class="pager" id="pager-full">
+    </ul>
+  </div>
+</div>

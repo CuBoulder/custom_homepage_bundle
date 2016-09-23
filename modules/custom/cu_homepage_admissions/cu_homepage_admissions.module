@@ -241,6 +241,16 @@ function cu_homepage_admissions_address_submit(&$form, &$form_state) {
   // Pass back coordinates into views query.
   $form_state['values']['field_geofield_distance']['origin']['lat'] = $geo_data->coords[1];
   $form_state['values']['field_geofield_distance']['origin']['lon'] = $geo_data->coords[0];
+
+  // Use hidden form element.
+  $form['position'] = array(
+    '#type' => 'hidden',
+    '#value' => $geo_data->coords[1] . ',' . $geo_data->coords[0],
+    '#attributes' => array(
+      'class' => array('hidden-position-data'),
+    ),
+  );
+
 }
 
 /**

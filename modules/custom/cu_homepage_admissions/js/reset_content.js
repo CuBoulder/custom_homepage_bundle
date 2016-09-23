@@ -11,37 +11,46 @@
 
   Drupal.behaviors.cu_homepage_admissions_geolocation = {
     attach: function (context, settings) {
-      var long, lat, query, httpRequest2, httpRequest, response, fullViewDiv, oldFullView, options, positionData, pager, snake;
+      var long, lat, query, httpRequest2, httpRequest, response, fullViewDiv, oldFullView, options, positionData, pager, snake, oldLink, newLink;
 
-      // Replace pager links with location data.
-      pagerLinks = document.querySelectorAll('#pager-full a');
+      function fixPagerLinks() {
+        // Replace pager links with location data.
+        pagerLinks = document.querySelectorAll('#pager-full a');
 
-      // Get position data from form.
-      positionData = document.querySelector('.hidden-position-data').getAttribute('value').split(',');
+        // Get position markup from form.
+        locationData = document.querySelector('.hidden-position-data');
 
-      // Loop through pager links to add location data to them.
-      pagerLinks.forEach(attachPagerLinks);
+        if (locationData == null) {
+          return;
+        }
 
-      function attachPagerLinks(element, index, array) {
-        oldLink = element.getAttribute('href');
-        newLink = oldLink.replace(/field_geofield_distance\[origin]\[lat]=([^&]*)/g, 'field_geofield_distance[origin][lat]=' + positionData[0]);
-        newLink = newLink.replace(/field_geofield_distance\[origin]\[lon]=([^&]*)/g, 'field_geofield_distance[origin][lon]=' + positionData[1]);
-        element.setAttribute('href', newLink);
+        positionData = locationData.getAttribute('value').split(',');
+
+        // Loop through pager links to add location data to them.
+        pagerLinks.forEach(attachPagerLinks);
+
+        function attachPagerLinks(element, index, array) {
+          oldLink = element.getAttribute('href');
+          newLink = oldLink.replace(/field_geofield_distance\[origin]\[lat]=([^&]*)/g, 'field_geofield_distance[origin][lat]=' + positionData[0]);
+          newLink = newLink.replace(/field_geofield_distance\[origin]\[lon]=([^&]*)/g, 'field_geofield_distance[origin][lon]=' + positionData[1]);
+          element.setAttribute('href', newLink);
+        }
+
+        // Place pager outside of view since the view only works with AJAX
+        // and the page needs refreshed for this to work.
+        pager = document.querySelector('.pager').innerHTML;
+        document.querySelector('.pager').innerHTML = '';
+        snake = document.querySelector('.sneaky-snake .pager');
+        snake.innerHTML = pager;
       }
 
-      // Place pager outside of view since the view only works with AJAX
-      // and the page needs refreshed for this to work.
-      pager = document.querySelector('.pager').innerHTML;
-      document.querySelector('.pager').innerHTML = '';
-      snake = document.querySelector('.sneaky-snake .pager');
-      snake.innerHTML = pager;
+      fixPagerLinks();
 
       // Don't do anything if the user has interacted with the search.
       query = window.location.search;
       if (query.indexOf('field_person_address_value') != -1) {
         return;
       }
-
 
       // Code for Google Geolocation API.
       /*

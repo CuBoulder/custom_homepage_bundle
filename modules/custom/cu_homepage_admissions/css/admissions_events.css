@@ -6,3 +6,11 @@
 input#edit-field-geofield-distance-distance {
     width: 55px;
 }
+
+.admissions-events-geolocation-footer-text {
+    text-align: center;
+    font-weight: 900;
+    font-size: 126%;
+    line-height: 1.3;
+    margin: 1.5em 0 0.25em 0;
+}

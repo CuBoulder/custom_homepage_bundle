@@ -260,6 +260,11 @@ function cu_homepage_admissions_address_submit(&$form, &$form_state) {
  */
 function cu_homepage_admissions_geocoder_google($address, $options = array()) {
 
+  // Don't do anything if there is no address.
+  if (empty($address)) {
+    return;
+  }
+
   try {
     geophp_load();
 

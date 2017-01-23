@@ -206,7 +206,9 @@ function cu_homepage_admissions_form_views_exposed_form_alter(&$form, &$form_sta
   // Need to limit this to only this view.
   if (request_path() == 'admissions/connect/events') {
     // Add submit function before regular views submit so coordinates can be passed.
-    array_unshift($form['#submit'], 'cu_homepage_admissions_address_submit');
+    //if (!in_array('cu_homepage_admissions_address_submit', $form['#submit'])) {
+      array_unshift($form['#submit'], 'cu_homepage_admissions_address_submit');
+    //}
   }
 }
 
@@ -259,6 +261,11 @@ function cu_homepage_admissions_address_submit(&$form, &$form_state) {
  * Located in geocode/plugins/geocoder_handler/google.inc.
  */
 function cu_homepage_admissions_geocoder_google($address, $options = array()) {
+
+  // Don't do anything if there is no address.
+  if (empty($address)) {
+    return;
+  }
 
   try {
     geophp_load();

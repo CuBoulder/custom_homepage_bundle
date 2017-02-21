@@ -13,7 +13,6 @@ dependencies[] = cu_homepage_policy
 dependencies[] = cu_homepage_resource
 dependencies[] = cu_search_homepage
 
-;dependencies of other custom modules defined here for profile module manager reporting
 dependencies[] = addressfield
 dependencies[] = better_exposed_filters
 dependencies[] = feeds
@@ -30,7 +29,3 @@ dependencies[] = term_merge
 dependencies[] = term_reference_tree
 dependencies[] = views_block_filter_block
 dependencies[] = views_responsive_grid
-
-bundle_contrib_packages = addressfield, better_exposed_filters, feeds, feeds_tamper, geocoder, geofield, geophp, postal_code, shs, term_merge, term_reference_tree, views_block_filter_block, views_responsive_grid,
-
-;contrib modules excluded for now but may be needed after further testing: boxes, media, advanced_link

@@ -5,15 +5,15 @@ You can add this bundle from packages_base by using:
 To add the contrib modules if they weren't added by the command above:
 `drush dslm-add-contrib addressfield better_exposed_filters feeds feeds_tamper geocoder geofield geofield_map geophp job_scheduler postal_code shs term_merge term_reference_tree views_block_filter_block views_responsive_grid`
 
-##Admissions Section
+## Admissions Section
 
 There are a couple of custom parts to the Admissions section of the homepage site that are worth explaining in more detail. 
 
-###Connect With Us Section
+### Connect With Us Section
 
 Once or so a year, the admissions team rearranges their counselors in order to target incoming students more effectively. When this happens, the pages under "admissions/connect/counselors" can change. This year, the single page was split up into four separate pages to accomodate a change in how the counselors divided up their territories. Next year, it could go down to two or up to seven, who knows. The Web Express team is given spreadsheets with data to aid in importing and updating the counselors and events.
 
-####Find A Counselor
+#### Find A Counselor
 
 The counselor search tool uses a combination of the Simple Hierarchical Select (shs) module and Views exposed filters. All counselors are tagged with the locations they cover which can have a number of parent and child relationships. For example, you might have:
 
@@ -23,7 +23,7 @@ Searching at the CO level would give you all counselors tagged with Denver as we
 
 `location1 -> location2 -> location3 -> location4`
 
-####Feeds Import
+#### Feeds Import
 
 When importing this data via Feeds, the locations need to be in the correct order with those headers at the top corresponding to how many location levels are in the supplied spreadsheet. 
 
@@ -41,13 +41,13 @@ Use the person location importer this time changing the field mappings for each 
 
 Then, import each sheet changing the field mapping to each corresponding taxonomy. You'll have to check out Feeds Tamper for the "all_terms" colum and make sure it is set to "explode" with the pipe character as the separator. 
 
-####Search Pages
+#### Search Pages
 
 Now that you have everything imported, you need to make sure the contexts and views for each separate location taxonomy are up-to-date. To make it easier for the site owner to add content and update each search, separate pages are added for each taxonomy. To place the view blocks in Express, you need to do so via context. So, you will have as many view blocks and contexts as location taxonomies. Each view block will only vary filtering results by taxonomy, and each context will have a separate path loading the appropriate view blocks. 
 
 On each separate location page, the user keeps choosing from a tree of options untill they get to a specific location where they want to search for counselors. When the search is submitted, counselors are shown that cover those locations.  
 
-####Geolocation Events Feature
+#### Geolocation Events Feature
 
 There is also a way to search for recruitment events. This search used to be tied to the recruitment locations, but thankfully now it is only based on the address of the event. A user can submit their address and proximity range to manually search for events.
 

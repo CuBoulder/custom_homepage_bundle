@@ -21,7 +21,7 @@ function cu_homepage_bundle_preprocess_html(&$vars) {
  * Implements hook_secure_permissions().
  */
 function cu_homepage_bundle_secure_permissions($role) {
-   $permissions = array(
+  $permissions = array(
     'administrator' => array(
       'administer admission_event_series vocabulary terms',
       'administer admission_event_type vocabulary terms',
@@ -305,10 +305,10 @@ function cu_homepage_bundle_secure_permissions($role) {
       'view atoz',
       'view_cu_search_homepage_results',
     ),
-     'edit_my_content' => array(
-       'access_google_appliance_content',
-       'view_cu_search_homepage_results',
-     ),
+    'edit_my_content' => array(
+      'access_google_appliance_content',
+      'view_cu_search_homepage_results',
+    ),
     'site_owner' => array(
       'administer admission_event_series vocabulary terms',
       'administer admission_event_type vocabulary terms',

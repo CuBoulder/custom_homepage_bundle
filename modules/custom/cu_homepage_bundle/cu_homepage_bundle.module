@@ -400,3 +400,44 @@ function cu_homepage_bundle_secure_permissions($role) {
     return $permissions[$role];
   }
 }
+
+/**
+ * Implements hook_node_insert().
+ *
+ * If content is created with a path that conflicts with F5 paths,
+ * redirect the user to the node edit page and warn them of the conflict.
+ */
+function cu_homepage_bundle_node_insert($node) {
+  // Get array of legacy site paths.
+  $legacy_sites = atlas_api_request('sites', 'where={"pool":"WWWLegacy"}&projection={"path":1}');
+  $legacy_paths = array_map(function ($site) {
+    return $site['path'];
+  }, $legacy_sites['_items']);
+
+  // Get current node path.
+  $path = drupal_get_path_alias('node/' . $node->nid);
+
+  // Determine if there's a conflict between the current path and legacy paths.
+  if (in_array($path, $legacy_paths)) {
+    drupal_set_message(
+      t('The URL alias <strong>%path</strong> conflicts with a legacy site path and will not function correctly. Please update the path or contact support for assistance.',
+        array('%path' => $path)),
+      'error'
+    );
+    drupal_goto('node/' . $node->nid . '/edit');
+  }
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ *
+ * Ensures cu_homepage_bundle_node_insert() runs after pathauto_create_alias().
+ */
+function cu_homepage_bundle_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'node_insert') {
+    // Move cu_homepage_bundle_node_insert() to the end of the list.
+    $group = $implementations['cu_homepage_bundle'];
+    unset($implementations['cu_homepage_bundle']);
+    $implementations['cu_homepage_bundle'] = $group;
+  }
+}

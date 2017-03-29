@@ -408,11 +408,23 @@ function cu_homepage_bundle_secure_permissions($role) {
  * redirect the user to the node edit page and warn them of the conflict.
  */
 function cu_homepage_bundle_node_insert($node) {
-  // Get array of legacy site paths.
-  $legacy_sites = atlas_api_request('sites', 'where={"pool":"WWWLegacy"}&projection={"path":1}');
-  $legacy_paths = array_map(function ($site) {
-    return $site['path'];
-  }, $legacy_sites['_items']);
+  // Check cache for legacy paths.
+  $legacy_paths = &drupal_static(__FUNCTION__);
+  if (!isset($legacy_paths)) {
+    if ($cache = cache_get('cu_homepage_bundle_legacy_paths')) {
+      $legacy_paths = $cache->data;
+    }
+    else {
+      // Get array of legacy site paths and set cache.
+      $legacy_sites = atlas_api_request('sites', 'where={"pool":"WWWLegacy"}&projection={"path":1}&max_results=10000');
+
+      $legacy_paths = array_map(function ($site) {
+        return $site['path'];
+      }, $legacy_sites['_items']);
+
+      cache_set('cu_homepage_bundle_legacy_paths', $legacy_paths);
+    }
+  }
 
   // Get current node path.
   $path = drupal_get_path_alias('node/' . $node->nid);

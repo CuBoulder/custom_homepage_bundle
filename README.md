@@ -28,18 +28,27 @@ Searching at the CO level would give you all counselors tagged with Denver as we
 When importing this data via Feeds, the locations need to be in the correct order with those headers at the top corresponding to how many location levels are in the supplied spreadsheet. 
 
 There is a Feeds importer for each level of the location data so that child terms can associate themselves with the parent after the parent has been imported. To import the data correctly you will need to:
-* Look at the Excel sheet provided by Admissions and make sure there are headers with "location1, location2..." If not there, then you have to add the headers. Make sure the levels make sense. Sometimes the locations might be in a different order than from less specfic to more specific
-* After preparing the locations spreadsheet, split it into separate sheets based on the top levels. The top levels of the location hierarchy can change from year to year, so the number of sheets could vary.
-* Each spearate sheet will need to have a taxonomy associated to it.
-* Take each inidivual sheet and start importing with the location level where differentiation beigns. For example, one sheet might have "Domestic, Freshman, United States, CA" and the differentiation starts at the state level so you can start at the fourth level importer.
-* There are currently six different feeds importers for location that import parent terms first and then associate child terms with them on the next run. So, the fourth level importer will look for the third level parents and then import the fourth level terms and so on and so forth. 
-* Instead of making many different importers for each taxonomy, the the taxonomy the locations are imported into can be changed manually for each import. Import each level of locations for each taxonomy remembering to switch the associated taxonomy.
+1. Look at the Excel sheet provided by Admissions and make sure there are headers with "location1, location2..." If not there, then you have to add the headers. Make sure the levels make sense. Sometimes the locations might be in a different order than from less specfic to more specific. Corrects headers are "person_nid,lastname,location1,location2,location3,location4,location5,location6,comments" in that order. 
 
-Now that the locations are imported, you have to attach them to counselors. There is one importer for this task. You will also need to prepare the sheets for this import. There is a tool to help you do this at: "admin/config/content/admissions". Take each sheet as is, upload the file, and you should get a new sheet with one counselor per row with all locations in the "all_terms" column.  
+2. After preparing the locations spreadsheet, split it into separate sheets based on the type of student being recruited. The top levels of the location hierarchy can change from year to year, so the number of sheets could vary. Currently, they are "Domestic Freshman, Domestic Transfer, and International Undergrad". The spreadhseet you are given should include these terms in the first two location columns.
 
-Use the person location importer this time changing the field mappings for each separate taxonomy. You'll also have to lookup the NID for each person node, make a "person_nid" column, and add that column to the field mapping. 
+3. You now have to prepare the Person content type to match up the locations to counselors. First, start by making a taxonomy vocabulary for each new recruitment category prefixing with the current year, e.g. "2017 Admissions Locations Domestic Freshman".
 
-Then, import each sheet changing the field mapping to each corresponding taxonomy. You'll have to check out Feeds Tamper for the "all_terms" colum and make sure it is set to "explode" with the pipe character as the separator. 
+4. Then, you need to use a Feeds Importer to associate the locations to the new taxonomies. You will start with the location importers at the level where the locations start to differ. For "Domestic Freshman," the import would start at "location4" since that is where the counselors start to differentiate themselves.
+
+5. Next you would run the remaining location importers. For "Domestic Freshman", you would then run the "location5" importer after the "location4" importer. The Feeds importer will look for any parent terms imported in step four and associate them with the current term being imported. This process of parent/child matching is how the final hierarchical select list is built.
+
+6. Once you are done with one recruitment category, you can move onto the next one and import locations, e.g. go from "Domestic Freshman" to "Domestic Transfer". You will need to edit the Feeds importer for the location columns to add to the next taxonomy vocabulary before you use any of the importers for that recrutiment category. If we move onto importing "Domestic Transfer", then we need to change the vocabulary on the "Settings for Taxonomy term processor" in the importer to the vocabulary matching Domestic Transfer.
+
+7. Now, we can start to add those terms to the Person content type. Since we are creating new taxonomies to use in order preserve the old ones, we also need to create new fields on the person content type that reference the taxonomies we just created. Those fields need to automatically select the parent, be collapsed by default, show a track list, and have unlimited values. All of these are options given to you when creating the field. Place the new term reference fields in a field group denoting they are locations for the year you are importing.  
+
+8. You will also need to prepare the sheets for matching counselors to recruitment locations. There is a tool to help you do this at: "admin/config/content/admissions". The sheets you create in step two probably won't have all their commas in the right place. You will need to check and see that the CSV file has proper amounts of commas or else the CSV data transformation tool will be off by one and the export won't be usable. Historically, this has meant only placing one comma after the last column header. Once prepared, upload the spreadhseet and you should get a new sheet with one counselor per row with all locations in the "all_terms" column.  
+
+9. You can now use the person location importer to match locations to counselors. You will first have to change which field to import to based on the locations fields you added to the person content type. When you switch that field in the Feeds Importer UI, you will need to check the Tamper tab (needs feeds_tamper_ui enabled) to see that the locations field is set to have an "Explode" plugin enabled using a pipe, "|", separator. 
+
+10. The last step is to change the field the views are filtering on when users interact with the counselor search. There is one view that has four different blocks related to finding a counselor. Once you change that filter field and remove the filter pointing to the old locations field, you should test to make sure that the correct counselors show up in the search. 
+
+11. If all goes well, switch over all of the Views filters to use the new fields on the Person content type and then delete the old fields and taxonomies relating to the previous year. You shouldn't do this immediately, but make a note to come back and do the cleanup process in a couple of week. 
 
 #### Search Pages
 

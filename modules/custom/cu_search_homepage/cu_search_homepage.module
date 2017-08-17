@@ -68,7 +68,7 @@ function cu_search_homepage_whitepages_redirect() {
  */
 function cu_search_homepage_menu_alter(&$items) {
   $items['gsearch'] = array(
-    'title' => t('Search CU-Boulder'),
+    'title' => t('Search CU Boulder'),
     'page callback' => 'cu_search_homepage_search_view',
     'page arguments' => array(1, 2, 3), // Scope (all, fac, people...), Search Keys, Sort
     'access arguments' => array('view_cu_search_homepage_results'),

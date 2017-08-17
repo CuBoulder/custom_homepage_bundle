@@ -296,16 +296,17 @@ function cu_homepage_admissions_views_default_views() {
     'person' => 'person',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Locations: Domestic Freshman (field_lc_domestic_freshman) */
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['id'] = 'field_lc_domestic_freshman_tid';
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['table'] = 'field_data_field_lc_domestic_freshman';
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['field'] = 'field_lc_domestic_freshman_tid';
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['operator_id'] = 'field_lc_domestic_freshman_tid_op';
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['label'] = 'Select Your Location';
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['operator'] = 'field_lc_domestic_freshman_tid_op';
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['identifier'] = 'field_lc_domestic_freshman_tid';
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: 2017 Domestic Freshman Locations (field_2017_domestic_freshman_loc) */
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['id'] = 'field_2017_domestic_freshman_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['table'] = 'field_data_field_2017_domestic_freshman_loc';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['field'] = 'field_2017_domestic_freshman_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['expose']['operator_id'] = 'field_2017_domestic_freshman_loc_tid_op';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['expose']['label'] = 'Select Location';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['expose']['operator'] = 'field_2017_domestic_freshman_loc_tid_op';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['expose']['identifier'] = 'field_2017_domestic_freshman_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     29 => 0,
@@ -314,7 +315,13 @@ function cu_homepage_admissions_views_default_views() {
     5 => 0,
     9 => 0,
   );
-  $handler->display->display_options['filters']['field_lc_domestic_freshman_tid']['vocabulary'] = 'admissions_locations_domestic_freshman';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid']['vocabulary'] = '2017_admissions_locations_domestic_freshman';
+  /* Filter criterion: Content: 2017 Domestic Freshman Locations (field_2017_domestic_freshman_loc) */
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid_1']['id'] = 'field_2017_domestic_freshman_loc_tid_1';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid_1']['table'] = 'field_data_field_2017_domestic_freshman_loc';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid_1']['field'] = 'field_2017_domestic_freshman_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_2017_domestic_freshman_loc_tid_1']['vocabulary'] = '2017_admissions_locations_domestic_freshman';
 
   /* Display: Counselors Page */
   $handler = $view->new_display('page', 'Counselors Page', 'page_1');
@@ -536,16 +543,16 @@ function cu_homepage_admissions_views_default_views() {
     'person' => 'person',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Locations: Domestic Transfer (field_lc_domestic_transfer) */
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['id'] = 'field_lc_domestic_transfer_tid';
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['table'] = 'field_data_field_lc_domestic_transfer';
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['field'] = 'field_lc_domestic_transfer_tid';
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['operator_id'] = 'field_lc_domestic_transfer_tid_op';
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['label'] = 'Select Your Location';
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['operator'] = 'field_lc_domestic_transfer_tid_op';
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['identifier'] = 'field_lc_domestic_transfer_tid';
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: 2017 Domestic Transfer Locations (field_2017_domestic_transfer_loc) */
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['id'] = 'field_2017_domestic_transfer_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['table'] = 'field_data_field_2017_domestic_transfer_loc';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['field'] = 'field_2017_domestic_transfer_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['expose']['operator_id'] = 'field_2017_domestic_transfer_loc_tid_op';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['expose']['label'] = 'Select Location';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['expose']['operator'] = 'field_2017_domestic_transfer_loc_tid_op';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['expose']['identifier'] = 'field_2017_domestic_transfer_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     29 => 0,
@@ -554,7 +561,13 @@ function cu_homepage_admissions_views_default_views() {
     5 => 0,
     9 => 0,
   );
-  $handler->display->display_options['filters']['field_lc_domestic_transfer_tid']['vocabulary'] = 'admissions_locations_domestic_transfer';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid']['vocabulary'] = '2017_admissions_locations_domestic_transfer';
+  /* Filter criterion: Content: 2017 Domestic Transfer Locations (field_2017_domestic_transfer_loc) */
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid_1']['id'] = 'field_2017_domestic_transfer_loc_tid_1';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid_1']['table'] = 'field_data_field_2017_domestic_transfer_loc';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid_1']['field'] = 'field_2017_domestic_transfer_loc_tid';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_2017_domestic_transfer_loc_tid_1']['vocabulary'] = '2017_admissions_locations_domestic_transfer';
 
   /* Display: International Graduate */
   $handler = $view->new_display('block', 'International Graduate', 'block_4');
@@ -690,16 +703,16 @@ function cu_homepage_admissions_views_default_views() {
     'person' => 'person',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Locations: International Undergrad (field_lc_international_undergrad) */
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['id'] = 'field_lc_international_undergrad_tid';
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['table'] = 'field_data_field_lc_international_undergrad';
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['field'] = 'field_lc_international_undergrad_tid';
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['operator_id'] = 'field_lc_international_undergrad_tid_op';
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['label'] = 'Select Your Location';
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['operator'] = 'field_lc_international_undergrad_tid_op';
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['identifier'] = 'field_lc_international_undergrad_tid';
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: 2017 International Undergrad Locations (field_2017_international_undergr) */
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['id'] = 'field_2017_international_undergr_tid';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['table'] = 'field_data_field_2017_international_undergr';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['field'] = 'field_2017_international_undergr_tid';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['expose']['operator_id'] = 'field_2017_international_undergr_tid_op';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['expose']['label'] = 'Select Location';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['expose']['operator'] = 'field_2017_international_undergr_tid_op';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['expose']['identifier'] = 'field_2017_international_undergr_tid';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     29 => 0,
@@ -708,7 +721,13 @@ function cu_homepage_admissions_views_default_views() {
     5 => 0,
     9 => 0,
   );
-  $handler->display->display_options['filters']['field_lc_international_undergrad_tid']['vocabulary'] = 'admissions_locations_international_undergrad';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid']['vocabulary'] = '2017_admissions_locations_international_undergrad';
+  /* Filter criterion: Content: 2017 International Undergrad Locations (field_2017_international_undergr) */
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid_1']['id'] = 'field_2017_international_undergr_tid_1';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid_1']['table'] = 'field_data_field_2017_international_undergr';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid_1']['field'] = 'field_2017_international_undergr_tid';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_2017_international_undergr_tid_1']['vocabulary'] = '2017_admissions_locations_international_undergrad';
   $export['admission_events_and_counselors'] = $view;
 
   $view = new view();

@@ -48,7 +48,7 @@ There is a Feeds importer for each level of the location data so that child term
 
 10. The last step is to change the field the views are filtering on when users interact with the counselor search. There is one view that has four different blocks related to finding a counselor. Once you change that filter field and remove the filter pointing to the old locations field, you should test to make sure that the correct counselors show up in the search. 
 
-11. If all goes well, switch over all of the Views filters to use the new fields on the Person content type and then delete the old fields and taxonomies relating to the previous year. You shouldn't do this immediately, but make a note to come back and do the cleanup process in a couple of week. 
+11. If all goes well, switch over all of the Views filters to use the new fields on the Person content type and then delete the old fields and taxonomies relating to the previous year. **It is very important to export the final view to code.** You shouldn't do this immediately, but make a note to come back and do the cleanup process in a couple of week. 
 
 #### Search Pages
 

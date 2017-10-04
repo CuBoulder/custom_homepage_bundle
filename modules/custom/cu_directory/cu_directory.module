@@ -36,19 +36,19 @@ function cu_directory_block_view($delta = '') {
   }
   switch($delta) {
     case 'cu_directory_people_results':
-      $qstring = urldecode(arg(2));
+      $qstring = strval($_GET['cse']);
       $res = cu_directory_get_people($qstring, 'all');
       $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
       $block = array('subject' => t('CU People Search'), 'content' => $out);
       break;
     case 'cu_directory_facstaff_results':
-      $qstring = urldecode(arg(2));
+      $qstring = strval($_GET['cse']);
       $res = cu_directory_get_people($qstring, 'facstaff');
       $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
       $block = array('subject' => t('CU People Search'), 'content' => $out);
       break;
    case 'cu_directory_student_results':
-      $qstring = urldecode(arg(2));
+      $qstring = strval($_GET['cse']);
       $res = cu_directory_get_people($qstring, 'student');
       $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
       $block = array('subject' => t('CU People Search'), 'content' => $out);
@@ -112,7 +112,7 @@ function template_preprocess_cu_directory_sidebar_results(&$variables) {
 }
 
 function template_preprocess_cu_directory_sidebar_result(&$variables) {
-  $people_date = array();
+  $people_data = array();
   if ($variables['person']['email']) {
 	  $people_data[] = '<a href="mailto:' . render($variables['person']['email']) . '" class="email-short">Email</a><a href="mailto:' . render($variables['person']['email']) . '" class="email-long">' . render($variables['person']['email']) . '</a>';
 	}

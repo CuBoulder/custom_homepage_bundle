@@ -34,6 +34,7 @@ function cu_directory_block_view($delta = '') {
   if (variable_get('cu_disable_people_search', FALSE)) {
     return $block;
   }
+  dpm($delta);
   switch($delta) {
     case 'cu_directory_people_results':
       $qstring = urldecode($_GET['cse']);
@@ -47,9 +48,15 @@ function cu_directory_block_view($delta = '') {
       $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
       $block = array('subject' => t('CU People Search'), 'content' => $out);
       break;
-   case 'cu_directory_student_results':
+    case 'cu_directory_student_results':
       $qstring = urldecode($_GET['cse']);
       $res = cu_directory_get_people($qstring, 'student');
+      $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
+      $block = array('subject' => t('CU People Search'), 'content' => $out);
+      break;
+    default:
+      $qstring = urldecode($_GET['cse']);
+      $res = cu_directory_get_people($qstring, 'all');
       $out = theme('cu_directory_sidebar_results', array('people_data' => $res));
       $block = array('subject' => t('CU People Search'), 'content' => $out);
       break;

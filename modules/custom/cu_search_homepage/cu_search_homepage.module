@@ -19,6 +19,10 @@ function cu_search_homepage_init() {
   if (arg(0) == 'gsearch' && in_array(arg(1), $all)) {
     drupal_goto('search', array('query' => array('cse' => arg(2))));
   }
+
+  if (arg(0) == 'gsearch' && !in_array(arg(1), $all)) {
+    drupal_goto('search', array('query' => array('cse' => arg(1))));
+  }
 }
 
 /**

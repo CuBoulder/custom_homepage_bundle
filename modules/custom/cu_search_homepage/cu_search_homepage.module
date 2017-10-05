@@ -15,9 +15,9 @@ include_once('cu_search_homepage.features.inc');
  * Following code looks for 'a=' for search query
  */
 function cu_search_homepage_init() {
-  if (arg(2) == 'redirect' && arg(0) == 'search') {
-    $goto = rawurlencode($_GET['a']);
-    drupal_goto('search/all/' . $goto);
+  $all =  array('all', 'people', 'facstaff', 'students');
+  if (arg(0) == 'gsearch' && in_array(arg(1), $all)) {
+    drupal_goto('search', array('query' => array('cse' => arg(2))));
   }
 }
 

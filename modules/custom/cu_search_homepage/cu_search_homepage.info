@@ -9,7 +9,6 @@ dependencies[] = ctools
 dependencies[] = cu_directory
 dependencies[] = cu_search
 dependencies[] = features
-dependencies[] = google_appliance
 dependencies[] = strongarm
 features[context][] = search
 features[context][] = search-all

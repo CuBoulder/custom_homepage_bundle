@@ -11,13 +11,13 @@ include_once('cu_search_homepage.features.inc');
 /**
  * Implements hook_init().
  *
- * Legacy search will go to /gsearch/all/redirect?[...]
+ * Legacy search will go to /search/all/redirect?[...]
  * Following code looks for 'a=' for search query
  */
 function cu_search_homepage_init() {
-  if (arg(2) == 'redirect' && arg(0) == 'gsearch') {
-    $goto = rawurlencode($_GET['a']);
-    drupal_goto('gsearch/all/' . $goto);
+  $all =  array('all', 'people', 'facstaff', 'students');
+  if (arg(0) == 'gsearch' && in_array(arg(1), $all)) {
+    drupal_goto('search', array('query' => array('cse' => arg(2))));
   }
 }
 
@@ -51,23 +51,23 @@ function cu_search_homepage_menu() {
  */
 function cu_search_homepage_whitepages_redirect() {
   if (isset($_GET['cnfull'])) {
-    drupal_goto('gsearch/people/' . $_GET['cnfull']);
+    drupal_goto('search/people/' . $_GET['cnfull']);
   }
   elseif (isset($_POST['cnfull'])) {
-    drupal_goto('gsearch/people/' . $_POST['cnfull']);
+    drupal_goto('search/people/' . $_POST['cnfull']);
   }
   else {
-    drupal_goto('gsearch/people');
+    drupal_goto('search/people');
   }
 }
 
 /**
  * Implements hook_menu_alter().
  *
- * Takes over gsearch from the google appliance module.
+ * Takes over search from the google appliance module.
  */
 function cu_search_homepage_menu_alter(&$items) {
-  $items['gsearch'] = array(
+  $items['search'] = array(
     'title' => t('Search CU Boulder'),
     'page callback' => 'cu_search_homepage_search_view',
     'page arguments' => array(1, 2, 3), // Scope (all, fac, people...), Search Keys, Sort
@@ -100,6 +100,7 @@ function cu_search_homepage_search_view($scope = 'all', $keys, $sort = NULL) {
 /**
  * Implements hook_block_info().
  */
+/*
 function cu_search_homepage_block_info() {
   $blocks['cu_search_homepage_search'] = array(
     'info' => t('Search Sites + People'),
@@ -119,10 +120,11 @@ function cu_search_homepage_block_info() {
   );
   return $blocks;
 }
-
+*/
 /**
  * Implements hook_search_block_view().
  */
+/*
 function cu_search_homepage_block_view($delta) {
   $block = array();
   switch ($delta) {
@@ -147,7 +149,7 @@ function cu_search_homepage_block_view($delta) {
   }
   return $block;
 }
-
+*/
 /**
  * Wrapper around _cu_search_homepage_search_form() for small form.
  */
@@ -179,10 +181,10 @@ function _cu_search_homepage_search_form($display = 'small') {
   $form = array();
 
   // Setup default keys from arg(1).
-  $default_keys = arg(0) == 'gsearch' ? urldecode(check_plain(arg(2))) : '';
+  $default_keys = arg(0) == 'search' ? urldecode(check_plain(arg(2))) : '';
 
   // If on search page with no keys, show title, otherwise hide.
-  $title_display = (arg(0) == 'gsearch' && !arg(2)) ? 'before' : 'invisible';
+  $title_display = (arg(0) == 'search' && !arg(2)) ? 'before' : 'invisible';
   $form['search_keys'] = array(
     '#type' => 'textfield',
     '#title' => t('Enter the terms you wish to search for.'),
@@ -231,12 +233,13 @@ function _cu_search_homepage_search_form_submit($form, &$form_state) {
 
   //If someone submits the search box without changing the default text, then we don't want the database to be searched, we just want them to hit the blank search page. This ternary if should handle that case.
   $search_query = $form_state['values']['search_keys']==trim("Search Sites + People") ? NULL : urlencode($form_state['values']['search_keys']);
-  $form_state['redirect'] = url('gsearch/' . $search_scope . '/' . $search_query, array('absolute' => TRUE));
+  $form_state['redirect'] = url('search/' . $search_scope . '/' . $search_query, array('absolute' => TRUE));
 }
 
 /**
  * Block callback for ga results.
  */
+/*
 function cu_search_homepage_ga_results_view() {
   $content = array();
   $keys = urldecode(arg(2));
@@ -244,7 +247,7 @@ function cu_search_homepage_ga_results_view() {
   $content['results']['#markup'] = google_appliance_search_view($keys, $sort);
   return $content;
 }
-
+*/
 /**
  * Block callback for related searches.
  */
@@ -286,7 +289,7 @@ function cu_search_homepage_ga_related_view() {
       // build the link list
       $cluster_list_items = array();
       foreach ($clusters['clusters'][0]['clusters'] as $cluster) {
-        array_push($cluster_list_items, l($cluster['label'], 'gsearch/all/' . $cluster['label']));
+        array_push($cluster_list_items, l($cluster['label'], 'search/all/' . $cluster['label']));
       }
 
       // create theme-friendly list of links
@@ -320,7 +323,7 @@ function cu_search_homepage_preprocess_google_appliance_results(&$vars) {
 /**
  * Implements hook_preprocess_google_appliance_sort_headers().
  *
- * Copied directly from googe_appliance module, ony changed path to gsearch/all.
+ * Copied directly from googe_appliance module, ony changed path to search/all.
  */
 function cu_search_homepage_preprocess_google_appliance_sort_headers(&$vars) {
 
@@ -391,7 +394,7 @@ function cu_search_homepage_preprocess_google_appliance_sort_headers(&$vars) {
           );
 
       // Append the query to the base url of the serach page.
-      $link_path = 'gsearch/all/' . $vars['gsa_query_params']['q'];
+      $link_path = 'search/all/' . $vars['gsa_query_params']['q'];
 
       // Append the sort param if any.
       $link_path .= '/' . $sort_opt['sort'];

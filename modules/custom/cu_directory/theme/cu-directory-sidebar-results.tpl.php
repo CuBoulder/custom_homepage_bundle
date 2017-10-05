@@ -5,13 +5,13 @@
 // dsm($variables);
 ?>
 <?php
-  $qstring = urldecode( arg(2) );
+  $qstring = urldecode($_GET['cse']); //urldecode( arg(2) );
 ?>
 <div class="<?php print $classes; ?>">
   <?php if ($results && !$people_data['error']): ?>
     <ul class="cu-directory-results"><?php print $results; ?></ul>
-    <?php if (!in_array(arg(1), array('people', 'students', 'facstaff'))) : ?>
-      <a href="/gsearch/people/<?php print $qstring; ?>" class="button button-blue button-small">
+    <?php if (in_array(arg(1), array('people', 'students', 'facstaff'))) : ?>
+      <a href="/search/people/<?php print $qstring; ?>" class="button button-blue button-small">
         <?php print format_plural($people_count, 'View person', 'View all @count people', array('@count' => $people_count)) ?>
       </a>
     <?php endif; ?>

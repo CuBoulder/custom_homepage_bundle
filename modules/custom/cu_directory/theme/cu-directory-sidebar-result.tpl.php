@@ -52,6 +52,6 @@
     <?php endif; ?>
   </div>
     <?php if(arg(1) == 'all'): ?>
-      <a href="/gsearch/people/<?php print $person['name']; ?>#people_search_result_<?php print $person['uuid']; ?>" class="simple-button">View Person</a>
+      <a href="/search/people/<?php print $person['name']; ?>#people_search_result_<?php print $person['uuid']; ?>" class="simple-button">View Person</a>
     <?php endif; ?>
 </li>

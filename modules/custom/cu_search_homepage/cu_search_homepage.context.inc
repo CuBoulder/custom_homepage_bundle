@@ -19,8 +19,8 @@ function cu_search_homepage_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'gsearch' => 'gsearch',
-        'gsearch/*' => 'gsearch/*',
+        'search' => 'search',
+        'search/*' => 'search/*',
       ),
     ),
   );
@@ -43,12 +43,12 @@ function cu_search_homepage_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'search-all';
-  $context->description = 'gsearch/all/*';
+  $context->description = 'search/all/*';
   $context->tag = 'search';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'gsearch/all/*' => 'gsearch/all/*',
+        'search/all/*' => 'search/all/*',
       ),
     ),
   );
@@ -80,7 +80,7 @@ function cu_search_homepage_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('gsearch/all/*');
+  t('search/all/*');
   t('search');
   $export['search-all'] = $context;
 
@@ -93,7 +93,7 @@ function cu_search_homepage_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'gsearch/facstaff/*' => 'gsearch/facstaff/*',
+        'search/facstaff/*' => 'search/facstaff/*',
       ),
     ),
   );
@@ -125,7 +125,7 @@ function cu_search_homepage_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'gsearch/people/*' => 'gsearch/people/*',
+        'search/people/*' => 'search/people/*',
       ),
     ),
   );
@@ -163,7 +163,7 @@ function cu_search_homepage_context_default_contexts() {
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'gsearch/students/*' => 'gsearch/students/*',
+        'search/students/*' => 'search/students/*',
       ),
     ),
   );

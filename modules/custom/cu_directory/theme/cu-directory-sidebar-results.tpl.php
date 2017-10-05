@@ -5,7 +5,7 @@
 // dsm($variables);
 ?>
 <?php
-  $qstring = strval($_GET['cse']); //urldecode( arg(2) );
+  $qstring = urldecode($_GET['cse']); //urldecode( arg(2) );
 ?>
 <div class="<?php print $classes; ?>">
   <?php if ($results && !$people_data['error']): ?>

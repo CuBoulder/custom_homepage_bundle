@@ -2,7 +2,7 @@
 /*
 *
 */
-// dsm($variables);
+// dpm($variables);
 ?>
 <?php
   $qstring = urldecode($_GET['cse']); //urldecode( arg(2) );
@@ -16,7 +16,7 @@
       </a>
     <?php endif; ?>
   <?php // If no error, but search is nonfuzzy, that means we tried a fuzzy search and got too many results. Therefore, thats the error we want to return ?>
-  <?php elseif ($people_data['error'] || $people_data['search_type'] == 'nonfuzzy') : ?>
+  <?php elseif (!empty($people_data) && ($people_data['error'] || $people_data['search_type'] == 'nonfuzzy')) : ?>
   Sorry, there were too many results.
   <?php else: ?>
   No matches in CU People search.

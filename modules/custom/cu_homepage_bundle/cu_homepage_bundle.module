@@ -400,3 +400,13 @@ function cu_homepage_bundle_secure_permissions($role) {
     return $permissions[$role];
   }
 }
+
+function _user_redirect() {
+  drupal_goto('https://www.colorado.edu/students', array('external' => TRUE));
+}
+
+function cu_homepage_bundle_menu_alter(&$items) {
+  $items['express_admin_login'] = $items['user'];
+  //unset($items['user']);
+  $items['user']['page callback'] = '_user_redirect';
+}

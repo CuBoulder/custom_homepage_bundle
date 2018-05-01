@@ -13,24 +13,23 @@ function cu_search_homepage_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'search';
-  $context->description = '';
-  $context->tag = '';
+  $context->name = 'search-all';
+  $context->description = 'search/all/*';
+  $context->tag = 'search';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'search' => 'search',
-        'search/*' => 'search/*',
+        'search*' => 'search*',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'cu_search_homepage-cu_search_homepage_search_full' => array(
-          'module' => 'cu_search_homepage',
-          'delta' => 'cu_search_homepage_search_full',
-          'region' => 'content',
+        'cu_directory-cu_directory_people_results' => array(
+          'module' => 'cu_directory',
+          'delta' => 'cu_directory_people_results',
+          'region' => 'sidebar_second',
           'weight' => '-10',
         ),
       ),
@@ -43,12 +42,12 @@ function cu_search_homepage_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'search-all';
-  $context->description = 'search/all/*';
+  $context->description = 'search*';
   $context->tag = 'search';
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'search/all/*' => 'search/all/*',
+        'search*' => 'search*',
       ),
     ),
   );

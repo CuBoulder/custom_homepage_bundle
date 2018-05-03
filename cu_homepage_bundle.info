@@ -29,3 +29,4 @@ dependencies[] = term_merge
 dependencies[] = term_reference_tree
 dependencies[] = views_block_filter_block
 dependencies[] = views_responsive_grid
+dependencies[] = match_redirect

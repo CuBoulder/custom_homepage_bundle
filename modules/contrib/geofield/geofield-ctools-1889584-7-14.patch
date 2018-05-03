@@ -1,0 +1,49 @@
+diff --git a/geofield.install b/geofield.install
+index 961160d..492ae36 100644
+--- a/geofield.install
++++ b/geofield.install
+@@ -12,26 +12,32 @@ function geofield_field_schema($field) {
+ 
+   $schema_callback = '';
+   ctools_include('plugins');
+-  if (isset($field['settings']['backend'])) {
+-    $backend = ctools_get_plugins('geofield', 'geofield_backend', $field['settings']['backend']);
+ 
+-  }
+-  else {
+-    $backend = ctools_get_plugins('geofield', 'geofield_backend', 'default');
+-  }
+-
+-  if (!empty($backend['schema'])) {
+-    $schema_callback = $backend['schema'];
+-  } else {
++  // Need to check and see if ctools cached Geofield plugin properly.
++  $info = ctools_plugin_get_plugin_type_info();
++  if (!isset($info['geofield']['geofield_backend'])) {
+     /**
+      * Edge case, during an update between 7.x-1.x and 7.x-2.x, if ctools is enabled,
+-     * ctools will not see the geofield plugin without manually truncating the cache 
+-     * tables. To bypass, we manually seed the $backend array directly if 
++     * ctools will not see the geofield plugin without manually truncating the cache
++     * tables. To bypass, we manually seed the $backend array directly if
+      * $backend['schema'] still isn't declared.
+      **/
+     module_load_include('inc', 'geofield', 'includes/geofield_backend/default');
+     $schema_callback = 'geofield_backend_default_schema';
+   }
++  else {
++    if (isset($field['settings']['backend'])) {
++      $backend = ctools_get_plugins('geofield', 'geofield_backend', $field['settings']['backend']);
++
++    }
++    else {
++      $backend = ctools_get_plugins('geofield', 'geofield_backend', 'default');
++    }
++
++    if (!empty($backend['schema'])) {
++      $schema_callback = $backend['schema'];
++    }
++  }
+ 
+   $geom_schema = $schema_callback($field);
+ 

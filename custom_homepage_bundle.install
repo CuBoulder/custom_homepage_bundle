@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for custom_homepage_bundle module.
+ *
+
+/*
+* Updating remove unused Admission Event content type
+*/
+function cu_core_update_7001() {
+   node_type_delete('admission_event');
+}
+
+
+

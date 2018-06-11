@@ -8,7 +8,7 @@
 /*
 * Updating remove unused Admission Event content type
 */
-function cu_core_update_7001() {
+function custom_homepage_bundle_update_7001() {
    node_type_delete('admission_event');
 }
 

@@ -16,7 +16,6 @@ dependencies[] = features
 dependencies[] = feeds
 dependencies[] = feeds_tamper
 dependencies[] = field_group
-dependencies[] = geophp
 dependencies[] = list
 dependencies[] = options
 dependencies[] = postal_code

@@ -10,7 +10,6 @@ dependencies[] = cu_directory
 dependencies[] = cu_homepage_admissions
 dependencies[] = cu_homepage_people
 dependencies[] = cu_homepage_policy
-dependencies[] = cu_homepage_resource
 dependencies[] = cu_search_homepage
 
 dependencies[] = addressfield

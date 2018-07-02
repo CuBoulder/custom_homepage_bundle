@@ -140,7 +140,8 @@ function _cu_atoz_render_children($orgunit) {
     $output['children']['#prefix'] = '<div class="atoz-subunits">';
     $output['children']['#suffix'] = '</div>';
     foreach($orgunit->children_ous as $child_orgunit) {
-      $output['children']['#items'][] = render(_cu_atoz_render_children($child_orgunit));
+      $clone = _cu_atoz_render_children($child_orgunit);
+      $output['children']['#items'][] = drupal_render($clone);
     }
   }
   return $output;

@@ -9,12 +9,25 @@
 include_once('cu_search_homepage.features.inc');
 
 /**
+ * Implements hook_menu().
+ */
+function cu_search_homepage_menu() {
+  $items['gsearch'] = array(
+    'title' => 'GSA Redirect',
+    'page callback' => 'cu_search_homepage_gsearch_redirect',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
  * Implements hook_init().
  *
  * Legacy search will go to /search/all/redirect?[...]
  * Following code looks for 'a=' for search query
  */
-function cu_search_homepage_init() {
+function cu_search_homepage_gsearch_redirect() {
   $all =  array('all', 'people', 'facstaff', 'students');
   if (arg(0) == 'gsearch' && in_array(arg(1), $all)) {
     drupal_goto('search', array('query' => array('cse' => arg(2))));
@@ -22,46 +35,6 @@ function cu_search_homepage_init() {
 
   if (arg(0) == 'gsearch' && !in_array(arg(1), $all)) {
     drupal_goto('search', array('query' => array('cse' => arg(1))));
-  }
-}
-
-/**
- * Implements hook_menu().
- */
-function cu_search_homepage_menu() {
-  $items['gsuggest'] = array(
-    'title' => 'GSA Autocomplete',
-    'page callback' => 'cu_search_homepage_autocomplete',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-  $items['whitepages/ldapdrill.xml'] = array(
-    'title' => 'Whitepages redirect',
-    'page callback' => 'cu_search_homepage_whitepages_redirect',
-    'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
-  );
-  $items['whitepages/ldapnew.xml'] = array(
-    'title' => 'Whitepages redirect',
-    'page callback' => 'cu_search_homepage_whitepages_redirect',
-    'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
-  );
-  return $items;
-}
-
-/**
- * Page callback for whitepages/ldapdrill.xml
- */
-function cu_search_homepage_whitepages_redirect() {
-  if (isset($_GET['cnfull'])) {
-    drupal_goto('search/people/' . $_GET['cnfull']);
-  }
-  elseif (isset($_POST['cnfull'])) {
-    drupal_goto('search/people/' . $_POST['cnfull']);
-  }
-  else {
-    drupal_goto('search/people');
   }
 }
 
@@ -101,59 +74,6 @@ function cu_search_homepage_search_view($scope = 'all', $keys, $sort = NULL) {
   return $content;
 }
 
-/**
- * Implements hook_block_info().
- */
-/*
-function cu_search_homepage_block_info() {
-  $blocks['cu_search_homepage_search'] = array(
-    'info' => t('Search Sites + People'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-  $blocks['cu_search_homepage_search_full'] = array(
-    'info' => t('Search Sites + People Full'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-  $blocks['cu_search_homepage_ga_results'] = array(
-    'info' => t('Google Appliance Search Results'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-  $blocks['cu_search_homepage_ga_related'] = array(
-    'info' => t('Google Appliance Related Searches'),
-    'cache' => DRUPAL_NO_CACHE,
-  );
-  return $blocks;
-}
-*/
-/**
- * Implements hook_search_block_view().
- */
-/*
-function cu_search_homepage_block_view($delta) {
-  $block = array();
-  switch ($delta) {
-    case 'cu_search_homepage_search':
-      $block['content'] = drupal_get_form('cu_search_homepage_search_form_small');
-      $block['subject'] = t('Search');
-      break;
-    case 'cu_search_homepage_search_full':
-      $block['content'] = drupal_get_form('cu_search_homepage_search_form_full');
-      $block['subject'] = t('Search');
-      $block['title'] = '<none>';
-      break;
-    case 'cu_search_homepage_ga_results':
-      $block['content'] = cu_search_homepage_ga_results_view();
-      $block['subject'] = t('Website Search Results');
-      $block['title'] = '<none>';
-      break;
-    case 'cu_search_homepage_ga_related':
-      $block['content'] = cu_search_homepage_ga_related_view();
-      $block['subject'] = t('Narrow search:');
-      break;
-  }
-  return $block;
-}
-*/
 /**
  * Wrapper around _cu_search_homepage_search_form() for small form.
  */
@@ -240,187 +160,3 @@ function _cu_search_homepage_search_form_submit($form, &$form_state) {
   $form_state['redirect'] = url('search/' . $search_scope . '/' . $search_query, array('absolute' => TRUE));
 }
 
-/**
- * Block callback for ga results.
- */
-/*
-function cu_search_homepage_ga_results_view() {
-  $content = array();
-  $keys = urldecode(arg(2));
-  $sort = urldecode(arg(3));
-  $content['results']['#markup'] = google_appliance_search_view($keys, $sort);
-  return $content;
-}
-*/
-/**
- * Block callback for related searches.
- */
-function cu_search_homepage_ga_related_view() {
-  $content = array();
-
-  // grab module settings
-  $settings = _google_appliance_get_settings();
-
-  // get the search qeury
-  $search_query = urldecode( arg(2) );
-  $cluster_content = NULL;
-
-  // perform POST to acquire the clusters  block
-  $clusterQueryURL = check_plain($settings['hostname'] . '/cluster');
-  $clusterQueryParams = array(
-    'q' => check_plain($search_query),
-    'btnG' => 'Google+Search',
-    'access' => 'p',
-    'entqr' => '0',
-    'ud' => '1',
-    'sort' => 'date:D:L:d1',
-    'output' => 'xml_no_dtd',
-    'oe' => 'utf8',
-    'ie' => 'utf8',
-    'site' => check_plain($settings['collection']),
-    'client' => check_plain($settings['frontend']),
-  );
-
-  // cURL request for the clusters produces JSON result
-  $gsa_clusters_json = _curl_post($clusterQueryURL, $clusterQueryParams);
-
-  if (!$gsa_clusters_json['is_error']) { // no error -> get the clusters
-
-    $clusters = json_decode($gsa_clusters_json['response'], TRUE);
-
-    if (isset($clusters['clusters'][0])) {
-
-      // build the link list
-      $cluster_list_items = array();
-      foreach ($clusters['clusters'][0]['clusters'] as $cluster) {
-        array_push($cluster_list_items, l($cluster['label'], 'search/all/' . $cluster['label']));
-      }
-
-      // create theme-friendly list of links
-      $cluster_list = array(
-        'items' => $cluster_list_items,
-        'title' => NULL,
-        'type' => 'ul',
-        'attributes' => array(),
-      );
-      $cluster_content = theme('item_list', $cluster_list);
-    }
-  }
-  if (!empty($cluster_content)) {
-    $content['related']['#markup'] = $cluster_content;
-  }
-  return $content;
-}
-
-/**
- * Implements hook_preprocess_google_appliance_results().
- *
- * This gets called by google_appliance_search_view() to format results' output.
- */
-function cu_search_homepage_preprocess_google_appliance_results(&$vars) {
-  // Unset the appliances' default search form. We'll have our own as a block.
-  unset($vars['search_form']);
-  // Unset synonyms to prevent 'You might also' text.
-  unset($vars['show_synonyms']);
-}
-
-/**
- * Implements hook_preprocess_google_appliance_sort_headers().
- *
- * Copied directly from googe_appliance module, ony changed path to search/all.
- */
-function cu_search_homepage_preprocess_google_appliance_sort_headers(&$vars) {
-
-  // Possible sort options.
-  $vars['sort_options'] = array(
-    array(  // default sort
-      'sort' => 'rel',
-      'label' => t('Relevance'),
-      'gsa_key' => '',
-    ),
-    array(
-      'sort' => 'date',
-      'label' => t('Date'),
-      'gsa_key' => 'date:D:S:d1'
-    ),
-    /*
-    array(
-     'sort' => 'date_asc',
-     'label' => t('Oldest First'),
-     'gsa_key' => 'date:A:S:d1',
-    ),
-    */
-  );
-
-  // Figure out which page we are on.
-  $cur_page = 0;
-  if (isset($_GET['page']) ) {
-    $cur_page = check_plain($_GET['page']);
-  }
-
-  $vars['sorters'] = array();
-  $sort_idx = 0;
-  $sort_found = FALSE;
-  foreach ($vars['sort_options'] as $sort_opt ) {
-
-    // If we haven't yet found the current sort, look for params again.
-    $sort_is_current = FALSE;
-    $sort_param = $vars['gsa_query_params']['sort'];
-    // Was a sort requested in the query?
-    if ((!$sort_found) && ($sort_param != '')) {
-
-      // Is the sort param one of the valid ones?
-      if (($sort_param == $sort_opt['gsa_key'])) {
-        $sort_is_current = TRUE;
-        $sort_found = TRUE;
-      }
-    }
-    elseif ((!$sort_found) && ($sort_param == '')) {
-      // We had no sort parameters.
-      if ($sort_opt['sort'] == 'rel') {
-        // And we are looking at the default sort.
-        $sort_is_current = TRUE;
-        $sort_found = TRUE;
-      }
-    }
-
-    // If we are on the current sort, then we just create non-linked text
-    // for the sort label.
-    $sorter_display_content = '';
-    if ($sort_is_current) {
-      $vars['sorters'][$sort_idx]['display'] = '<span class="active-sort">' . $sort_opt['label'] . '</span>';
-    }
-    else {
-      // We're not on the current sort, so create a link.
-      $link_attributes = array();
-      $link_attributes['query'] = array(
-          'page' => $cur_page,
-          );
-
-      // Append the query to the base url of the serach page.
-      $link_path = 'search/all/' . $vars['gsa_query_params']['q'];
-
-      // Append the sort param if any.
-      $link_path .= '/' . $sort_opt['sort'];
-
-      $vars['sorters'][$sort_idx]['display'] = l($sort_opt['label'], $link_path, $link_attributes);
-    }
-    $sort_idx++;
-  }
-}
-
-
-/**
- * Autocomplete callback function for CU Search boxes
- */
-function cu_search_homepage_autocomplete($string = '') {
-  $string = urlencode($string);
-  $data = drupal_http_request("http://gsa.colorado.edu/suggest?site=default_collection&client=default_frontend&access=p&format=rich&q=$string");
-  $json=json_decode($data->data,true);
-  $outp = array();
-  foreach($json["results"] as $term) {
-    $outp[(string) $term['name']] = (string) $term['name'];
-  }
-
-  drupal_json_output($outp);
-}

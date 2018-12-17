@@ -1,0 +1,43 @@
+<?php
+/**
+ * @file
+ *  cu_search_people module main file
+ */
+
+
+
+
+/**
+ * Internal function for grabbbing people using the CuDirectory library
+ *
+ * @param $qstring
+ *  The query string to search for
+ *
+ * @return
+ *  Returns an array of results
+ */
+function cu_search_people_get_people($qstring, $scope = 'all') {
+  // Create a cache key
+  $cache_key = "cu_search_people_ldap_" . $scope . '_' . md5(strtolower($qstring));
+  // Try to pull the ldap result from Drupal's cache
+  $cached_data = cache_get($cache_key, 'cache');
+
+  if ($cached_data && $cached_data->expire >= $_SERVER['REQUEST_TIME']) {
+    $cu_search_people_get_people = $cached_data->data;
+  }
+  else {
+    $dir = new CuPeople();
+    $dir->hardReturnCount(500);
+    $dir->returnCount(500);
+    $dir->userTypeFilter($scope);
+    $cu_search_people_get_people = $dir->search($qstring);
+    // Set the ldap return in the cache, expire in 2 days.
+    $expire = $_SERVER['REQUEST_TIME']+ (2*24*60*60);
+    cache_set($cache_key, $cu_search_people_get_people, 'cache', $expire);
+  }
+
+  watchdog('cu_search_people', 'Looked up: %person', $variables = array('%person' => $qstring), $severity = WATCHDOG_NOTICE, $link = NULL);
+
+  // Return the result
+  return $cu_search_people_get_people;
+}

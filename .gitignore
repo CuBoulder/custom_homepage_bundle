@@ -7,3 +7,9 @@
 
 #ignore theming files
 *.sass-cache
+
+# Ignore vendor files.
+modules/custom/cu_atoz/vendor
+
+# Ignore Twig cache files.
+modules/custom/cu_atoz/twig_cache

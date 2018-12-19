@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  * Implements hook_permission().
@@ -43,7 +44,46 @@ function cu_atoz_menu() {
     'access arguments' => array('view atoz'),
     'type' => MENU_CALLBACK,
   );
+
+  $items['directory'] = array(
+    'title' => 'Directory Listing',
+    'page callback' => '_cu_atoz_directory',
+//    'page arguments' => array(2),
+    'access arguments' => array('view atoz'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
+}
+
+function _cu_atoz_require_twig(): ?Twig_Environment {
+  $foo = 'bar';
+
+  require_once drupal_get_path('module', 'cu_atoz'). '/vendor/autoload.php';
+
+  $loader = new Twig_Loader_Filesystem(drupal_get_path('module', 'cu_atoz'). '/twig_templates');
+  return new Twig_Environment($loader, array(
+    'cache' => drupal_get_path('module', 'cu_atoz'). '/twig_cache',
+  ));
+}
+
+function _cu_atoz_get_directory_data(): array {
+  $data = file_get_contents(drupal_get_path('module', 'cu_atoz'). '/directory.json');
+
+  return json_decode($data);
+}
+
+function _cu_atoz_directory() {
+
+  $data = _cu_atoz_get_directory_data();
+
+  if ($twig = _cu_atoz_require_twig()) {
+    return $twig->render('index.twig.html', [
+      'organizations' => $data,
+    ]);
+  }
+
+  return 'Something broke!';
 }
 
 /**

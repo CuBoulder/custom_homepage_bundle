@@ -1,0 +1,15 @@
+{
+    "name": "alfi2595/cu_atoz",
+    "description": "CU Directory Listing",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Finnarn",
+            "email": "alexfinnarn@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}

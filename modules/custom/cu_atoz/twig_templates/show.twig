@@ -1,0 +1,18 @@
+<style>
+    #ds-show li {
+        list-style: armenian;
+    }
+</style>
+<div id="ds-show">
+    {% if organization %}
+        <ul>
+            {% for field in organization %}
+                <li>
+                    {{ field }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {{ message }}
+    {% endif %}
+</div>

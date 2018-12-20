@@ -6,6 +6,8 @@
     #ds li {
         list-style: none;
         padding: 7px;
+        margin: 7px;
+        background-color: #cccccc;
     }
 
     #ds ul {
@@ -21,7 +23,10 @@
           method='post'
           encType="multipart/form-data">
         <label for="directory-search-form">Query</label>
-        <input type="text" name="directory-search-box" value="{{ params.query }}"/>
+        <input type="text"
+               size="50"
+               name="directory-search-box"
+               value="{{ params.query }}"/>
         <label for="d-type-select">Type</label>
         <select name="d-type-select" id="d-type-select">
             {% for type in types %}
@@ -50,15 +55,17 @@
             {% endfor %}
         </select>
 
-        <input type="hidden" name="_csrf" value="{{ token }}"/>
-        <input type='submit' value='Search'/>
+        <input type="hidden"
+               name="_csrf"
+               value="{{ token }}"/>
+        <input type='submit'
+               value='Search'/>
     </form>
 
     {% if organizations %}
         <ul>
-            The orgs:
             {% for org in organizations %}
-                <li class="col-md-4">
+                <li class="col-md-3">
                     <a href="{{ baseURL }}/directory/{{ org.Slug }}">{{ org.Name }}</a>
                 </li>
             {% endfor %}

@@ -9,7 +9,7 @@
 *.sass-cache
 
 # Ignore vendor files.
-modules/custom/cu_atoz/vendor
+# modules/custom/cu_atoz/vendor
 
 # Ignore Twig cache files.
-modules/custom/cu_atoz/twig_cache
+# modules/custom/cu_atoz/twig_cache

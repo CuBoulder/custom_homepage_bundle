@@ -1,0 +1,70 @@
+<style>
+    #ds label {
+        display: inline-block;
+    }
+
+    #ds li {
+        list-style: none;
+        padding: 7px;
+    }
+
+    #ds ul {
+        margin-top: 20px;
+    }
+</style>
+
+<div id="ds">
+    <h3>Find A Department:</h3>
+    <hr>
+    <form id='directory-search-form'
+          action='{{ baseURL }}/directory'
+          method='post'
+          encType="multipart/form-data">
+        <label for="directory-search-form">Query</label>
+        <input type="text" name="directory-search-box" value="{{ params.query }}"/>
+        <label for="d-type-select">Type</label>
+        <select name="d-type-select" id="d-type-select">
+            {% for type in types %}
+                <option value="{{ type }}"
+                        {% if type == params.type %} selected {% endif %}>
+                    {{ type }}
+                </option>
+            {% endfor %}
+        </select>
+        <label for="d-task-select">Task</label>
+        <select name="d-task-select" id="d-task-select">
+            {% for task in tasks %}
+                <option value="{{ task }}"
+                        {% if task == params.task %} selected {% endif %}>
+                    {{ task }}
+                </option>
+            {% endfor %}
+        </select>
+        <label for="d-letter-select">Letter</label>
+        <select name="d-letter-select" id="d-letter-select">
+            {% for letter in alpha %}
+                <option value="{{ letter }}"
+                        {% if letter == params.letter %} selected {% endif %}>
+                    {{ letter }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <input type="hidden" name="_csrf" value="{{ token }}"/>
+        <input type='submit' value='Search'/>
+    </form>
+
+    {% if organizations %}
+        <ul>
+            The orgs:
+            {% for org in organizations %}
+                <li class="col-md-4">
+                    <a href="{{ baseURL }}/directory/{{ org.Slug }}">{{ org.Name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {{ message }}
+    {% endif %}
+</div>
+

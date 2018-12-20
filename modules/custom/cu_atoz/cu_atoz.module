@@ -57,32 +57,181 @@ function cu_atoz_menu() {
 }
 
 function _cu_atoz_require_twig(): ?Twig_Environment {
-  $foo = 'bar';
+  try {
+    require_once drupal_get_path('module', 'cu_atoz'). '/vendor/autoload.php';
 
-  require_once drupal_get_path('module', 'cu_atoz'). '/vendor/autoload.php';
-
-  $loader = new Twig_Loader_Filesystem(drupal_get_path('module', 'cu_atoz'). '/twig_templates');
-  return new Twig_Environment($loader, array(
-    'cache' => drupal_get_path('module', 'cu_atoz'). '/twig_cache',
-  ));
+    $loader = new Twig_Loader_Filesystem(drupal_get_path('module', 'cu_atoz'). '/twig_templates');
+    return new Twig_Environment($loader, array(
+      'cache' => drupal_get_path('module', 'cu_atoz'). '/twig_cache',
+    ));
+  } catch (Exception $exception) {
+    watchdog('directory', $exception->getMessage());
+    return null;
+  }
 }
 
-function _cu_atoz_get_directory_data(): array {
-  $data = file_get_contents(drupal_get_path('module', 'cu_atoz'). '/directory.json');
+function _cu_atoz_get_formatted_data(): array {
+  $data = json_decode(file_get_contents(drupal_get_path('module', 'cu_atoz'). '/directory.json'));
 
-  return json_decode($data);
+  return array_map(function($el) {
+    // Add org name.
+    $el->Name = explode('|', $el->orgNames)[0];
+
+    // Make slug.
+    $el->Slug = _cu_atoz_slugify($el->Name);
+
+    return $el;
+
+  }, $data);
+}
+
+function _cu_atoz_slugify(string $string): string {
+  // Lowercase the whole string.
+  $slug = strtolower($string);
+
+  // Create an array of all the words/characters.
+  $slug_array = explode( ' ', $slug );
+
+  // Replace all special characters with empty strings.
+  array_walk( $slug_array, function( &$item, $key ){
+    $item = preg_replace('/[^a-z0-9]/', '', $item );
+    return $item;
+  });
+
+  // Remove empty items from the array.
+  $slug_array = array_filter( $slug_array );
+
+  // Reconstruct the string.
+  return implode( '-', $slug_array );
+
+}
+
+function _cu_atoz_get_directory_data(): ?array {
+  try {
+    $orgs = _cu_atoz_get_formatted_data();
+    $params = [
+      'query' => '',
+      'task' => '-Any-',
+      'type' => '-Any-',
+      'letter' => '-Any-',
+    ];
+
+    if (!empty($_POST['directory-search-box'])) {
+      $params['query'] = $_POST['directory-search-box'];
+      $query = $_POST['directory-search-box'];
+
+      $orgs = array_filter($orgs, function($el) use ($query) {
+        return preg_match("/$query/i", $el->Name);
+      });
+    }
+
+    if (!empty($_POST['d-type-select']) && $_POST['d-type-select'] !== '-Any-') {
+      $type = $_POST['d-type-select'];
+      $params['type'] = $_POST['d-type-select'];
+
+      $orgs = array_filter($orgs, function($el) use ($type) {
+        return $type === $el->Type;
+      });
+    }
+
+    if (!empty($_POST['d-task-select']) && $_POST['d-task-select'] !== '-Any-') {
+      $task = $_POST['d-task-select'];
+      $params['task'] = $_POST['d-task-select'];
+
+//      $orgs = array_filter($orgs, function($el) use ($task) {
+//        return $task === $el->type;
+//      });
+    }
+
+    if (!empty($_POST['d-letter-select']) && $_POST['d-letter-select'] !== '-Any-') {
+      $letter = $_POST['d-letter-select'];
+      $params['letter'] = $_POST['d-letter-select'];
+
+      $orgs = array_filter($orgs, function($el) use ($letter) {
+        return strtoupper($el->Name[0]) === $letter;
+      });
+    }
+
+    return [
+      'orgs' => $orgs,
+      'params' => $params,
+    ];
+  } catch (Exception $exception) {
+    watchdog('directory', $exception->getMessage());
+    return null;
+  }
+}
+
+
+//function _cu_atoz_filter_directory_data(string $query, array $all_orgs): array {
+//  return array_filter($all_orgs, function($el) use ($query) {
+//    return preg_match("/$query/i", $el->Name);
+//  });
+//}
+
+//function _cu_atoz_get_params(): array {
+//  $params = [];
+//  if (!empty($_POST['directory-search-box']) || !empty()) {
+//    $params['search'] = $_POST['directory-search-box'];
+//  }
+//
+//  return $params;
+//}
+
+function _cu_atoz_get_token(): string {
+  // @todo Actually fill this out.
+  return '@todo';
+}
+
+function _cu_atoz_get_tasks(): array {
+  $tasks = ['one', 'two', 'three'];
+  array_unshift($tasks, '-Any-');
+  return $tasks;
+}
+
+function _cu_atoz_get_types(array $organizations): array {
+  $types = array_unique(array_map(function($org) {
+    return $org->Type;
+  }, $organizations));
+
+  array_unshift($types, '-Any-');
+  return $types;
+}
+
+function _cu_atoz_get_alpha(): array {
+  $letters = range('A', 'Z');
+  array_unshift($letters, '-Any-');
+  return $letters;
 }
 
 function _cu_atoz_directory() {
-
-  $data = _cu_atoz_get_directory_data();
-
   if ($twig = _cu_atoz_require_twig()) {
-    return $twig->render('index.twig.html', [
-      'organizations' => $data,
+    global $base_url;
+
+    // Get params if any.
+    // $params = _cu_atoz_get_params();
+
+    // Get token for CSRF.
+    $token = _cu_atoz_get_token();
+
+    $message = '';
+    if (!($data = _cu_atoz_get_directory_data())) {
+      $message = 'The search did not work.';
+    }
+
+    return $twig->render('index.twig', [
+      'organizations' =>  $data['orgs'],
+      'baseURL' => $base_url,
+      'params' => $data['params'],
+      'token' => $token,
+      'message' => $message,
+      'tasks' => _cu_atoz_get_tasks(),
+      'types' => _cu_atoz_get_types(_cu_atoz_get_formatted_data()),
+      'alpha' => _cu_atoz_get_alpha(),
     ]);
   }
 
+  // If data is an empty array, then do something.
   return 'Something broke!';
 }
 

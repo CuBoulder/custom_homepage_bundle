@@ -52,6 +52,13 @@ function cu_atoz_menu() {
     'type' => MENU_CALLBACK,
   ];
 
+  $items['directory-reset'] = [
+    'title' => 'Directory Listing',
+    'page callback' => '_cu_atoz_reset_search',
+    'access arguments' => ['view atoz'],
+    'type' => MENU_CALLBACK,
+  ];
+
   $items['directory/%'] = [
     'title' => 'Directory Detail',
     'page callback' => '_cu_atoz_directory_show',
@@ -126,36 +133,29 @@ function _cu_atoz_get_directory_data(): ?array {
     ];
 
     if (!empty($_POST['directory-search-box'])) {
-      $params['query'] = $_POST['directory-search-box'];
-      $query = $_POST['directory-search-box'];
-
+      $query = $params['query'] = $_POST['directory-search-box'];
       $orgs = array_filter($orgs, function ($el) use ($query) {
         return preg_match("/$query/i", $el->Name);
       });
     }
 
     if (!empty($_POST['d-type-select']) && $_POST['d-type-select'] !== '-Any-') {
-      $type = $_POST['d-type-select'];
-      $params['type'] = $_POST['d-type-select'];
-
+      $type = $params['type'] = $_POST['d-type-select'];
       $orgs = array_filter($orgs, function ($el) use ($type) {
         return $type === $el->Type;
       });
     }
 
     if (!empty($_POST['d-task-select']) && $_POST['d-task-select'] !== '-Any-') {
-      $task = $_POST['d-task-select'];
-      $params['task'] = $_POST['d-task-select'];
-
-      //      $orgs = array_filter($orgs, function($el) use ($task) {
-      //        return $task === $el->type;
-      //      });
+      $task = $params['task'] = $_POST['d-task-select'];
+      // @todo Implement selecting by task.
+//      $orgs = array_filter($orgs, function($el) use ($task) {
+//        return $task === $el->type;
+//      });
     }
 
     if (!empty($_POST['d-letter-select']) && $_POST['d-letter-select'] !== '-Any-') {
-      $letter = $_POST['d-letter-select'];
-      $params['letter'] = $_POST['d-letter-select'];
-
+      $letter = $params['letter'] = $_POST['d-letter-select'];
       $orgs = array_filter($orgs, function ($el) use ($letter) {
         return strtoupper($el->Name[0]) === $letter;
       });
@@ -170,22 +170,6 @@ function _cu_atoz_get_directory_data(): ?array {
     return NULL;
   }
 }
-
-
-//function _cu_atoz_filter_directory_data(string $query, array $all_orgs): array {
-//  return array_filter($all_orgs, function($el) use ($query) {
-//    return preg_match("/$query/i", $el->Name);
-//  });
-//}
-
-//function _cu_atoz_get_params(): array {
-//  $params = [];
-//  if (!empty($_POST['directory-search-box']) || !empty()) {
-//    $params['search'] = $_POST['directory-search-box'];
-//  }
-//
-//  return $params;
-//}
 
 function _cu_atoz_get_token(): string {
   // @todo Actually fill this out.
@@ -207,7 +191,7 @@ function _cu_atoz_get_types(array $organizations): array {
   return $types;
 }
 
-function _cu_atoz_get_alpha(): array {
+function _cu_atoz_get_letters(): array {
   $letters = range('A', 'Z');
   array_unshift($letters, '-Any-');
   return $letters;
@@ -216,9 +200,6 @@ function _cu_atoz_get_alpha(): array {
 function _cu_atoz_directory_search() {
   if ($twig = _cu_atoz_require_twig()) {
     global $base_url;
-
-    // Get params if any.
-    // $params = _cu_atoz_get_params();
 
     // Get token for CSRF.
     $token = _cu_atoz_get_token();
@@ -236,7 +217,7 @@ function _cu_atoz_directory_search() {
       'message' => $message,
       'tasks' => _cu_atoz_get_tasks(),
       'types' => _cu_atoz_get_types(_cu_atoz_get_formatted_data()),
-      'alpha' => _cu_atoz_get_alpha(),
+      'alpha' => _cu_atoz_get_letters(),
     ]);
   }
 
@@ -244,9 +225,14 @@ function _cu_atoz_directory_search() {
   return 'Something broke!';
 }
 
+function _cu_atoz_reset_search() {
+  $_POST = [];
+  drupal_goto('directory');
+}
+
 function _cu_atoz_directory_show($slug) {
 
-  // Redirect user if no slug.
+  // @todo Redirect user if no slug.
 
   if ($twig = _cu_atoz_require_twig()) {
     global $base_url;
@@ -258,7 +244,7 @@ function _cu_atoz_directory_show($slug) {
     });
 
     return $twig->render('show.twig', [
-      'organization' => array_values($org)[0],
+      'organization' => (array) array_values($org)[0],
       'baseURL' => $base_url,
     ]);
   }

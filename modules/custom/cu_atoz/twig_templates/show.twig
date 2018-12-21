@@ -6,9 +6,9 @@
 <div id="ds-show">
     {% if organization %}
         <ul>
-            {% for field in organization %}
+            {% for key, field in organization %}
                 <li>
-                    {{ field }}
+                    {{ key }} - {{ field }}
                 </li>
             {% endfor %}
         </ul>

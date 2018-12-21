@@ -35,18 +35,20 @@ class __TwigTemplate_9f48e8cf93d537c325db924c2ebe92313553d1c941576d6a7e28944546a
             // line 9
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["organization"] ?? null));
-            foreach ($context['_seq'] as $context["_key"] => $context["field"]) {
+            foreach ($context['_seq'] as $context["key"] => $context["field"]) {
                 // line 10
                 echo "                <li>
                     ";
                 // line 11
+                echo twig_escape_filter($this->env, $context["key"], "html", null, true);
+                echo " - ";
                 echo twig_escape_filter($this->env, $context["field"], "html", null, true);
                 echo "
                 </li>
             ";
             }
             $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['field'], $context['_parent'], $context['loop']);
+            unset($context['_seq'], $context['_iterated'], $context['key'], $context['field'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 14
             echo "        </ul>
@@ -75,7 +77,7 @@ class __TwigTemplate_9f48e8cf93d537c325db924c2ebe92313553d1c941576d6a7e28944546a
 
     public function getDebugInfo()
     {
-        return array (  62 => 18,  56 => 16,  52 => 14,  43 => 11,  40 => 10,  36 => 9,  33 => 8,  31 => 7,  23 => 1,);
+        return array (  64 => 18,  58 => 16,  54 => 14,  43 => 11,  40 => 10,  36 => 9,  33 => 8,  31 => 7,  23 => 1,);
     }
 
     public function getSourceContext()

@@ -5,10 +5,9 @@
 </style>
 <div id="ds-show">
     {% if org %}
-        {{ org }}
         <div class="col-md-12">
             <p><a href="{{ baseURL }}">Home</a> > <a href="{{ baseURL }}/directory">Directory</a> > {{ org.Name }}</p>
-           <h3>{{ org.Name }}</h3>
+            <h3>{{ org.Name }}</h3>
             {# Add parent list #}
         </div>
         <div class="col-md-8">
@@ -18,9 +17,17 @@
             <div class="col-md-3"><a href="mailto:{{ org['Primary Email'] }}">Email</a></div>
             <div class="col-md-3"><a href="{{ org['Primary Website'] }}">Website</a></div>
             <div class="col-md-3"><a href="{{ org['Staff Listing (URL)'] }}">Staff Listing URL</a></div>
+            <p>Social Links: ----</p>
+            <p>
+                <span>Label {{ org['Contact 1 Label'] }}: Field {{ org['Contact 1 field'] }}</span><br>
+                <span>Label {{ org['Contact 2 Label'] }}: Field {{ org['Contact 2 field'] }}</span><br>
+            </p>
         </div>
         <div class="col-md-4">
-            <img src="https://via.placeholder.com/375" alt="Placeholder Image">
+            <img src="https://via.placeholder.com/375" alt="Placeholder Image"><br>
+            Campus Bird ID: {{ org['Campus Bird ID'] }}
+            {{ org['Campus Box'] }}<br>
+            {{ org['Room'] }}
         </div>
     {% else %}
         {{ message }}

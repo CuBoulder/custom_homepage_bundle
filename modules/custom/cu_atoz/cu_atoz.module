@@ -248,10 +248,12 @@ function _cu_atoz_directory_show($slug) {
     });
 
     return $twig->render('show.twig', [
-      'organization' => (array) array_values($org)[0],
+      'org' => (array) array_values($org)[0],
       'baseURL' => $base_url,
     ]);
   }
+
+  return 'Something broke!';
 }
 
 /**

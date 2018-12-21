@@ -51,7 +51,7 @@
         </select>
         <label for="d-letter-select">Letter</label>
         <select name="d-letter-select" id="d-letter-select">
-            {% for letter in alpha %}
+            {% for letter in letters %}
                 <option value="{{ letter }}"
                         {% if letter == params.letter %} selected {% endif %}>
                     {{ letter }}
@@ -82,7 +82,7 @@
             {% endfor %}
         </ul>
     {% else %}
-        {{ message }}
+        {{ errorMessage }}
     {% endif %}
 </div>
 

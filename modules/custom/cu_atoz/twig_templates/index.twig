@@ -77,7 +77,7 @@
         <ul>
             {% for org in organizations %}
                 <li class="col-md-3">
-                    <a href="{{ baseURL }}/directory/{{ org.Slug }}">{{ org.Name }}</a>
+                    <a href="{{ baseURL }}/directory/{{ org.Name|slugify }}">{{ org.Name }}</a>
                 </li>
             {% endfor %}
         </ul>

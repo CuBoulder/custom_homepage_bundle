@@ -156,31 +156,38 @@ class __TwigTemplate_cee594d9c765151921732723c5f13a35096bc6db01c9a2476b5822714fc
         <input type='submit'
                value='Search'/>
     </form>
-    <form id='directory-reset-search-form'
-          action='";
+    ";
         // line 69
+        echo "          ";
+        // line 70
+        echo "          ";
+        // line 71
+        echo "          ";
+        // line 72
+        echo "        ";
+        // line 73
+        echo "               ";
+        // line 74
+        echo "    ";
+        // line 75
+        echo "    <a href=\"";
         echo twig_escape_filter($this->env, ($context["baseURL"] ?? null), "html", null, true);
-        echo "/directory-reset'
-          method='get'
-          encType=\"multipart/form-data\">
-        <input type='submit'
-               value='Reset'/>
-    </form>
+        echo "/directory\"><button>Reset</button></a>
 
     ";
-        // line 76
+        // line 77
         if (($context["organizations"] ?? null)) {
-            // line 77
+            // line 78
             echo "        <ul>
             ";
-            // line 78
+            // line 79
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["organizations"] ?? null));
             foreach ($context['_seq'] as $context["_key"] => $context["org"]) {
-                // line 79
+                // line 80
                 echo "                <li class=\"col-md-3\">
                     <a href=\"";
-                // line 80
+                // line 81
                 echo twig_escape_filter($this->env, ($context["baseURL"] ?? null), "html", null, true);
                 echo "/directory/";
                 echo twig_escape_filter($this->env, call_user_func_array($this->env->getFilter('slugify')->getCallable(), array(twig_get_attribute($this->env, $this->source, $context["org"], "Name", array()))), "html", null, true);
@@ -193,17 +200,17 @@ class __TwigTemplate_cee594d9c765151921732723c5f13a35096bc6db01c9a2476b5822714fc
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['org'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 83
+            // line 84
             echo "        </ul>
     ";
         } else {
-            // line 85
+            // line 86
             echo "        ";
             echo twig_escape_filter($this->env, ($context["errorMessage"] ?? null), "html", null, true);
             echo "
     ";
         }
-        // line 87
+        // line 88
         echo "</div>
 
 ";
@@ -221,7 +228,7 @@ class __TwigTemplate_cee594d9c765151921732723c5f13a35096bc6db01c9a2476b5822714fc
 
     public function getDebugInfo()
     {
-        return array (  207 => 87,  201 => 85,  197 => 83,  184 => 80,  181 => 79,  177 => 78,  174 => 77,  172 => 76,  162 => 69,  154 => 64,  148 => 60,  139 => 57,  133 => 56,  128 => 55,  124 => 54,  119 => 51,  110 => 48,  104 => 47,  99 => 46,  95 => 45,  90 => 42,  81 => 39,  75 => 38,  70 => 37,  66 => 36,  60 => 33,  50 => 26,  23 => 1,);
+        return array (  214 => 88,  208 => 86,  204 => 84,  191 => 81,  188 => 80,  184 => 79,  181 => 78,  179 => 77,  173 => 75,  171 => 74,  169 => 73,  167 => 72,  165 => 71,  163 => 70,  161 => 69,  154 => 64,  148 => 60,  139 => 57,  133 => 56,  128 => 55,  124 => 54,  119 => 51,  110 => 48,  104 => 47,  99 => 46,  95 => 45,  90 => 42,  81 => 39,  75 => 38,  70 => 37,  66 => 36,  60 => 33,  50 => 26,  23 => 1,);
     }
 
     public function getSourceContext()

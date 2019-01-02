@@ -52,12 +52,12 @@ function cu_atoz_menu() {
     'type' => MENU_CALLBACK,
   ];
 
-  $items['directory-reset'] = [
-    'title' => 'Directory Listing',
-    'page callback' => '_cu_atoz_reset_search',
-    'access arguments' => ['view atoz'],
-    'type' => MENU_CALLBACK,
-  ];
+//  $items['directory-reset'] = [
+//    'title' => 'Directory Listing',
+//    'page callback' => '_cu_atoz_reset_search',
+//    'access arguments' => ['view atoz'],
+//    'type' => MENU_CALLBACK,
+//  ];
 
   $items['directory/%'] = [
     'title' => 'Directory Detail',
@@ -90,7 +90,7 @@ function _cu_atoz_directory_search() {
       'organizations' => $filteredOrgs,
       'baseURL' => $base_url,
       'params' => $ds->getParams(),
-      'token' => $twig_helper->getFormToken(),
+      'token' => $twig_helper::getFormToken(),
       'errorMessage' => $filteredOrgs ? '' : 'The search did not work.',
       'tasks' => $ds->getTasks(),
       'types' => $ds->getTypes(),
@@ -102,17 +102,17 @@ function _cu_atoz_directory_search() {
   return 'Something broke!';
 }
 
-function _cu_atoz_reset_search() {
-  $_POST = [];
-  drupal_goto('directory');
-}
+//function _cu_atoz_reset_search() {
+//  $_POST = [];
+//  drupal_goto('directory');
+//}
 
 function _cu_atoz_directory_show($slug) {
+  // @todo Redirect user if no slug.
+
   require_once drupal_get_path('module', 'cu_atoz') . '/src/TwigHelper.php';
   $loader_path = drupal_get_path('module', 'cu_atoz') . '/twig_templates';
   $cache_path = drupal_get_path('module', 'cu_atoz') . '/twig_cache';
-
-  // @todo Redirect user if no slug.
 
   if ($twig_helper = new TwigHelper($loader_path, $cache_path)) {
     global $base_url;

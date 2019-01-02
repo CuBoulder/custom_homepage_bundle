@@ -65,13 +65,14 @@
         <input type='submit'
                value='Search'/>
     </form>
-    <form id='directory-reset-search-form'
-          action='{{ baseURL }}/directory-reset'
-          method='get'
-          encType="multipart/form-data">
-        <input type='submit'
-               value='Reset'/>
-    </form>
+    {#<form id='directory-reset-search-form'#}
+          {#action='{{ baseURL }}/directory'#}
+          {#method='get'#}
+          {#encType="multipart/form-data">#}
+        {#<input type='submit'#}
+               {#value='Reset'/>#}
+    {#</form>#}
+    <a href="{{ baseURL }}/directory"><button>Reset</button></a>
 
     {% if organizations %}
         <ul>

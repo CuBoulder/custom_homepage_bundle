@@ -7,13 +7,6 @@ class TwigHelper {
 
   private $twig;
 
-  /**
-   * @return mixed
-   */
-  public function getFormToken(): string {
-    return '';
-  }
-
   public function __construct(string $loader_path, string $cache_path) {
     $loader = new Twig_Loader_Filesystem($loader_path);
     $this->twig = new Twig_Environment($loader, ['cache' => $cache_path]);
@@ -45,5 +38,12 @@ class TwigHelper {
 
   public function render(string $template, array $vars): string {
     return $this->twig->render($template, $vars);
+  }
+
+  /**
+   * @return mixed
+   */
+  static function getFormToken(): string {
+    return '';
   }
 }

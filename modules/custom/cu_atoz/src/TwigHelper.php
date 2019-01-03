@@ -1,7 +1,11 @@
 <?php
 declare(strict_types=1);
 
-require_once drupal_get_path('module', 'cu_atoz') . '/vendor/autoload.php';
+namespace CU\Drupal;
+
+use Twig_Environment;
+use Twig_Filter;
+use Twig_Loader_Filesystem;
 
 class TwigHelper {
 
@@ -44,6 +48,6 @@ class TwigHelper {
    * @return mixed
    */
   static function getFormToken(): string {
-    return '';
+    return 'token';
   }
 }

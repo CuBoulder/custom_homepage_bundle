@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+use CU\Drupal\Directory\DirectoryListing;
+use CU\Drupal\Directory\DirectorySearch;
+use CU\Drupal\TwigHelper;
+
 /**
  * Implements hook_permission().
  */
@@ -52,13 +56,6 @@ function cu_atoz_menu() {
     'type' => MENU_CALLBACK,
   ];
 
-//  $items['directory-reset'] = [
-//    'title' => 'Directory Listing',
-//    'page callback' => '_cu_atoz_reset_search',
-//    'access arguments' => ['view atoz'],
-//    'type' => MENU_CALLBACK,
-//  ];
-
   $items['directory/%'] = [
     'title' => 'Directory Detail',
     'page callback' => '_cu_atoz_directory_show',
@@ -72,63 +69,57 @@ function cu_atoz_menu() {
 
 function _cu_atoz_directory_data(): array {
   return json_decode(file_get_contents(drupal_get_path('module', 'cu_atoz') . '/directory.json'));
+//  return json_decode(file_get_contents(drupal_get_path('module', 'cu_atoz') . '/test/test_data.json'));
 }
 
 function _cu_atoz_directory_search() {
-  require_once drupal_get_path('module', 'cu_atoz') . '/src/TwigHelper.php';
-  $loader_path = drupal_get_path('module', 'cu_atoz') . '/twig_templates';
-  $cache_path = drupal_get_path('module', 'cu_atoz') . '/twig_cache';
-
-  if ($twig_helper = new TwigHelper($loader_path, $cache_path)) {
-    require_once drupal_get_path('module', 'cu_atoz') . '/src/DirectorySearch.php';
+  try {
+    include_once __DIR__ . '/autoload.php';
+    $loader_path = __DIR__ . '/twig_templates';
+    $cache_path = __DIR__ . '/twig_cache';
     global $base_url;
 
-    $ds = new DirectorySearch(_cu_atoz_directory_data());
-    $filteredOrgs = $ds->getFilteredOrgs();
+    $twig_helper = new TwigHelper($loader_path, $cache_path);
+    $ds = new DirectorySearch(_cu_atoz_directory_data(), $_POST);
 
+    $filteredOrgs = $ds->getFilteredOrgs();
     return $twig_helper->render('index.twig', [
       'organizations' => $filteredOrgs,
       'baseURL' => $base_url,
-      'params' => $ds->getParams(),
+      'params' => $ds->getPost(),
       'token' => $twig_helper::getFormToken(),
       'errorMessage' => $filteredOrgs ? '' : 'The search did not work.',
       'tasks' => $ds->getTasks(),
       'types' => $ds->getTypes(),
       'letters' => $ds->getLetters(),
     ]);
+  } catch (Exception $exception) {
+    watchdog('cu_directory', $exception->getMessage());
+    return 'Something broke!';
   }
-
-  // If data is an empty array, then do something.
-  return 'Something broke!';
 }
-
-//function _cu_atoz_reset_search() {
-//  $_POST = [];
-//  drupal_goto('directory');
-//}
 
 function _cu_atoz_directory_show($slug) {
   // @todo Redirect user if no slug.
 
-  require_once drupal_get_path('module', 'cu_atoz') . '/src/TwigHelper.php';
-  $loader_path = drupal_get_path('module', 'cu_atoz') . '/twig_templates';
-  $cache_path = drupal_get_path('module', 'cu_atoz') . '/twig_cache';
+  try {
+    include_once  __DIR__ . '/autoload.php';
+    $loader_path = __DIR__ . '/twig_templates';
+    $cache_path = __DIR__ . '/twig_cache';
 
-  if ($twig_helper = new TwigHelper($loader_path, $cache_path)) {
+    $twig_helper = new TwigHelper($loader_path, $cache_path);
     global $base_url;
-    require_once drupal_get_path('module', 'cu_atoz') . '/src/DirectorySearch.php';
-    require_once drupal_get_path('module', 'cu_atoz') . '/src/DirectoryListing.php';
-
-    $ds = new DirectorySearch(_cu_atoz_directory_data());
+    $ds = new DirectorySearch(_cu_atoz_directory_data(), $_POST);
     $dl = new DirectoryListing();
 
     return $twig_helper->render('show.twig', [
       'org' => $dl->findOrgBySlug($ds->getOrgs(), $slug, $twig_helper),
       'baseURL' => $base_url,
     ]);
+  } catch (Exception $exception) {
+    watchdog('cu_directory', $exception->getMessage());
+    return 'Something broke!';
   }
-
-  return 'Something broke!';
 }
 
 /**

@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+namespace CU\Drupal\Directory;
+
+use CU\Drupal\TwigHelper;
+
 class DirectoryListing {
 
   public function findOrgBySlug(array $orgs, string $slug, TwigHelper $twig_helper): array {

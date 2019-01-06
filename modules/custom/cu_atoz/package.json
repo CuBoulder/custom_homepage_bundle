@@ -1,0 +1,19 @@
+{
+  "name": "cu_atoz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "watcher.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chokidar": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

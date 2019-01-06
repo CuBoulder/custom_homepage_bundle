@@ -13,3 +13,6 @@
 
 # Ignore Twig cache files.
 # modules/custom/cu_atoz/twig_cache
+
+# Node modules for file watcher.
+modules/custom/cu_atoz/node_modules

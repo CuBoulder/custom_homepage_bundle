@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use CU\Drupal\Directory\DirectoryData;
 use CU\Drupal\Directory\DirectorySearch;
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +13,7 @@ class DirectorySearchTest extends TestCase {
   private $data;
 
   public function setUp() {
-    $this->data = json_decode(file_get_contents(__DIR__ . '/test_data.json'));
+    $this->data = DirectoryData::getData(__DIR__ . '/test_data.json');
   }
 
   public function testDefaultSearch() {

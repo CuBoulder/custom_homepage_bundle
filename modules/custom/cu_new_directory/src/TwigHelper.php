@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace CU\Drupal;
 
 use Twig_Environment;
+use Twig_Error_Loader;
+use Twig_Error_Runtime;
+use Twig_Error_Syntax;
 use Twig_Filter;
 use Twig_Loader_Filesystem;
 
@@ -41,7 +44,21 @@ class TwigHelper {
   }
 
   public function render(string $template, array $vars): string {
-    return $this->twig->render($template, $vars);
+    // @todo Deal with throwing errors...PhpStorm tells me to do this.
+    try {
+      return $this->twig->render($template, $vars);
+    } catch (Twig_Error_Loader $error_Loader) {
+      // When the template cannot be found.
+      return $error_Loader->getMessage();
+    }
+    catch (Twig_Error_Syntax $error_Syntax) {
+      // When an error occurred during compilation.
+      return $error_Syntax->getMessage();
+    }
+    catch (Twig_Error_Runtime $error_Runtime) {
+      // When an error occurred during rendering.
+      return $error_Runtime->getMessage();
+    }
   }
 
   /**

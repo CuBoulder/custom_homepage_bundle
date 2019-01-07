@@ -1,7 +1,7 @@
 <?php
 
 /* index.twig */
-class __TwigTemplate_cee594d9c765151921732723c5f13a35096bc6db01c9a2476b5822714fc01914 extends Twig_Template
+class __TwigTemplate_9d8cc331f0d2971d146bd6ba886342fa4ee85d2bc59e1d97d2b09cc309fe01b2 extends Twig_Template
 {
     private $source;
 
@@ -233,6 +233,6 @@ class __TwigTemplate_cee594d9c765151921732723c5f13a35096bc6db01c9a2476b5822714fc
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "index.twig", "/var/www/html/sites/all/modules/custom_homepage_bundle/modules/custom/cu_atoz/twig_templates/index.twig");
+        return new Twig_Source("", "index.twig", "/var/www/html/sites/all/modules/custom_homepage_bundle/modules/custom/cu_new_directory/twig_templates/index.twig");
     }
 }

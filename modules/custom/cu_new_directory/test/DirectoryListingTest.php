@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use CU\Drupal\Directory\DirectoryData;
 use CU\Drupal\Directory\DirectoryListing;
 use CU\Drupal\Directory\DirectorySearch;
 use CU\Drupal\TwigHelper;
@@ -21,7 +22,7 @@ class DirectoryListingTest extends TestCase {
   public function setUp() {
     $this->dl = new DirectoryListing();
 
-    $data = json_decode(file_get_contents(__DIR__ . '/test_data.json'));
+    $data = DirectoryData::getData(__DIR__ . '/test_data.json');
     $this->ds = new DirectorySearch($data, []);
   }
 

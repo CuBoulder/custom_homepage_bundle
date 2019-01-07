@@ -1,9 +1,4 @@
 <?php
-declare(strict_types=1);
-
-use CU\Drupal\Directory\DirectoryListing;
-use CU\Drupal\Directory\DirectorySearch;
-use CU\Drupal\TwigHelper;
 
 /**
  * Implements hook_permission().
@@ -49,77 +44,7 @@ function cu_atoz_menu() {
     'type' => MENU_CALLBACK,
   ];
 
-  $items['directory'] = [
-    'title' => 'Directory Listing',
-    'page callback' => '_cu_atoz_directory_search',
-    'access arguments' => ['view atoz'],
-    'type' => MENU_CALLBACK,
-  ];
-
-  $items['directory/%'] = [
-    'title' => 'Directory Detail',
-    'page callback' => '_cu_atoz_directory_show',
-    'page arguments' => [1],
-    'access arguments' => ['view atoz'],
-    'type' => MENU_CALLBACK,
-  ];
-
   return $items;
-}
-
-function _cu_atoz_directory_data(): array {
-  return json_decode(file_get_contents(drupal_get_path('module', 'cu_atoz') . '/directory.json'));
-//  return json_decode(file_get_contents(drupal_get_path('module', 'cu_atoz') . '/test/test_data.json'));
-}
-
-function _cu_atoz_directory_search() {
-  try {
-    include_once __DIR__ . '/autoload.php';
-    $loader_path = __DIR__ . '/twig_templates';
-    $cache_path = __DIR__ . '/twig_cache';
-    global $base_url;
-
-    $twig_helper = new TwigHelper($loader_path, $cache_path);
-    $ds = new DirectorySearch(_cu_atoz_directory_data(), $_POST);
-
-    $filteredOrgs = $ds->getFilteredOrgs();
-    return $twig_helper->render('index.twig', [
-      'organizations' => $filteredOrgs,
-      'baseURL' => $base_url,
-      'params' => $ds->getPost(),
-      'token' => $twig_helper::getFormToken(),
-      'errorMessage' => $filteredOrgs ? '' : 'The search did not work.',
-      'tasks' => $ds->getTasks(),
-      'types' => $ds->getTypes(),
-      'letters' => $ds->getLetters(),
-    ]);
-  } catch (Exception $exception) {
-    watchdog('cu_directory', $exception->getMessage());
-    return 'Something broke!';
-  }
-}
-
-function _cu_atoz_directory_show($slug) {
-  // @todo Redirect user if no slug.
-
-  try {
-    include_once  __DIR__ . '/autoload.php';
-    $loader_path = __DIR__ . '/twig_templates';
-    $cache_path = __DIR__ . '/twig_cache';
-
-    $twig_helper = new TwigHelper($loader_path, $cache_path);
-    global $base_url;
-    $ds = new DirectorySearch(_cu_atoz_directory_data(), $_POST);
-    $dl = new DirectoryListing();
-
-    return $twig_helper->render('show.twig', [
-      'org' => $dl->findOrgBySlug($ds->getOrgs(), $slug, $twig_helper),
-      'baseURL' => $base_url,
-    ]);
-  } catch (Exception $exception) {
-    watchdog('cu_directory', $exception->getMessage());
-    return 'Something broke!';
-  }
 }
 
 /**

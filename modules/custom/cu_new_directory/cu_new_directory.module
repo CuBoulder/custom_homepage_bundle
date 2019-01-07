@@ -1,0 +1,104 @@
+<?php
+declare(strict_types=1);
+
+use CU\Drupal\Directory\DirectoryData;
+use CU\Drupal\Directory\DirectoryListing;
+use CU\Drupal\Directory\DirectorySearch;
+use CU\Drupal\TwigHelper;
+
+/**
+ * Implements hook_menu()
+ */
+function cu_new_directory_menu(): array {
+  $items = [];
+
+  $items['directory'] = [
+    'title' => 'Directory Listing',
+    'page callback' => '_cu_new_directory_search',
+    'access arguments' => ['view atoz'],
+    'type' => MENU_CALLBACK,
+  ];
+
+  $items['directory/%'] = [
+    'title' => 'Directory Detail',
+    'page callback' => '_cu_new_directory_show',
+    'page arguments' => [1],
+    'access arguments' => ['view atoz'],
+    'type' => MENU_CALLBACK,
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function cu_new_directory_permission(): array {
+  return [
+    'view atoz' => [
+      'title' => t('View AtoZ'),
+      'description' => t('View the AtoZ directory'),
+    ],
+  ];
+}
+
+/**
+ * Shows the overview page including directory search.
+ *
+ * @return string
+ */
+function _cu_new_directory_search(): string {
+  try {
+    include_once __DIR__ . '/autoload.php';
+    $loader_path = __DIR__ . '/twig_templates';
+    $cache_path = __DIR__ . '/twig_cache';
+    $root_path = __DIR__;
+    global $base_url;
+
+    $twig_helper = new TwigHelper($loader_path, $cache_path);
+    $ds = new DirectorySearch(DirectoryData::getData($root_path. '/data/directory.json'), $_POST);
+
+    $filteredOrgs = $ds->getFilteredOrgs();
+    return $twig_helper->render('index.twig', [
+      'organizations' => $filteredOrgs,
+      'baseURL' => $base_url,
+      'params' => $ds->getPost(),
+      'token' => $twig_helper::getFormToken(),
+      'errorMessage' => $filteredOrgs ? '' : 'The search did not work.',
+      'tasks' => $ds->getTasks(),
+      'types' => $ds->getTypes(),
+      'letters' => $ds->getLetters(),
+    ]);
+  } catch (Exception $exception) {
+    watchdog('cu_directory', $exception->getMessage());
+    return 'Something broke!';
+  }
+}
+
+function _cu_new_directory_show(string $slug = ''): string {
+  // Redirect user if no slug.
+  global $base_url;
+  if (empty($slug)) {
+    header('Location: ' . $base_url. '/directory', TRUE, 302);
+    exit;
+  }
+
+  try {
+    include_once  __DIR__ . '/autoload.php';
+    $loader_path = __DIR__ . '/twig_templates';
+    $cache_path = __DIR__ . '/twig_cache';
+    $root_path = __DIR__;
+
+    $twig_helper = new TwigHelper($loader_path, $cache_path);
+    $ds = new DirectorySearch(DirectoryData::getData($root_path. '/data/directory.json'), $_POST);
+    $dl = new DirectoryListing();
+
+    return $twig_helper->render('show.twig', [
+      'org' => $dl->findOrgBySlug($ds->getOrgs(), $slug, $twig_helper),
+      'baseURL' => $base_url,
+    ]);
+  } catch (Exception $exception) {
+    watchdog('cu_directory', $exception->getMessage());
+    return 'Something broke!';
+  }
+}

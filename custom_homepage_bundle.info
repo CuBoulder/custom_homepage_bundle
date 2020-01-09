@@ -9,7 +9,6 @@ dependencies[] = cu_directory
 dependencies[] = cu_search_homepage
 
 dependencies[] = better_exposed_filters
-dependencies[] = job_scheduler
 dependencies[] = term_merge
 dependencies[] = views_block_filter_block
 dependencies[] = views_responsive_grid

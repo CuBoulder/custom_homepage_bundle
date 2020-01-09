@@ -4,71 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3b3f71cf77cb8c4afa19eb435d009645",
+    "content-hash": "310fea812533b4be7f55694bc0d1abf4",
     "packages": [
-        {
-            "name": "drupal/addressfield",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/addressfield.git",
-                "reference": "7.x-1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/addressfield-7.x-1.1.zip",
-                "reference": "7.x-1.1",
-                "shasum": "dd46ac6a2f1b06298b633e934fe1d70d0ca0d410"
-            },
-            "require": {
-                "drupal/ctools": "*",
-                "drupal/drupal": "~7.0"
-            },
-            "require-dev": {
-                "drupal/ctools": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "7.x-1.1",
-                    "datestamp": "1444253039",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/7/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Damien Tournoud",
-                    "homepage": "https://www.drupal.org/user/22211"
-                },
-                {
-                    "name": "bojanz",
-                    "homepage": "https://www.drupal.org/user/86106"
-                },
-                {
-                    "name": "jsacksick",
-                    "homepage": "https://www.drupal.org/user/972218"
-                },
-                {
-                    "name": "rszrama",
-                    "homepage": "https://www.drupal.org/user/49344"
-                }
-            ],
-            "description": "Manage a flexible address field, implementing the xNAL standard.",
-            "homepage": "https://www.drupal.org/project/addressfield",
-            "support": {
-                "source": "https://git.drupalcode.org/project/addressfield"
-            }
-        },
         {
             "name": "drupal/better_exposed_filters",
             "version": "3.2.0",
@@ -84,7 +21,8 @@
                 "shasum": "78664311dab26e376f80b59b6323eadfdd7a4f9d"
             },
             "require": {
-                "drupal/drupal": "~7.0"
+                "drupal/drupal": "~7.0",
+                "drupal/views": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -126,138 +64,28 @@
                     "homepage": "https://www.drupal.org/user/352283"
                 }
             ],
+            "description": "Allow the use of checkboxes or radio buttons for exposed Views filters",
             "homepage": "https://www.drupal.org/project/better_exposed_filters",
             "support": {
                 "source": "https://git.drupalcode.org/project/better_exposed_filters"
             }
         },
         {
-            "name": "drupal/feeds",
-            "version": "2.0.0-beta2",
+            "name": "drupal/match_redirect",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://git.drupalcode.org/project/feeds.git",
-                "reference": "7.x-2.0-beta2"
+                "url": "https://git.drupalcode.org/project/match_redirect.git",
+                "reference": "7.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/feeds-7.x-2.0-beta2.zip",
-                "reference": "7.x-2.0-beta2",
-                "shasum": "a1706715746fb839262d3ddfba458111ddb30def"
+                "url": "https://ftp.drupal.org/files/projects/match_redirect-7.x-1.0.zip",
+                "reference": "7.x-1.0",
+                "shasum": "753483a73e52d9603107957c26204de05bf9f738"
             },
             "require": {
-                "drupal/ctools": "*",
-                "drupal/drupal": "~7.0",
-                "drupal/job_scheduler": "*"
-            },
-            "require-dev": {
-                "drupal/ctools": "*",
-                "drupal/date": "*",
-                "drupal/entity_translation": "*",
-                "drupal/features": "*",
-                "drupal/feeds_xpathparser": "*",
-                "drupal/i18n_taxonomy": "*",
-                "drupal/link": "*",
-                "drupal/views": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
-                "drupal": {
-                    "version": "7.x-2.0-beta2",
-                    "datestamp": "1479993780",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/7/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Dave Reid",
-                    "homepage": "https://www.drupal.org/user/53892"
-                },
-                {
-                    "name": "Ian Ward",
-                    "homepage": "https://www.drupal.org/user/4736"
-                },
-                {
-                    "name": "MegaChriz",
-                    "homepage": "https://www.drupal.org/user/654114"
-                },
-                {
-                    "name": "Will White",
-                    "homepage": "https://www.drupal.org/user/32237"
-                },
-                {
-                    "name": "alex_b",
-                    "homepage": "https://www.drupal.org/user/53995"
-                },
-                {
-                    "name": "e2thex",
-                    "homepage": "https://www.drupal.org/user/189123"
-                },
-                {
-                    "name": "febbraro",
-                    "homepage": "https://www.drupal.org/user/43670"
-                },
-                {
-                    "name": "franz",
-                    "homepage": "https://www.drupal.org/user/581844"
-                },
-                {
-                    "name": "jmiccolis",
-                    "homepage": "https://www.drupal.org/user/31731"
-                },
-                {
-                    "name": "kking",
-                    "homepage": "https://www.drupal.org/user/24399"
-                },
-                {
-                    "name": "tobby",
-                    "homepage": "https://www.drupal.org/user/154797"
-                },
-                {
-                    "name": "tristanoneil",
-                    "homepage": "https://www.drupal.org/user/340659"
-                },
-                {
-                    "name": "twistor",
-                    "homepage": "https://www.drupal.org/user/473738"
-                },
-                {
-                    "name": "yhahn",
-                    "homepage": "https://www.drupal.org/user/264833"
-                }
-            ],
-            "description": "Aggregates RSS/Atom/RDF feeds, imports CSV files and more.",
-            "homepage": "https://www.drupal.org/project/feeds",
-            "support": {
-                "source": "https://git.drupalcode.org/project/feeds"
-            }
-        },
-        {
-            "name": "drupal/postal_code",
-            "version": "1.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/postal_code.git",
-                "reference": "7.x-1.9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/postal_code-7.x-1.9.zip",
-                "reference": "7.x-1.9",
-                "shasum": "10ee1739c96b07027ab3dbca1c0165b4b8f07a94"
-            },
-            "require": {
-                "drupal/drupal": "*"
+                "drupal/drupal": "~7.0"
             },
             "type": "drupal-module",
             "extra": {
@@ -265,8 +93,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.9",
-                    "datestamp": "1418249945",
+                    "version": "7.x-1.0",
+                    "datestamp": "1379612840",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -279,69 +107,19 @@
             ],
             "authors": [
                 {
-                    "name": "amitgoyal",
-                    "homepage": "https://www.drupal.org/user/56441"
+                    "name": "biff45452",
+                    "homepage": "https://www.drupal.org/user/1016514"
                 },
                 {
-                    "name": "jeremyclassic",
-                    "homepage": "https://www.drupal.org/user/1854054"
-                },
-                {
-                    "name": "sanchi.girotra",
-                    "homepage": "https://www.drupal.org/user/2005932"
-                },
-                {
-                    "name": "suhani.jain",
-                    "homepage": "https://www.drupal.org/user/2005916"
+                    "name": "daniel.nitsche",
+                    "homepage": "https://www.drupal.org/user/1151108"
                 }
             ],
-            "description": "Postal Code Field Module",
-            "homepage": "https://www.drupal.org/project/postal_code",
+            "description": "Matching source patterns are redirected to a single destination.",
+            "homepage": "https://www.drupal.org/project/match_redirect",
             "support": {
-                "source": "https://git.drupalcode.org/project/postal_code"
+                "source": "https://git.drupalcode.org/project/match_redirect"
             }
-        },
-        {
-            "name": "drupal/shs",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/shs.git",
-                "reference": "8ee12039fe5324dc98c171a065bfeb4c2ab68a54"
-            },
-            "require": {
-                "drupal/drupal": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "7.x-1.8+1-dev",
-                    "datestamp": "1553890384",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/7/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "stBorchert",
-                    "homepage": "https://www.drupal.org/user/36942"
-                }
-            ],
-            "description": "Creates a simple hierarchical select widget for taxonomy fields.",
-            "homepage": "https://www.drupal.org/project/shs",
-            "support": {
-                "source": "https://git.drupalcode.org/project/shs"
-            },
-            "time": "2015-02-19T11:40:41+00:00"
         },
         {
             "name": "drupal/term_merge",
@@ -405,81 +183,6 @@
             "homepage": "https://www.drupal.org/project/term_merge",
             "support": {
                 "source": "https://git.drupalcode.org/project/term_merge"
-            }
-        },
-        {
-            "name": "drupal/term_reference_tree",
-            "version": "1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/term_reference_tree.git",
-                "reference": "7.x-1.10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/term_reference_tree-7.x-1.10.zip",
-                "reference": "7.x-1.10",
-                "shasum": "6de2adeff84d8e8151f38562cc7f3919ea2513b8"
-            },
-            "require": {
-                "drupal/drupal": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "7.x-1.10",
-                    "datestamp": "1533185792",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/7/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "BartK",
-                    "homepage": "https://www.drupal.org/user/401025"
-                },
-                {
-                    "name": "Dave Reid",
-                    "homepage": "https://www.drupal.org/user/53892"
-                },
-                {
-                    "name": "MoustafaEid",
-                    "homepage": "https://www.drupal.org/user/1126928"
-                },
-                {
-                    "name": "alex_optim",
-                    "homepage": "https://www.drupal.org/user/3317601"
-                },
-                {
-                    "name": "carpenter.490",
-                    "homepage": "https://www.drupal.org/user/804142"
-                },
-                {
-                    "name": "dgtlmoon",
-                    "homepage": "https://www.drupal.org/user/25027"
-                },
-                {
-                    "name": "sdrycroft",
-                    "homepage": "https://www.drupal.org/user/151544"
-                },
-                {
-                    "name": "sumitmadan",
-                    "homepage": "https://www.drupal.org/user/1538790"
-                }
-            ],
-            "description": "An expanding/collapsing tree widget for selecting terms in a taxonomy term reference field.",
-            "homepage": "https://www.drupal.org/project/term_reference_tree",
-            "support": {
-                "source": "https://git.drupalcode.org/project/term_reference_tree"
             }
         },
         {
@@ -615,9 +318,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "drupal/feeds": 10,
-        "drupal/views_block_filter_block": 10,
-        "drupal/shs": 20
+        "drupal/views_block_filter_block": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,

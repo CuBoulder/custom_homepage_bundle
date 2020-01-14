@@ -154,8 +154,6 @@ function cu_directory_get_people($qstring, $scope = 'all') {
     cache_set($cache_key, $cu_directory_get_people, 'cache', $expire);
   }
 
-  watchdog('cu_directory', 'Looked up: %person', $variables = array('%person' => $qstring), $severity = WATCHDOG_NOTICE, $link = NULL);
-
   // Return the result
   return $cu_directory_get_people;
 }

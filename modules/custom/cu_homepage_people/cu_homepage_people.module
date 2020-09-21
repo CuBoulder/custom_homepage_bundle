@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the CU Homepage People feature.
- */
-
-include_once 'cu_homepage_people.features.inc';

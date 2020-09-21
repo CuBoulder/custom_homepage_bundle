@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the CU Homepage Adm Views feature.
- */
-
-include_once 'cu_homepage_adm_views.features.inc';

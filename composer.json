@@ -1,0 +1,40 @@
+{
+    "extra": {
+        "installer-paths": {
+            "libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/7"
+        }
+    ],
+    "require": {
+        "drupal/better_exposed_filters": "3.2.0",
+        "drupal/term_merge": "1.2.0",
+        "drupal/views_block_filter_block": "1.0.0-beta2",
+        "drupal/views_responsive_grid": "1.3.0",
+        "drupal/match_redirect": "1.0.0"
+    },
+    "replace": {
+        "drupal/drupal": "*",
+        "drupal/ctools": "*",
+        "drupal/entity": "*",
+        "drupal/views": "*"
+    }
+}

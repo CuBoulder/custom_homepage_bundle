@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for the custom_homepage_bundle module.
+ */
+
+/**
+ * Disable and uninstall unused contrib modules.
+ */
+function custom_homepage_bundle_7001() {
+  module_disable(array('better_exposed_filters','views_block_filter_block','views_responsive_grid'));
+  drupal_uninstall_modules(array('better_exposed_filters','views_block_filter_block','views_responsive_grid'));
+}

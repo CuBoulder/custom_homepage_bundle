@@ -20,7 +20,7 @@
   </div>
   <div class="people-meta">
     <?php if (!empty($person['majors'])): ?>
-      <div class="people-major"><strong>Major</strong>: <?php print render($person['majors'][0]); ?></div>
+      <div class="people-major"><strong>Major</strong>: <?php print render($person['majors']); ?></div>
     <?php endif; ?>
     <?php if(!empty($person['dept'])): ?>
       <div class="people-department"><strong>Department</strong>: <?php print render($person['dept']); ?></div>

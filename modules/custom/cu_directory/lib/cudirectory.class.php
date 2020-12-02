@@ -26,7 +26,7 @@ class CuDirectory {
     'cuedupersonstatus',
     'cn',
     'cuedupersonplan',
-    'cuEduPersonSubPlan',
+    'cuedupersonsubplan',
   );
 
   /**

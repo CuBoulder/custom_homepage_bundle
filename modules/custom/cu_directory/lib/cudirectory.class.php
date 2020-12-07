@@ -18,24 +18,15 @@ class CuDirectory {
     'cuedupersonhomedepartment',
     'edupersonprimaryaffiliation',
     'edupersonaffiliation',
-    'cuedupersonclass',
     'cuedupersonschoolcollegename',
     'cuedupersonschoolcollegename2',
-    'cuedupersonprimarymajor1',
-    'cuedupersonprimarymajor2',
-    'cuedupersonprimarymajor1option',
-    'cuedupersonprimarymajor2option',
-    'cuedupersonsecondarymajor1',
-    'cuedupersonsecondarymajor2',
-    'cuedupersonsecondarymajor1option',
-    'cuedupersonsecondarymajor2option',
-    'cuedupersonprimaryminor',
-    'cuedupersonsecondaryminor',
     'homephone',
     'labeleduri',
     'cuedupersonhighestdegree',
     'cuedupersonstatus',
     'cn',
+    'cuedupersonplan',
+    'cuedupersonsubplan',
   );
 
   /**
@@ -332,7 +323,6 @@ class CuDirectory {
    */
   protected function formatResults($res) {
     $out = array();
-
     // Cleanup and add attributes
     $out['uuid']                                =      $this->getAttr($res, 'cuedupersonuuid');
     $out['name']                                =      $this->getAttr($res, 'displayname');
@@ -342,22 +332,13 @@ class CuDirectory {
     $out['address']                             =      $this->getAttr($res, 'postaladdress');
     $out['dept']                                =      $this->getAttr($res, 'cuedupersonhomedepartment');
     $out['primary_affiliation']                 =      $this->getAttr($res, 'edupersonprimaryaffiliation');
-    $out['cuedupersonclass']                    =      $this->getAttr($res, 'cuedupersonclass');
     // Colleges
     $out['cuedupersonschoolcollegename']        =      $this->getAttr($res, 'cuedupersonschoolcollegename');
     $out['cuedupersonschoolcollegename2']       =      $this->getAttr($res, 'cuedupersonschoolcollegename2');
     // Majors
-    $out['primary_major_1']                     =      $this->getAttr($res, 'cuedupersonprimarymajor1');
-    $out['primary_major_2']                     =      $this->getAttr($res, 'cuedupersonprimarymajor2');
-    $out['primary_major_1_option']              =      $this->getAttr($res, 'cuedupersonprimarymajor1option');
-    $out['primary_major_2_option']              =      $this->getAttr($res, 'cuedupersonprimarymajor2option');
-    $out['secondary_major_1']                   =      $this->getAttr($res, 'cuedupersonsecondarymajor1');
-    $out['secondary_major_2']                   =      $this->getAttr($res, 'cuedupersonsecondarymajor2');
-    $out['secondary_major_1_option']            =      $this->getAttr($res, 'cuedupersonsecondarymajor1option');
-    $out['secondary_major_2_option']            =      $this->getAttr($res, 'cuedupersonsecondarymajor2option');
+    $out['cuedupersonplan']                     =      $this->getAttr($res, 'cuedupersonplan');
     // Minors
-    $out['primary_minor']                       =      $this->getAttr($res, 'cuedupersonprimaryminor');
-    $out['secondary_minor']                     =      $this->getAttr($res, 'cuedupersonsecondaryminor');
+    $out['cuedupersonsubplan']                  =      $this->getAttr($res, 'cuedupersonsubplan');
 
     // Add affiliations
     $affiliations = array();
@@ -371,20 +352,17 @@ class CuDirectory {
     $out['affiliations'] = $affiliations;
 
     // Set Majors
-    // If you're wondering why I'm looping twice instead of setting two variables, so am I.
-    // It's just in case they tell me there are 10 of these fields in the future.
-    // Stranger things have happened.
-    $majors = array();
-    $i = 2;
-    while ($i > 0) {
-      if ( !empty($res["cuedupersonprimarymajor$i"]) ) {
-        $majors[] = $res["cuedupersonprimarymajor$i"][0];
-      }
-      $i = $i - 1;
+    // The recent directory changes seem to only output a single major, but let's
+    // make this work just in case they pass us an array for if a person has
+    // a double major for example.
+    if (is_array($out['cuedupersonplan'])) {
+      sort($out['cuedupersonplan']);
+      $out['majors'] = join(', ', $out['cuedupersonplan']);
     }
-    // $i counted down so reverse the array
-    $majors = array_reverse($majors);
-    $out['majors'] = $majors;
+    else {
+      $out['majors'] = $out['cuedupersonplan'];
+    }
+
 
     // Add all names / cn's
     $names = array();
